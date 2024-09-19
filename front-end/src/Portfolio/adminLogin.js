@@ -25,7 +25,7 @@ const Login=()=>{
 
   const LoginEvent = () => {
     setloginBtnstatus(true)
-    axios.post("https://my-portfolio-a0vo.onrender.com", userLogin).then((res) => {
+    axios.post("https://my-portfolio-a0vo.onrender.com/adminlogin", userLogin).then((res) => {
     console.log(res)
        if (res.data.Success) {
         sessionStorage.setItem("token",JSON.stringify(res.data.serverToken))

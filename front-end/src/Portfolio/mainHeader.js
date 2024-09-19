@@ -19,7 +19,7 @@ const MainHeader=()=>{
 
     const[adminActivity,setAdminActivity] = useState()
     useEffect(()=>{
-        axios.get("https://my-portfolio-a0vo.onrender.com").then((res)=>{
+        axios.get("https://my-portfolio-0vcb.onrender.com/getNoOfMessages").then((res)=>{
             
             setAdminActivity(res.data)
             // console.log(res.data)
