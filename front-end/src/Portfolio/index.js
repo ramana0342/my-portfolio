@@ -58,7 +58,7 @@ const Index=()=>{
     
 
     const userDatasent=()=>{
-    axios.post("https://my-portfolio-0vcb.onrender.com",inputData).then((res)=>{
+    axios.post("https://my-portfolio-83my.onrender.com/userinputdata",inputData).then((res)=>{
          console.log(res.data.Success)
          if(res.data.Success){
           setInputData({ name: "", Email: "", mobileNumber: "", Message: "" })

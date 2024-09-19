@@ -20,7 +20,7 @@ function ForgotPassword() {
 
     const loginEvent=()=>{
             setloginBtnstatus(true)
-            axios.post("https://my-portfolio-0vcb.onrender.com/emailforPassWordChange", inputData).then((res)=>{
+            axios.post("https://my-portfolio-83my.onrender.com/emailforPassWordChange", inputData).then((res)=>{
               // console.log(res.data)
                if(res.data){
                   setloginBtnstatus()

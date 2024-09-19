@@ -23,7 +23,7 @@ const UserMessages=()=>{
     }
 
     useEffect(()=>{
-        axios.get("https://my-portfolio-0vcb.onrender.com/getusersmessage",{ headers }).then((res)=>{
+        axios.get("https://my-portfolio-83my.onrender.com/getusersmessage",{ headers }).then((res)=>{
             //console.log(res.data.userMessages)
             // setmessages(res.data.userMessages)
             if (res.data.userMessages) {
@@ -52,7 +52,7 @@ const UserMessages=()=>{
 
     const DeleteMessage=(messageID)=>{
            setDeleteStatus()
-           axios.delete(`https://my-portfolio-0vcb.onrender.com/deletemessage/${messageID}`).then((res)=>{
+           axios.delete(`https://my-portfolio-83my.onrender.com/deletemessage/${messageID}`).then((res)=>{
             console.log(res.data.Success)
             setDeleteStatus(res.data.Success)
             setCount(true)
