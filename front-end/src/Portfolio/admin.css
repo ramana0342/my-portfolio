@@ -1,0 +1,75 @@
+
+
+
+.Logincontainer{
+    display: flex;
+    justify-content: center ;
+    height: 100vh;
+    align-items: center;
+    background-image: url("https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Loginform{
+    border: 2px solid black;
+    padding: 25px;
+    background-color:cyan;
+    box-shadow:50px 50px 100px rgb(0, 0, 0) 
+}
+input{
+    padding: 5px;
+    margin: 5px 0px;
+    border: 2px solid black;
+}
+.Login-btn{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    z-index: 1000;
+    background-color:rgb(49, 48, 72);
+  
+    
+}
+
+
+.Header-nav{
+    text-decoration: none;
+    color:wheat;
+    font-size: large;
+}
+
+.active{
+    color:rgb(47, 211, 10);
+    cursor:not-allowed;
+}
+
+
+.userMessagesContainer{
+    background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)), url(./messageLogo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+
+.passWordContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+

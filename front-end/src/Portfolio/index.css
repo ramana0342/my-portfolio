@@ -1,0 +1,666 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+   
+}
+/* body{
+    background-color:#1089ff
+} */
+
+
+  
+
+
+
+nav{
+    width:100%;
+    position: fixed !important;
+    z-index: 10;
+    left:0;
+    top:0;
+    box-shadow:0px 5px 8px rgba(0,0,0,.5);
+    
+}
+.navbar-brand{
+    font-weight: 600;
+}
+.nav-link{
+    color: white;
+    border-bottom: 1px solid transparent;
+}
+.nav-link:hover{
+    border-bottom: 1px solid white
+}
+
+sup{
+    display: inline-block;
+    width: 25px; 
+    background-color: red; 
+    color: white;        
+    text-align: center ; 
+    line-height: 25px; 
+    border-radius: 25px;  
+  
+               
+}
+
+
+
+
+
+/* home section */
+
+#home{
+    width:100%;
+    height:100vh;
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0.6)),url(https://www.constructionplacements.com/wp-content/uploads/2019/08/Top-15-Job-Websites-and-Job-Portals-In-India-For-Fresher-2020-Updated.jpg.webp);
+    
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    
+}
+
+
+
+
+
+.text{
+    color:rgb(252, 6, 6);
+    opacity: 1;
+    -webkit-box-reflect: right;
+}
+
+
+.home-content h3 {
+    font-size: 25px;
+    animation: slideRight 1s ease 1s 2 forwards;
+   
+}
+
+.home-content h2 {
+    font-size: 25px;
+    animation: slideRight 1s ease 1s forwards;
+   
+}
+
+
+
+.home-content h1 {
+    font-size: 40px;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+#About{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0.6)),url(https://miro.medium.com/v2/resize:fit:1358/1*k0SazfSJ-tPSBbt2WDYIyw.png);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow: hidden;
+    animation: scrollBackground 1s linear infinite;
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+
+.circle{
+    cursor: pointer;
+    width: 350px;
+    height: 350px;
+    background:brown;
+    border-radius: 50%;
+    position: relative;
+    box-shadow:0px 5px 12px rgba(0,0,0,.7) ;
+
+}
+.circle img{
+    position:absolute;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 30px 50px rgba(0,0,0,.4));
+}
+#About:hover .circle , #About:focus-within .circle {
+    width:900px;
+    height: 450px;
+    border-radius:10px;
+    transition: 1s;
+}
+#About:hover img , #About:focus-within img{
+    position: absolute;
+    top:10%;
+    left:2%;
+    transition: 1s;
+}
+#About:hover .content , #About:focus-within .content{
+    position: absolute;
+    top:13%;
+    right:0%;
+    width:55%;
+    opacity: 1;
+    transition: 1s;
+}
+.circle  .content{
+    opacity:0;
+}
+
+@media screen and (max-width:767px){
+    
+    .circle{
+        width: 350px;
+        height: 350px;
+        background:brown;
+        border-radius: 50%;
+        position: relative;
+        box-shadow:0px 5px 12px rgba(0,0,0,.7) ;
+        
+    }
+    #About:hover .circle , #About:focus-within .circle{
+        width:800px;
+        height: 800px;
+        border-radius:10px;
+        transition: 1s;
+        top:2%;
+        margin-bottom: 35px;
+    }
+    #About:hover img , #About:focus-within img{
+        position: absolute;
+        top:2%;
+        left:6%;
+        transition: 1s;
+    }
+    #About:hover .content , #About:focus-within .content{
+        padding: 0px 20px;
+        position: absolute;
+        top:48%;
+        right:0%;
+        width:100%;
+        opacity: 1;
+        transition: 1s;
+    }
+    
+    .circle .content{
+        opacity:0;
+    }
+    .skills-logos{
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+     .skills-logos span{
+        padding: 0px 4px;
+     }
+
+}
+
+
+
+
+/* extra */ 
+
+
+
+
+@media screen and (max-width:375px){
+    
+    .circle{
+        width: 300px;
+        height: 300px;
+        background:brown;
+        border-radius: 50%;
+        position: relative;
+        box-shadow:0px 5px 12px rgba(0,0,0,.7) ;
+        
+    }
+    .circle img{
+        position:absolute;
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        filter: drop-shadow(0px 30px 50px rgba(0,0,0,.4));
+    }
+    #About:hover .circle , #About:focus-within .circle{
+        width:800px;
+        height: 800px;
+        border-radius:10px;
+        transition: 1s;
+        top:2%;
+        margin-bottom: 35px;
+    }
+    #About:hover img , #About:focus-within img{
+        position: absolute;
+        top:2%;
+        left:7%;
+        transition: 1s;
+    }
+    #About:hover .content , #About:focus-within .content{
+        padding: 0px 20px;
+        position: absolute;
+        top:42%;
+        right:0%;
+        width:100%;
+        opacity: 1;
+        transition: 1s;
+    }
+    
+    .circle .content{
+        opacity:0;
+    }
+    .skills-logos{
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+     .skills-logos span{
+        padding: 0px 4px;
+     }
+
+}
+
+
+
+@media screen and (min-width:768px){
+     
+    
+.circle{
+    cursor: pointer;
+    width: 350px;
+    height: 350px;
+    background:brown;
+    border-radius: 50%;
+    position: relative;
+    box-shadow:0px 5px 12px rgba(0,0,0,.7) ;
+
+}
+.circle img{
+    position:absolute;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 30px 50px rgba(0,0,0,.4));
+}
+#About:hover .circle , #About:focus-within .circle {
+    width:900px;
+    height: 418px;
+    border-radius:10px;
+    transition: 1s;
+}
+#About:hover img , #About:focus-within img{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    top:13%;
+    left:2%;
+    transition: 1s;
+}
+#About:hover .content , #About:focus-within .content{
+    position: absolute;
+    right:0%;
+    width:58%;
+    opacity: 1;
+    transition: 1s;
+    padding: 0px 20px;
+}
+.circle  .content{
+    opacity:0;
+}
+
+ .skills-logos span{
+    padding: 0px 4px;
+ }
+
+   
+}
+
+@media screen and (min-width:1024px){
+     
+    
+    .circle{
+        cursor: pointer;
+        width: 350px;
+        height: 350px;
+        background:brown;
+        border-radius: 50%;
+        position: relative;
+        box-shadow:0px 5px 12px rgba(0,0,0,.7) ;
+    
+    }
+    .circle img{
+        position:absolute;
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+        filter: drop-shadow(0px 30px 50px rgba(0,0,0,.4));
+    }
+    #About:hover .circle , #About:focus-within .circle {
+        width:900px;
+        height: 418px;
+        border-radius:10px;
+        transition: 1s;
+    }
+    #About:hover img , #About:focus-within img{
+        position: absolute;
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+        top:8%;
+        left:2%;
+        transition: 1s;
+    }
+    #About:hover .content , #About:focus-within .content{
+        position: absolute;
+        padding: 0px 20px;
+        right:0%;
+        width:58%;
+        opacity: 1;
+        transition: 1s;
+        
+    }
+    .circle  .content{
+        opacity:0;
+    }
+    
+     .skills-logos span{
+        padding: 0px 4px;
+     }
+    
+       
+    }
+
+
+
+
+
+/* Academics */
+#Academics{
+    
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqKHgpOUGtWRhT686XwJRxF57za71OixaU0A&s);
+     background-size:auto;
+    background-position: center;
+     background-repeat:space;
+  
+}
+.academicsText{
+    text-align: center;
+    margin-top: 10px;
+    color:red;
+   
+}
+
+.card{
+    margin: 10px;
+    border: 2px solid black;
+
+   
+}
+.card:hover{
+    box-shadow: 8px 8px 16px rgba(0,0,0,.4);
+}
+
+/* Skills */
+
+#Skills{
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),url(https://img.freepik.com/premium-photo/skills-education-learning-personal-development-competency-business-concept_524876-490.jpg?w=826);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 60px;
+}
+#Skills label{
+    font-size: 20px;
+    color: white;
+}
+.progress{
+    height:30px !important;
+    box-shadow:2px 4px 5px gray;
+}
+
+#Skills:hover .htmlProgress{
+    width: 75%;
+    animation: htmlProgress 3s;
+}
+
+@keyframes htmlProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+#Skills:hover .cssProgress{
+    width: 70%;
+    animation:cssProgress 3s ;
+}
+
+@keyframes cssProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 70%;
+    }
+}
+
+#Skills:hover .javascriptProgress{
+    width: 85%;
+    animation: javascriptProgress 3s;
+
+}
+
+@keyframes javascriptProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 85%;
+    }
+}
+
+#Skills:hover .reactProgress{
+    width: 80%;
+    animation: reactProgress 3s ;
+}
+
+@keyframes reactProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+#Skills:hover .nodejsProgress{
+       width: 70%;
+       animation:nodeProgress 3s;
+}
+
+@keyframes nodeProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 70%;
+    }
+}
+
+#Skills:hover .expressProgress{
+    width: 60%;
+    animation:expressProgress 3s ;
+}
+
+@keyframes expressProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 60%;
+    }
+}
+
+#Skills:hover .dbProgress{
+    width: 60%;
+    animation: dbProgress 3s ;
+}
+
+@keyframes dbProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 60%;
+    }
+}
+
+
+
+#Skills:hover .javaProgress{
+    width: 55%;
+    animation :javaProgress 3s; 
+}
+@keyframes javaProgress{
+    0%{
+        width: 0% ;
+    }
+    100%{
+        width: 55%;
+    }
+}
+
+
+#Projects{
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(https://cdn.pixabay.com/photo/2017/01/26/08/07/light-bulb-2010022_1280.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 50px;
+}
+.projectText{
+    text-align: center;
+    margin-top: 10px;
+    color:red;
+
+}
+.todoTask{
+    color: wheat;
+    background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,0.6)),url(https://img.freepik.com/premium-photo/pencil-checking-off-todo-list-3d-rendering-with-blue-background-copy-space_671359-10.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.ecommerceCard{
+    color:wheat;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.6)),url(https://segwitz.com/wp-content/uploads/2021/09/why-ecommerce-need-mobile-apps.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.foodCard{
+
+    color:wheat;
+    
+    background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),url(https://t3.ftcdn.net/jpg/02/97/67/70/360_F_297677001_zX7ZzRq8DObUV5IWTHAIhAae6DuiEQh4.jpg);
+    background-size:cover;
+    background-position:inherit;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
+
+/* Contact Section */
+#contactInfo{
+   min-height: 100vh;
+}
+#ContactRow{
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.col-md-7{
+    padding: 20px;
+}
+.col-md-5{
+    background-color: #1089ff;
+    padding: 20px;
+    color: white;
+}
+
+/*
+@media screen and (max-width:576px){
+    #Contact Info .container{
+        
+    margin-top: 0px !important;
+}
+}
+*/
+
+
+/*   admin header css  */
+
+
+
+
+

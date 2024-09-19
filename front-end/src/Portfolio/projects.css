@@ -1,0 +1,42 @@
+
+
+/* .imgDiv{
+    width: 14%;
+    height:22% ;
+  
+    background-color: red;
+    position: absolute;
+    top: 23%;
+    left: 62%;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU);
+    background-repeat: no-repeat;
+    rotate:20deg;
+    mix-blend-mode:multiply;
+}
+
+@media screen and (max-width:1230px){
+       
+    .imgDiv{
+       background-image: none;
+       
+    }
+
+
+
+} */
+
+.img1{
+    width: 50px;
+    rotate: -20deg;
+    mix-blend-mode:multiply;
+    
+    
+}
+.img2{
+    width: 50px;
+    rotate:20deg;
+    mix-blend-mode:multiply;
+    margin-top: 6px;
+}
+
+
