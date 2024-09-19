@@ -63,9 +63,8 @@ router.get("/getusersmessage" ,auth, async(req,res)=>{
 })
 
 router.get("/getNoOfMessages",async(req,res)=>{
-    let userMessages= await userScheema.find({})
-    const count = userMessages.length
-         res.json(count)
+    let count= await userScheema.countDocuments({})
+    res.json(count)
 })
 
 router.delete("/deletemessage/:id", async(req,res)=>{
