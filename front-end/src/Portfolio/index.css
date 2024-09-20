@@ -43,9 +43,9 @@ sup{
     color: white;        
     text-align: center ; 
     line-height: 25px; 
-    border-radius: 25px;  
-  
-               
+    border-radius: 25px; 
+    position: relative;
+    top: -12px
 }
 
 

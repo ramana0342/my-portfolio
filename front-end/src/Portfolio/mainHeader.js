@@ -20,14 +20,14 @@ const MainHeader=()=>{
     const[adminActivity,setAdminActivity] = useState()
     useEffect(()=>{
         axios.get("https://my-portfolio-83my.onrender.com/getNoOfMessages").then((res)=>{
-            
+           // console.log(res.data)
             setAdminActivity(res.data)
-            // console.log(res.data)
-
-           
+           // console.log(res.data)
+        }).catch((err)=>{
+            console.log(err)
         })
     },[adminActivity])
-    console.log(adminActivity)
+    // console.log(adminActivity)
     return(<>
 
     <store.Provider value={[adminActivity,setAdminActivity]}>

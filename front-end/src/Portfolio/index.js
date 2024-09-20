@@ -105,7 +105,7 @@ const Index=()=>{
                 <a class="nav-link" href="#contactInfo">Contact</a>
               </li>
               <li class="nav-item">
-                <NavLink to="/adminLogin" className="nav-link" >AdminActivities<sup>{count}</sup></NavLink>
+                <NavLink to="/adminLogin" className="nav-link" >AdminActivities{count==0 ? <sup>0</sup>:<sup>{count}</sup> }</NavLink>
               </li>
             </ul>
            </div>
@@ -432,9 +432,13 @@ const Index=()=>{
                       <hr/>
                       <div class="d-flex">
                         <i class="bi bi-browser-chrome"></i>
-                        <p>Website:www.contact.com</p>
+                        <p>My Portfolio:- https://my-portfolio-xi-two-63.vercel.app/</p>
                       </div>
                       <hr/>
+                      <div class="d-flex">
+                        <i class="bi bi-linkedin"></i>
+                         <p>www.linkedin.com/in/ramanareddymaddi</p>
+                      </div>
                     </div>
 
                   </div>
