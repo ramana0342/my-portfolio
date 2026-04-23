@@ -63,7 +63,7 @@ const Index = () => {
   const handleSendUserContactData = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/my-portfolio/api/user/send-message", inputData
+        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/send-message", inputData
       );
 
       if (data.status.code === 201) {
@@ -84,7 +84,7 @@ const Index = () => {
   const getUsersMessagesCount = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/my-portfolio/api/user/contact-messages/count"
+        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/count"
       );
 
       if (data.status.code === 200) {

@@ -41,7 +41,7 @@ const UserMessages = () => {
     const handleDeleteUserContactMessages = async (messageID) => {
     try {
       const search = {}
-      const { data } = await axios.delete(`http://localhost:5000/my-portfolio/api/user/contact-messages/delete/${messageID}`);
+      const { data } = await axios.delete(`https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/delete/${messageID}`);
 
       if (data.status.code === 200) {
         toast.success(data?.status?.message);
@@ -57,7 +57,7 @@ const UserMessages = () => {
     try {
       const search = {}
       const { data } = await axios.post(
-        "http://localhost:5000/my-portfolio/api/user/contact-messages/search", search
+        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/search", search
       );
 
       if (data.status.code === 200) {
