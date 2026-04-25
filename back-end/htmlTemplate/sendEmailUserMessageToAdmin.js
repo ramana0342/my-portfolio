@@ -1,7 +1,7 @@
 export const htmlTemplateForSendEmailUserMessageToAdmin = (data) => {
   return `
     <div style="font-family: Arial; padding: 20px;">
-      <h2 style="color: #333;">New Contact Message</h2>
+      <h2 style="color: #333;">New Contact Message From Ramana Portfolio</h2>
       
       <p><b>Name:</b> ${data.name}</p>
       <p><b>Email:</b> ${data.email}</p>

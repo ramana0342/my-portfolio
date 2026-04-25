@@ -3,18 +3,37 @@
 import pool from "../config/database.js";
 import { userMessageId } from '../utils/idGenerator.js'
 import { sendMailToAdmin } from "../controllers/handleSendMessageToAdmin.js"
+import { sendMailToUserForSuccesSentContact } from "../controllers/handleSuccessMessageToUser.js";
 
 export const insertUserContactMessageData = async (data) => {
   const { name, email, mobile, message } = data;
   const id = userMessageId();
+
   const result = await pool.query(
     `INSERT INTO my_portfolio.users_contact_messages (id, name, email, mobile, message)
      VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
     [id, name, email, mobile, message]
   );
-  sendMailToAdmin({ name, email, mobile, message }).catch(err => console.error("Email failed:", err.message));
-  return result.rows[0];
+
+  // Run emails in background (non-blocking)
+  setImmediate(() => {
+    Promise.allSettled([
+      sendMailToAdmin({ name, email, mobile, message }),
+      sendMailToUserForSuccesSentContact({ name, email, mobile, message }),
+    ]).then((results) => {
+      results.forEach((res, index) => {
+        if (res.status === "rejected") {
+          console.error(
+            index === 0 ? "Admin email failed:" : "User email failed:",
+            res.reason
+          );
+        }
+      });
+    });
+  });
+
+  return result.rows[0]; // API responds immediately
 };
 
 export const userContactMessageData = async (search) => {
