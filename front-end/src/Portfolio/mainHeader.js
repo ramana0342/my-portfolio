@@ -2,7 +2,6 @@ import React, { createContext } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./index";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Login from "./adminLogin";
 import AdminHeaders from "./adminPanel";
 import UserMessages from "./userMessages";
@@ -33,8 +32,8 @@ const MainHeader = () => {
                     <Route path="/project2" element={<Project2 />} />
                     <Route path="/project3" element={<Project3 />} />
                     <Route path="/adminPanel" element={<AdminHeaders />}>
-                        <Route path="UserMessage" element={<UserMessages />} />              {/* nested routes */}
-                        {/* <Route path="ChatWithUsers" element={<ChatWithUsers/>}/>    nested routes  */}
+                        <Route path="UserMessage" element={<UserMessages />} />
+
                     </Route>
                     <Route path="/forgotPassword" element={<ForgotPassword />} />
 

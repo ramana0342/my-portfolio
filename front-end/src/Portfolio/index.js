@@ -1,7 +1,6 @@
 import "./index.css";
 import ramImg from "./icons/ramana.jpeg";
 import { useState } from "react";
-import axios from "axios"
 import { NavLink, Link } from "react-router-dom";
 import Typed from 'typed.js';
 import { useEffect } from 'react';
@@ -12,13 +11,16 @@ import { useContext } from "react";
 import { store } from "./mainHeader";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-
+import { getUserContactMessagesCount, postUserContact } from "../network/portfolioApiService/portfolioApiService";
+import { useForm } from "react-hook-form";
+import { getAdminTokenData } from "../utils/adminToken";
 
 const Index = () => {
 
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const navigate = useNavigate()
   const [count, setCount] = useContext(store)
+  const [isSendLoading, setIsSendLoading] = useState(false)
 
   useEffect(() => {
     AOS.init({
@@ -29,14 +31,9 @@ const Index = () => {
     AOS.refresh();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     getUsersMessagesCount()
-  },[])
-
-
-
-  const [inputData, setInputData] = useState({ name: "", email: "", mobile: "", message: "" });
-  const [result, setResult] = useState("")
+  }, [])
 
   useEffect(() => {
 
@@ -54,28 +51,21 @@ const Index = () => {
     };
   }, []);
 
-
-  const handleChange = (field, value) => {
-    setResult("")
-    setInputData({ ...inputData, [field]: value })
-  }
-
-  const handleSendUserContactData = async () => {
+  const handleSendUserContactData = async (formData) => {
+    setIsSendLoading(true)
     try {
-      const { data } = await axios.post(
-        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/send-message", inputData
-      );
-
+      const data = await postUserContact(formData)
       if (data.status.code === 201) {
-        setInputData({ name: "", email: "", mobile: "", message: "" });
+        reset();
         toast.success(data?.status?.message);
         getUsersMessagesCount()
       } else {
         toast.error(data?.status?.message);
       }
     } catch (err) {
-
       console.log(err);
+    } finally {
+      setIsSendLoading(false)
     }
   };
 
@@ -83,10 +73,7 @@ const Index = () => {
 
   const getUsersMessagesCount = async () => {
     try {
-      const { data } = await axios.get(
-        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/count"
-      );
-
+      let data = await getUserContactMessagesCount()
       if (data.status.code === 200) {
         if (data?.response?.totalMessages) {
           setCount(data.response.totalMessages);
@@ -101,8 +88,6 @@ const Index = () => {
 
     <div className="container-fluid">
       <div className="row">
-
-
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Portfolio</a>
@@ -130,7 +115,7 @@ const Index = () => {
                   <a class="nav-link" href="#contactInfo">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <NavLink to="/adminLogin" className="nav-link" >AdminActivities{count == 0 ? <sup>0</sup> : <sup>{count}</sup>}</NavLink>
+                  <NavLink to={getAdminTokenData() ? "/adminPanel/UserMessage" : "/adminLogin"} className="nav-link" >AdminActivities{count ? <sup>{count}</sup> : <sup>0</sup>}</NavLink>
                 </li>
               </ul>
             </div>
@@ -259,11 +244,6 @@ const Index = () => {
             </div>
           </div>
         </section>
-
-
-
-
-
       </div>
 
       <div className="row">
@@ -415,24 +395,75 @@ const Index = () => {
             <div class="row" id="ContactRow">
               <div class="col-md-7">
                 <h4>For Contact Me</h4>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Name</label>
-                  <input onChange={(e) => { handleChange("name", e.target.value) }} value={inputData.name} type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Name" />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Email</label>
-                  <input onChange={(e) => { handleChange("email", e.target.value) }} value={inputData.email} type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Email" />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
-                  <input onChange={(e) => { handleChange("mobile", e.target.value) }} value={inputData.mobile} type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter your number" />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                  <textarea onChange={(e) => { handleChange("message", e.target.value) }} value={inputData.message} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button onClick={() => { handleSendUserContactData() }} class="btn btn-primary" style={{ width: "120px" }}>Send</button><br />
-                {result ? <p><b>{result}</b></p> : ""}
+                <form onSubmit={handleSubmit(handleSendUserContactData)}>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your Name"
+                      {...register("name", { required: "Name is required" })}
+                    />
+                    {errors.name && <p className="text-danger">{errors.name.message}</p>}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Enter Your Email"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Enter a valid email address"
+                        }
+                      })}
+                    />
+                    {errors.email && <p className="text-danger">{errors.email.message}</p>}
+
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your number"
+                      {...register("mobile", {
+                        validate: (value) => {
+                          if (!value) return true;
+                          if (!/^\d{10}$/.test(value)) {
+                            return "Enter valid 10-digit mobile number";
+                          }
+                          return true;
+                        }
+                      })}
+                    />
+
+                    {errors.mobile && (
+                      <p className="text-danger">{errors.mobile.message}</p>
+                    )}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                    <textarea
+                      className="form-control"
+                      rows="3"
+                      {...register("message", {
+                        required: "Message is required",
+                        minLength: {
+                          value: 5,
+                          message: "Minimum 5 characters"
+                        }
+                      })}
+                    />
+                    {errors.message && <p className="text-danger">{errors.message.message}</p>}
+                  </div>
+                  <button disabled={isSendLoading} class="btn btn-primary" style={{ width: "120px" }}>
+                    {isSendLoading ? (<><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">sending...</span></>) :
+                      "Send"}
+                  </button><br />
+                </form>
               </div>
               <div class="col-md-5">
                 <h4>My Contact Detils</h4>

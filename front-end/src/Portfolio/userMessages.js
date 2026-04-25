@@ -1,27 +1,17 @@
 import { useEffect, useState } from "react"
-
-import axios from "axios";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
-
 import { store } from "./mainHeader";
 import { useContext } from "react";
 import { toast } from "react-toastify";
+import { usersContactMessagesSearch, deleteUserContactMessage } from "../network/portfolioApiService/portfolioApiService";
 
 
 const UserMessages = () => {
 
-  const [count, setCount] = useContext(store)
-
   const [messages, setmessages] = useState([])
-  const [DeleteStatus, setDeleteStatus] = useState()
   const [error, setError] = useState()
-
-  let token = JSON.parse(sessionStorage.getItem("token"))
-
-  let headers = {
-    "Authorization": `${token}`,
-  }
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     getAllUsersContactMessagesData()
@@ -29,8 +19,8 @@ const UserMessages = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // duration of the animation in milliseconds
-      once: false, // whether animation should happen only once - while scrolling down
+      duration: 1000,
+      once: false,
       mirror: true,
     });
     AOS.refresh();
@@ -38,28 +28,26 @@ const UserMessages = () => {
 
 
 
-    const handleDeleteUserContactMessages = async (messageID) => {
+  const handleDeleteUserContactMessages = async (messageID) => {
+    setDeletingId(messageID);
     try {
       const search = {}
-      const { data } = await axios.delete(`https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/delete/${messageID}`);
-
+      const data = await deleteUserContactMessage(messageID);
       if (data.status.code === 200) {
         toast.success(data?.status?.message);
         getAllUsersContactMessagesData()
       }
     } catch (err) {
-
       console.log(err);
+    } finally {
+      setDeletingId(null);
     }
   };
 
   const getAllUsersContactMessagesData = async () => {
     try {
       const search = {}
-      const { data } = await axios.post(
-        "https://ramana-portfolio-api.onrender.com/my-portfolio/api/user/contact-messages/search", search
-      );
-
+      const data = await usersContactMessagesSearch(search)
       if (data.status.code === 200) {
         setmessages(data.response);
       }
@@ -91,7 +79,25 @@ const UserMessages = () => {
                       <h5><b>Contact Details</b> : </h5>
                       <p style={{ margin: "0px", padding: "0px" }} className="card-text"><b>Email Id </b>: {item.email}</p>
                       <p className="card-text"><b>Mobile No </b> : {item.mobile}</p>
-                      <button onClick={() => { handleDeleteUserContactMessages(item.id) }} type="button" class="btn btn-info">Delete Message</button>
+                      <button
+                        onClick={() => handleDeleteUserContactMessages(item.id)}
+                        type="button"
+                        className="btn btn-info"
+                        disabled={deletingId === item.id}
+                      >
+                        {deletingId === item.id ? (
+                          <>
+                            <span
+                              className="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                            {" "}Deleting...
+                          </>
+                        ) : (
+                          "Delete Message"
+                        )}
+                      </button>
                     </div>
                   </div>
                 </div>
