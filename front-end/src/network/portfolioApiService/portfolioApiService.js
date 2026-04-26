@@ -24,3 +24,13 @@ export const deleteUserContactMessage = async(messageID)=>{
     let res = await deleteRequest(`/user/contact-messages/delete/${messageID}`);
     return res.data;
 }
+
+export const usersChatList = async()=>{
+     let res = await getRequest("/chat/users-list");
+    return res.data;
+}
+
+export const usersChatMessages = async(userId)=>{
+     let res = await getRequest(`/chat/messages/${userId}`);
+    return res.data;
+}

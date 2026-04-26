@@ -14,6 +14,9 @@ import { toast } from "react-toastify";
 import { getUserContactMessagesCount, postUserContact } from "../network/portfolioApiService/portfolioApiService";
 import { useForm } from "react-hook-form";
 import { getAdminTokenData } from "../utils/adminToken";
+import UserChat from "./chats/userChat";
+import ReactLogo from "./icons/react-icon.jpeg";
+import NodeLogo from "./icons/node-icon.png"
 
 const Index = () => {
 
@@ -21,6 +24,12 @@ const Index = () => {
   const navigate = useNavigate()
   const [count, setCount] = useContext(store)
   const [isSendLoading, setIsSendLoading] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [showHint, setShowHint] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setShowHint(false), 4000);
+  }, []);
 
   useEffect(() => {
     AOS.init({
@@ -84,6 +93,23 @@ const Index = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isChatOpen) {
+        setIsChatOpen(true); // auto open after 5 sec
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const closeNavbar = () => {
+    const navbar = document.getElementById("navbarSupportedContent");
+    if (navbar.classList.contains("show")) {
+      navbar.classList.remove("show");
+    }
+  };
+
   return (<>
 
     <div className="container-fluid">
@@ -91,31 +117,34 @@ const Index = () => {
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setIsChatOpen(false)} >
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link home" href="#home">Home</a>
+                  <a class="nav-link home" href="#home" onClick={closeNavbar}>Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#About">About</a>
+                  <a class="nav-link" href="#About" onClick={closeNavbar}>About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Academics">Academics</a>
+                  <a class="nav-link" href="#Academics" onClick={closeNavbar}>Academics</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Skills">Skills</a>
+                  <a class="nav-link" href="#Skills" onClick={closeNavbar}>Skills</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Projects">Projects</a>
+                  <a class="nav-link" href="#Projects" onClick={closeNavbar}>Projects</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contactInfo">Contact</a>
+                  <a class="nav-link" href="#contactInfo" onClick={closeNavbar}>Contact</a>
                 </li>
+                {/* <li class="nav-item">
+                  <NavLink to="/user-chat" className="nav-link">Chat</NavLink>
+                </li> */}
                 <li class="nav-item">
-                  <NavLink to={getAdminTokenData() ? "/adminPanel/UserMessage" : "/adminLogin"} className="nav-link" >AdminActivities{count ? <sup>{count}</sup> : <sup>0</sup>}</NavLink>
+                  <NavLink to={getAdminTokenData() ? "/admin-panel/user-messages" : "/admin-login"} className="nav-link" >AdminActivities{count ? <sup>{count}</sup> : <sup>0</sup>}</NavLink>
                 </li>
               </ul>
             </div>
@@ -274,7 +303,7 @@ const Index = () => {
                 </div>
               </div>
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>REACT <img style={{ width: "80px", borderRadius: "80px" }} src="https://juststickers.in/wp-content/uploads/2016/05/reactjs-badge.png" /></label>
+                <label>REACT <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar reactProgress" style={{ width: "80%" }}>80%</div>
                 </div>
@@ -283,7 +312,7 @@ const Index = () => {
 
             <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>NODE.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://academyclass.com/wp-content/uploads/2021/11/ACCL-NodeJS-1200x1200.png" /></label>
+                <label>NODE.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar nodejsProgress" style={{ width: "70%" }}>70%</div>
                 </div>
@@ -374,9 +403,6 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-
-
-
 
             </div>
           </div>
@@ -493,7 +519,7 @@ const Index = () => {
                   <hr />
                   <div class="d-flex">
                     <i class="bi bi-linkedin"></i>
-                    <p>www.linkedin.com/in/ramanareddymaddi</p>
+                    <p className="bi-linkedin-content">www.linkedin.com/in/ramanareddymaddi</p>
                   </div>
                 </div>
 
@@ -511,6 +537,30 @@ const Index = () => {
 
 
     </div>
+
+    {!isChatOpen && (
+      <div className="chat-wrapper">
+        <div className="chat-tooltip">Need help? Chat with me 👋</div>
+
+        <div
+          className="chat-float-btn pulse"
+          onClick={() => {
+            setIsChatOpen(true);
+
+            const navbar = document.getElementById("navbarSupportedContent");
+            if (navbar.classList.contains("show")) {
+              navbar.classList.remove("show");
+            }
+          }}
+        >
+          💬
+        </div>
+      </div>
+    )}
+
+    {showHint && <div className="chat-tooltip show">Hi 👋 Need help?</div>}
+
+    {isChatOpen && <UserChat setIsChatOpen={setIsChatOpen} />}
 
   </>)
 }

@@ -28,7 +28,7 @@ function ForgotPassword() {
             } else {
                setloginBtnstatus()
                window.alert(`This Your Password "${res.data.adminResult.adminPassword}"`)
-               navigate("/adminLogin")
+               navigate("/admin-login")
             }
          }
 

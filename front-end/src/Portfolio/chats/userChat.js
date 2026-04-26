@@ -1,0 +1,227 @@
+import React, { useEffect, useState, useRef } from "react";
+import io from "socket.io-client";
+import { getSocketURL } from "../../network/ApiConfig";
+import { usersChatMessages } from "../../network/portfolioApiService/portfolioApiService";
+
+const UserChat = ({ setIsChatOpen }) => {
+  const [user, setUser] = useState(null);
+  const [nameInput, setNameInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
+  const [typing, setTyping] = useState("");
+  const [adminOnline, setAdminOnline] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const chatRef = useRef(null);
+
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io(getSocketURL(), {
+      transports: ["websocket"], // 🔥 important for production
+    });
+    setSocket(newSocket);
+
+    return () => {
+      newSocket.disconnect(); // 🔥 IMPORTANT
+    };
+  }, []);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("chat_user");
+    if (stored) {
+      setUser(JSON.parse(stored));
+    }
+  }, []);
+
+
+
+  useEffect(() => {
+    if (!user || !socket) return;
+
+    socket.emit("join_room", user.user_id);
+  }, [user, socket]);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleOnlineUsers = (data) => {
+      setAdminOnline(!!data?.admin);
+    };
+
+    const handleReceiveMessage = (data) => {
+      setMessages((prev) => {
+        const exists = prev.some(
+          (m) =>
+            m.message === data.message &&
+            m.created_at === data.created_at
+        );
+
+        if (exists) return prev;
+
+        return [...prev, data];
+      });
+    };
+
+    const handleTyping = ({ user_id, sender }) => {
+      setTyping(sender);
+      setTimeout(() => setTyping(""), 1500);
+    };
+
+    socket.on("online_users", handleOnlineUsers);
+    socket.on("receive_message", handleReceiveMessage);
+    socket.on("typing", handleTyping);
+
+    return () => {
+      socket.off("online_users", handleOnlineUsers);
+      socket.off("receive_message", handleReceiveMessage);
+      socket.off("typing", handleTyping);
+    };
+  }, [socket]);
+
+  useEffect(() => {
+    if (!user) return;
+    getUserChatMessages()
+
+  }, [user]);
+
+  const getUserChatMessages = async () => {
+    setIsLoading(true);
+    try {
+      const data = await usersChatMessages(user.user_id)
+      setMessages(data?.response)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+    };
+  }
+
+  // ✅ SMOOTH AUTO SCROLL
+  useEffect(() => {
+    if (!chatRef.current) return;
+
+    chatRef.current.scrollTo({
+      top: chatRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messages]);
+
+  const sendMessage = () => {
+    if (!message.trim()) return;
+
+    socket.emit("send_message", {
+      user_id: user.user_id,
+      sender_type: "user",
+      name: user.name,
+      message,
+    });
+
+    setMessage("");
+  };
+
+  return (
+    <div className="chat-popup">
+
+      {/* HEADER */}
+      <div className="user-chat-header">
+        Chat
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <div className={`user-status ${adminOnline ? "online" : "offline"}`}>
+            {adminOnline ? "Online" : "Offline"}
+          </div>
+
+          <span className="close-btn" onClick={() => {
+            socket?.disconnect();
+            setIsChatOpen(false)
+          }}>
+            ✖
+          </span>
+        </div>
+      </div>
+
+      {/* START */}
+      {!user ? (
+        <div className="user-start-chat">
+          <div className="start-card">
+            <div className="chat-icon">💬</div>
+
+            <h3>Start Conversation</h3>
+            <p>Chat with our support team instantly</p>
+
+            <input
+              value={nameInput}
+              onChange={(e) => setNameInput(e.target.value)}
+              placeholder="Enter your name"
+            />
+
+            <button
+              onClick={() => {
+                if (!nameInput.trim()) return;
+
+                const newUser = {
+                  user_id: "user_" + Math.random().toString(36).substring(2, 8),
+                  name: nameInput,
+                };
+
+                localStorage.setItem("chat_user", JSON.stringify(newUser));
+                setUser(newUser);
+              }}
+            >
+              Start Chat
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* MESSAGES */}
+          <div className="user-chat-messages" ref={chatRef}>
+            {isLoading ? (
+              <div className="chat-loading">
+                <div className="loader"></div>
+                <p>Loading messages...</p>
+              </div>
+            ) : (
+              messages.map((msg, i) => (
+                <div
+                  key={i}
+                  className={`user-message ${msg.sender_type === "user" ? "user-self" : "user-admin"
+                    }`}
+                >
+                  <div>{msg.message}</div>
+                  <small>
+                    {msg.created_at &&
+                      new Date(msg.created_at).toLocaleTimeString()}
+                  </small>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* TYPING */}
+          {typing && <div className="user-typing">{typing} typing...</div>}
+
+          {/* INPUT */}
+          <div className="user-chat-input">
+            <input
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+
+                socket.emit("typing", {
+                  user_id: user.user_id,
+                  sender: user.name,
+                });
+              }}
+              placeholder="Type message..."
+            />
+
+            <button onClick={sendMessage}>Send</button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default UserChat;

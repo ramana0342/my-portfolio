@@ -18,7 +18,7 @@ const Login = () => {
       if (res?.status?.code === 200) {
         localStorage.setItem("token", JSON.stringify(res?.response?.token));
         toast.success(res?.status?.message);
-        navigate("/adminPanel/UserMessage");
+        navigate("/admin-panel/user-messages");
       } else {
         toast.error(res?.status?.message);
       }
