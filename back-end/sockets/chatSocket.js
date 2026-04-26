@@ -60,7 +60,8 @@ export const setupChatSocket = (io) => {
 
       io.to("admin_room").emit("new_message_alert", {
         user_id: data.user_id,
-        sender_type: data.sender_type
+        sender_type: data.sender_type,
+        name : data.name
       });
 
       insertChatMessage(messageData).catch(console.error);

@@ -41,6 +41,35 @@ const AdminChat = () => {
         isAtBottomRef.current = isBottom;
     };
 
+    const moveUserToTop = (user_id, name = "New User") => {
+        setUsers((prevUsers) => {
+            const exists = prevUsers.find(u => u.user_id === user_id);
+
+            let updatedUsers;
+
+            if (exists) {
+                // ✅ update existing user
+                updatedUsers = prevUsers.map(user =>
+                    user.user_id === user_id
+                        ? { ...user, lastMessageTime: Date.now() }
+                        : user
+                );
+            } else {
+                // 🔥 ADD NEW USER
+                const newUser = {
+                    user_id,
+                    name,
+                    lastMessageTime: Date.now()
+                };
+                updatedUsers = [newUser, ...prevUsers];
+            }
+
+            return updatedUsers.sort(
+                (a, b) => (b.lastMessageTime || 0) - (a.lastMessageTime || 0)
+            );
+        });
+    };
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -70,7 +99,11 @@ const AdminChat = () => {
         try {
             let res = await usersChatList()
 
-            const data = res.response;
+            const data = res.response.map(user => ({
+                ...user,
+                lastMessageTime: 0 // 🔥 initialize
+            }));
+
             setUsers(data);
 
             // ✅ ONLY DESKTOP AUTO SELECT
@@ -87,8 +120,6 @@ const AdminChat = () => {
     useEffect(() => {
         if (!socket) return;
         fetchUsers();
-
-        socket.on("update_user_list", fetchUsers);
         socket.on("online_users", (data) => {
             setOnlineUsers(data.users || []);
         });
@@ -96,9 +127,21 @@ const AdminChat = () => {
         socket.on("new_message_alert", (data) => {
             const user_id = data?.user_id;
             const sender_type = data?.sender_type;
+            const name = data?.name || "User"; // 🔥 important
 
             if (!user_id) return;
             if (sender_type !== "user") return;
+
+            // 🔥 FIX HERE
+            moveUserToTop(user_id, name);
+
+            if (activeChatUser?.user_id === user_id) {
+                setUnread((prev) => ({
+                    ...prev,
+                    [user_id]: 0,
+                }));
+                return;
+            }
 
             setUnread((prev) => ({
                 ...prev,
@@ -111,7 +154,7 @@ const AdminChat = () => {
             socket.off("online_users");
             socket.off("new_message_alert");
         };
-    }, [activeChatUser, socket]);
+    }, [socket]);
 
     // ---------------- LOAD MESSAGES ----------------
     useEffect(() => {
@@ -189,11 +232,11 @@ const AdminChat = () => {
             message,
         });
 
+        // 🔥 MOVE CURRENT USER TO TOP
+        moveUserToTop(activeChatUser.user_id);
+
         setMessage("");
-
-        // 🔥 FORCE SCROLL TO BOTTOM ON SEND
         scrollToBottom();
-
     };
 
     // ---------------- AUTO SCROLL ----------------
@@ -225,36 +268,36 @@ const AdminChat = () => {
             {/* SIDEBAR */}
             <div className={`chat-sidebar ${activeChatUser ? "hide-on-mobile" : ""}`}>
                 <div className="users-header">Users</div>
+                <div className="user-list">
+                    {users.map((user) => {
+                        const isOnline = onlineUsers.includes(user.user_id);
+                        return (
+                            <div
+                                key={user.user_id}
+                                onClick={() => {
+                                    setActiveChatUser(user);
+                                    setUnread((prev) => ({ ...prev, [user.user_id]: 0 }));
+                                }}
+                                className={`user-item ${activeChatUser?.user_id === user.user_id ? "active" : ""
+                                    }`}
+                            >
+                                <div className="user-top">
+                                    <span>{user.name || user.user_id}</span>
 
-                {users.map((user) => {
-                    const isOnline = onlineUsers.includes(user.user_id);
+                                    {unread[user.user_id] > 0 && (
+                                        <span className="unread-badge">
+                                            {unread[user.user_id]}
+                                        </span>
+                                    )}
+                                </div>
 
-                    return (
-                        <div
-                            key={user.user_id}
-                            onClick={() => {
-                                setActiveChatUser(user);
-                                setUnread((prev) => ({ ...prev, [user.user_id]: 0 }));
-                            }}
-                            className={`user-item ${activeChatUser?.user_id === user.user_id ? "active" : ""
-                                }`}
-                        >
-                            <div className="user-top">
-                                <span>{user.name || user.user_id}</span>
-
-                                {unread[user.user_id] > 0 && (
-                                    <span className="unread-badge">
-                                        {unread[user.user_id]}
-                                    </span>
-                                )}
+                                <div className={`status ${isOnline ? "online" : "offline"}`}>
+                                    {isOnline ? "Online" : "Offline"}
+                                </div>
                             </div>
-
-                            <div className={`status ${isOnline ? "online" : "offline"}`}>
-                                {isOnline ? "Online" : "Offline"}
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
 
             {/* CHAT */}
