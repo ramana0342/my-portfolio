@@ -13,21 +13,24 @@ const AdminChat = () => {
     const [typing, setTyping] = useState("");
     const chatRef = useRef(null);
     const isAtBottomRef = useRef(true);
-    const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
     const [activeChatUser, setActiveChatUser] = useState(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
     const [socket, setSocket] = useState(null);
+    const activeUserRef = useRef(null);
 
     useEffect(() => {
         const newSocket = io(getSocketURL(), {
-            transports: ["websocket"], // 🔥 important for production
+            transports: ["websocket"], // important for production
         });
         setSocket(newSocket);
         return () => {
-            newSocket.disconnect(); // 🔥 IMPORTANT
+            newSocket.disconnect();
         };
     }, []);
+
+    useEffect(() => {
+        activeUserRef.current = activeChatUser;
+    }, [activeChatUser]);
 
 
 
@@ -48,14 +51,14 @@ const AdminChat = () => {
             let updatedUsers;
 
             if (exists) {
-                // ✅ update existing user
+                // update existing user
                 updatedUsers = prevUsers.map(user =>
                     user.user_id === user_id
                         ? { ...user, lastMessageTime: Date.now() }
                         : user
                 );
             } else {
-                // 🔥 ADD NEW USER
+                //ADD NEW USER
                 const newUser = {
                     user_id,
                     name,
@@ -101,10 +104,15 @@ const AdminChat = () => {
 
             const data = res.response.map(user => ({
                 ...user,
-                lastMessageTime: 0 // 🔥 initialize
+                lastMessageTime: new Date(user.last_message_time).getTime() || 0
             }));
 
-            setUsers(data);
+            const sortedUsers = data.sort(
+                (a, b) => b.lastMessageTime - a.lastMessageTime
+            );
+
+            setUsers(sortedUsers);
+
 
             // ✅ ONLY DESKTOP AUTO SELECT
             if (!isMobile && !activeChatUser && data.length > 0) {
@@ -127,15 +135,14 @@ const AdminChat = () => {
         socket.on("new_message_alert", (data) => {
             const user_id = data?.user_id;
             const sender_type = data?.sender_type;
-            const name = data?.name || "User"; // 🔥 important
+            const name = data?.name || "User";
 
             if (!user_id) return;
             if (sender_type !== "user") return;
 
-            // 🔥 FIX HERE
             moveUserToTop(user_id, name);
 
-            if (activeChatUser?.user_id === user_id) {
+            if (activeUserRef.current?.user_id === user_id) {
                 setUnread((prev) => ({
                     ...prev,
                     [user_id]: 0,
@@ -223,7 +230,7 @@ const AdminChat = () => {
 
 
     const sendMessage = () => {
-        if (!socket || !message.trim()) return;
+        if (!socket || !message.trim() || !activeChatUser) return;
 
         socket.emit("send_message", {
             user_id: activeChatUser.user_id,
@@ -232,8 +239,8 @@ const AdminChat = () => {
             message,
         });
 
-        // 🔥 MOVE CURRENT USER TO TOP
-        moveUserToTop(activeChatUser.user_id);
+        // MOVE CURRENT USER TO TOP
+        moveUserToTop(activeChatUser.user_id, activeChatUser.name);
 
         setMessage("");
         scrollToBottom();
@@ -351,10 +358,18 @@ const AdminChat = () => {
                                         sender: "Admin",
                                     });
                                 }}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault(); // prevents newline (important)
+                                        sendMessage();
+                                    }
+                                }}
                                 placeholder="Type message..."
                             />
 
-                            <button onClick={sendMessage}>Send</button>
+                            {message.trim() && (
+                                <button onClick={sendMessage}>Send</button>
+                            )}
                         </div>
                     </>
                 ) : (

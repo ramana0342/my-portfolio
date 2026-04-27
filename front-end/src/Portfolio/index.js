@@ -281,15 +281,15 @@ const Index = () => {
             <h1 class="text-center">My Skillls</h1>
             <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>HTML<img style={{ width: "80px", borderRadius: "80px" }} src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" /> </label>
+                <label>HTML <img style={{ width: "80px", borderRadius: "80px" }} src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" /> </label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar htmlProgress" style={{ width: "75%" }}>75%</div>
+                  <div class="progress-bar htmlProgress" style={{ width: "80%" }}>80%</div>
                 </div>
               </div>
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
                 <label>CSS <img style={{ width: "80px", borderRadius: "80px" }} src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" /> </label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar cssProgress" style={{ width: "70%" }}>70%</div>
+                  <div class="progress-bar cssProgress" style={{ width: "80%" }}>80%</div>
                 </div>
               </div>
             </div>
@@ -305,7 +305,7 @@ const Index = () => {
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
                 <label>REACT <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar reactProgress" style={{ width: "80%" }}>80%</div>
+                  <div class="progress-bar reactProgress" style={{ width: "90%" }}>90%</div>
                 </div>
               </div>
             </div>
@@ -314,20 +314,20 @@ const Index = () => {
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
                 <label>NODE.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar nodejsProgress" style={{ width: "70%" }}>70%</div>
+                  <div class="progress-bar nodejsProgress" style={{ width: "60%" }}>60%</div>
                 </div>
               </div>
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>EXPRESS.JS  <img style={{ width: "80px", borderRadius: "80px" }} src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" /></label>
+                <label>EXPRESS.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar expressProgress" style={{ width: "60%" }}>60%</div>
+                  <div class="progress-bar expressProgress" style={{ width: "50%" }}>50%</div>
                 </div>
               </div>
             </div>
 
             <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>MONGO DB  <img style={{ width: "80px", borderRadius: "80px" }} src="https://www.pngkit.com/png/full/383-3839245_monitoring-mongodb-canva-png.png" /></label>
+                <label>PostgreSQL <img style={{ width: "80px", borderRadius: "80px" }} src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar dbProgress" style={{ width: "60%" }}>60%</div>
                 </div>
@@ -335,7 +335,7 @@ const Index = () => {
               <div class="col-lg-6 col-12 pt-lg-0  pt-3">
                 <label>CORE JAVA (Self Learning) <img style={{ width: "80px", borderRadius: "80px" }} src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" /></label>
                 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar javaProgress" style={{ width: "55%" }}>55%</div>
+                  <div class="progress-bar javaProgress" style={{ width: "40%" }}>40%</div>
                 </div>
               </div>
             </div>

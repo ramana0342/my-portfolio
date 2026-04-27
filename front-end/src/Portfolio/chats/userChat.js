@@ -213,10 +213,18 @@ const UserChat = ({ setIsChatOpen }) => {
                   sender: user.name,
                 });
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault(); // prevents newline (important)
+                  sendMessage();
+                }
+              }}
               placeholder="Type message..."
             />
 
-            <button onClick={sendMessage}>Send</button>
+            {message.trim() && (
+              <button onClick={sendMessage}>Send</button>
+            )}
           </div>
         </>
       )}

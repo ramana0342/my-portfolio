@@ -20,10 +20,9 @@ export const getChatUsersList = async () => {
   const result = await pool.query(`
     SELECT 
       user_id,
-      MAX(name) as name,
+      MAX(CASE WHEN sender_type = 'user' THEN name END) as name,
       MAX(created_at) as last_message_time
     FROM my_portfolio.chat_messages
-    WHERE sender_type != 'admin'
     GROUP BY user_id
     ORDER BY last_message_time DESC
   `);

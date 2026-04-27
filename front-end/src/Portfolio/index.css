@@ -519,7 +519,7 @@ sup {
 }
 
 #Skills:hover .htmlProgress {
-    width: 75%;
+    width: 80%;
     animation: htmlProgress 3s;
 }
 
@@ -529,12 +529,12 @@ sup {
     }
 
     100% {
-        width: 75%;
+        width: 80%;
     }
 }
 
 #Skills:hover .cssProgress {
-    width: 70%;
+    width: 80%;
     animation: cssProgress 3s;
 }
 
@@ -544,7 +544,7 @@ sup {
     }
 
     100% {
-        width: 70%;
+        width: 80%;
     }
 }
 
@@ -565,7 +565,7 @@ sup {
 }
 
 #Skills:hover .reactProgress {
-    width: 80%;
+    width: 90%;
     animation: reactProgress 3s;
 }
 
@@ -575,12 +575,12 @@ sup {
     }
 
     100% {
-        width: 80%;
+        width: 90%;
     }
 }
 
 #Skills:hover .nodejsProgress {
-    width: 70%;
+    width: 60%;
     animation: nodeProgress 3s;
 }
 
@@ -590,12 +590,12 @@ sup {
     }
 
     100% {
-        width: 70%;
+        width: 60%;
     }
 }
 
 #Skills:hover .expressProgress {
-    width: 60%;
+    width: 50%;
     animation: expressProgress 3s;
 }
 
@@ -605,7 +605,7 @@ sup {
     }
 
     100% {
-        width: 60%;
+        width: 50%;
     }
 }
 
@@ -627,7 +627,7 @@ sup {
 
 
 #Skills:hover .javaProgress {
-    width: 55%;
+    width: 40%;
     animation: javaProgress 3s;
 }
 
@@ -637,7 +637,7 @@ sup {
     }
 
     100% {
-        width: 55%;
+        width: 40%;
     }
 }
 
@@ -746,7 +746,6 @@ sup {
     bottom: 25px;
     right: 25px;
     width: 320px;
-    max-width: 95vw;
     height: 420px;
     background: white;
     border-radius: 12px;
@@ -791,8 +790,29 @@ sup {
     background: #f5f5f5;
     display: flex;
     flex-direction: column;
-    scroll-behavior: smooth;
     margin-top: 5px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #0d6efd #f1f1f1;
+}
+
+
+.user-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.user-chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.user-chat-messages::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 10px;
+}
+
+.user-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
 }
 
 /* MESSAGE BUBBLES */
