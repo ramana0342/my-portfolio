@@ -7,4 +7,22 @@
     <priority>1.0</priority>
   </url>
 
+  <url>
+    <loc>https://ramana-portfolio-eight.vercel.app/projects/task-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://ramana-portfolio-eight.vercel.app/projects/ecommerce-app</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://ramana-portfolio-eight.vercel.app/projects/food-app</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

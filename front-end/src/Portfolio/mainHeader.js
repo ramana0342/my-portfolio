@@ -29,9 +29,9 @@ const MainHeader = () => {
                 <Routes>
                     <Route path="/" element={<Index />}></Route>
                     <Route path="/admin-login" element={<Login />}></Route>
-                    <Route path="/project1" element={<Project1 />} />
-                    <Route path="/project2" element={<Project2 />} />
-                    <Route path="/project3" element={<Project3 />} />
+                    <Route path="/projects/task-management" element={<Project1 />} />
+                    <Route path="/projects/ecommerce-app" element={<Project2 />} />
+                    <Route path="/projects/food-app" element={<Project3 />} />
                     <Route path="/admin-panel" element={<AdminHeaders />}>
                         <Route path="user-messages" element={<UserMessages />} />
                         <Route path="chat" element={<AdminChat />} />
