@@ -169,7 +169,7 @@ sup {
     }
 }
 
-#About {
+#about {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -317,7 +317,7 @@ sup {
 }
 
 
-#Experience {
+#experience {
     padding: 80px 20px;
     background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
     color: #fff;
@@ -473,7 +473,7 @@ sup {
     }
 }
 
-#Academics {
+#academics {
     min-height: 100vh;
     padding: 80px 20px;
     background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
@@ -492,20 +492,20 @@ sup {
 }
 
 /* GRID FIX */
-#Academics .row {
+#academics .row {
     display: flex;
     flex-wrap: wrap;
 }
 
 /* COLUMN FIX */
-#Academics .col-sm-12,
-#Academics .col-md-12,
-#Academics .col-lg-6 {
+#academics .col-sm-12,
+#academics .col-md-12,
+#academics .col-lg-6 {
     display: flex;
 }
 
 /* CARD */
-#Academics .card {
+#academics .card {
     width: 100%;
     margin: 12px;
     border-radius: 18px;
@@ -520,13 +520,13 @@ sup {
 }
 
 /* HOVER */
-#Academics .card:hover {
+#academics .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
 /* HEADER */
-#Academics .card-header {
+#academics .card-header {
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -534,34 +534,34 @@ sup {
     justify-content: center;
 }
 
-#Academics .card-header h4 {
+#academics .card-header h4 {
     color: #00c6ff;
     font-size: 18px;
     margin: 0px;
 }
 
 /* BODY */
-#Academics .card-body {
+#academics .card-body {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: start;
 }
 
-#Academics .card-body h1 {
+#academics .card-body h1 {
     font-size: 20px;
     margin-bottom: 10px;
     color: #fff;
 }
 
 /* LIST */
-#Academics ul {
+#academics ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#Academics ul li {
+#academics ul li {
     font-size: 14px;
     color: #ccc;
     margin: 6px 0;
@@ -570,7 +570,7 @@ sup {
 }
 
 /* CUSTOM BULLET */
-#Academics ul li::before {
+#academics ul li::before {
     content: "•";
     position: absolute;
     left: 0;
@@ -585,7 +585,7 @@ sup {
 }
 
 /* Skills */
-#Skills {
+#skills {
     min-height: 100vh;
     padding: 80px 20px;
     background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
@@ -775,7 +775,7 @@ sup {
     }
 }
 
-#Projects {
+#projects {
     min-height: 100vh;
     padding: 80px 20px;
     background: radial-gradient(circle at top, #0f172a, #020617);
@@ -794,19 +794,19 @@ sup {
 }
 
 /* GRID */
-#Projects .row {
+#projects .row {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
 }
 
 /* COLUMN FIX */
-#Projects .col-lg-12 {
+#projects .col-lg-12 {
     display: flex;
 }
 
 /* CARD */
-#Projects .card {
+#projects .card {
     width: 100%;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -818,42 +818,42 @@ sup {
 }
 
 /* HOVER EFFECT */
-#Projects .card:hover {
+#projects .card:hover {
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
 /* HEADER */
-#Projects .card-header {
+#projects .card-header {
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
-#Projects .card-header h3 {
+#projects .card-header h3 {
     font-size: 20px;
     margin: 10px 0;
     color: #00c6ff;
 }
 
 /* BODY */
-#Projects .card-body {
+#projects .card-body {
     padding: 20px;
 }
 
 /* DESCRIPTION TITLE */
-#Projects .card-body h5 {
+#projects .card-body h5 {
     color: #0d6efd;
     margin-bottom: 10px;
 }
 
 /* LIST */
-#Projects ul {
+#projects ul {
     list-style: none;
     padding: 0;
 }
 
-#Projects ul li {
+#projects ul li {
     font-size: 14px;
     color: #ccc;
     margin: 6px 0;
@@ -862,7 +862,7 @@ sup {
 }
 
 /* BULLET */
-#Projects ul li::before {
+#projects ul li::before {
     content: "•";
     position: absolute;
     left: 0;
@@ -870,17 +870,17 @@ sup {
 }
 
 /* LINKS */
-#Projects a {
+#projects a {
     color: #08ffff;
     font-weight: 500;
 }
 
-#Projects a:hover {
+#projects a:hover {
     text-decoration: underline;
 }
 
 /* BUTTON */
-#Projects button {
+#projects button {
     margin-top: 15px;
     padding: 8px 18px;
     border-radius: 25px;
@@ -891,7 +891,7 @@ sup {
     transition: 0.3s;
 }
 
-#Projects button:hover {
+#projects button:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 198, 255, 0.5);
 }
@@ -901,7 +901,7 @@ sup {
 
 
 /* Contact Section */
-#contactInfo {
+#contact {
     min-height: 100vh;
 
 }
@@ -911,7 +911,7 @@ sup {
     overflow-wrap: anywhere;
 }
 
-#contactInfo {
+#contact {
     min-height: 100vh;
     padding: 80px 20px;
     background: radial-gradient(circle at top, #0f172a, #020617);
@@ -919,7 +919,7 @@ sup {
 }
 
 /* TITLE */
-#contactInfo h1 {
+#contact h1 {
     font-size: 40px;
     margin-top: 0px !important;
     margin-bottom: 50px;
@@ -954,19 +954,19 @@ sup {
 }
 
 /* INPUT */
-#contactInfo .form-control {
+#contact .form-control {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     border-radius: 10px;
 }
 
-#contactInfo .form-control::placeholder {
+#contact .form-control::placeholder {
     color: #ccc;
 }
 
 /* INPUT FOCUS */
-#contactInfo .form-control:focus {
+#contact .form-control:focus {
     border-color: #00c6ff;
     box-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
     background: rgba(255, 255, 255, 0.08);
@@ -974,13 +974,13 @@ sup {
 }
 
 /* LABEL */
-#contactInfo label {
+#contact label {
     color: #ccc;
     font-size: 14px;
 }
 
 /* BUTTON */
-#contactInfo button {
+#contact button {
     margin-top: 10px;
     width: 140px;
     border-radius: 25px;
@@ -990,33 +990,33 @@ sup {
     transition: 0.3s;
 }
 
-#contactInfo button:hover {
+#contact button:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 198, 255, 0.6);
 }
 
 /* RIGHT SIDE DETAILS */
-#contactInfo .col-md-5 h4 {
+#contact .col-md-5 h4 {
     margin-bottom: 20px;
 }
 
 /* ICON + TEXT */
-#contactInfo .d-flex {
+#contact .d-flex {
     align-items: center;
     gap: 10px;
 }
 
-#contactInfo i {
+#contact i {
     font-size: 18px;
 }
 
-#contactInfo p {
+#contact p {
     margin: 0;
     font-size: 14px;
 }
 
 /* DIVIDER */
-#contactInfo hr {
+#contact hr {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -1026,7 +1026,7 @@ sup {
         flex-direction: column;
     }
 
-    #contactInfo h1 {
+    #contact h1 {
         font-size: 32px;
     }
 }

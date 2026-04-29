@@ -37,7 +37,7 @@ const MainHeader = () => {
                         <Route path="chat" element={<AdminChat />} />
 
                     </Route>
-                    <Route path="/forgotPassword" element={<ForgotPassword />} />
+                    {/* <Route path="/forgotPassword" element={<ForgotPassword />} /> */}
                     {/* <Route path="/user-chat" element={<UserChat />} /> */}
 
                 </Routes>

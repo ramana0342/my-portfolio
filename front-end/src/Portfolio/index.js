@@ -61,7 +61,7 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    const skillsSection = document.getElementById("Skills");
+    const skillsSection = document.getElementById("skills");
 
     const handleScroll = () => {
       if (!skillsSection) return;
@@ -151,22 +151,22 @@ const Index = () => {
                   <a class="nav-link home" href="#home" onClick={closeNavbar}>Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#About" onClick={closeNavbar}>About</a>
+                  <a class="nav-link" href="#about" onClick={closeNavbar}>About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Experience" onClick={closeNavbar}>Experience</a>
+                  <a class="nav-link" href="#experience" onClick={closeNavbar}>Experience</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Academics" onClick={closeNavbar}>Academics</a>
+                  <a class="nav-link" href="#academics" onClick={closeNavbar}>Academics</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Skills" onClick={closeNavbar}>Skills</a>
+                  <a class="nav-link" href="#skills" onClick={closeNavbar}>Skills</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Projects" onClick={closeNavbar}>Projects</a>
+                  <a class="nav-link" href="#projects" onClick={closeNavbar}>Projects</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contactInfo" onClick={closeNavbar}>Contact</a>
+                  <a class="nav-link" href="#contact" onClick={closeNavbar}>Contact</a>
                 </li>
                 {/* <li class="nav-item">
                   <NavLink to="/user-chat" className="nav-link">Chat</NavLink>
@@ -200,11 +200,11 @@ const Index = () => {
 
             {/* 🔥 NEW BUTTONS */}
             <div className="home-buttons">
-              <a href="#Projects" className="btn-primary-custom">
+              <a href="#projects" className="btn-primary-custom">
                 View Projects
               </a>
 
-              <a href="#contactInfo" className="btn-outline-custom">
+              <a href="#contact" className="btn-outline-custom">
                 Hire Me
               </a>
             </div>
@@ -215,7 +215,7 @@ const Index = () => {
 
       <div className="row">
 
-        <section id="About">
+        <section id="about">
           <div className="about-container">
             <h1 className="about-title">About Me</h1>
 
@@ -244,7 +244,7 @@ const Index = () => {
               </p>
 
               <div className="about-buttons">
-                <a href="#contactInfo" className="btn-about-primary">
+                <a href="#contact" className="btn-about-primary">
                   Hire Me
                 </a>
 
@@ -271,7 +271,7 @@ const Index = () => {
       </div>
 
       <div className="row">
-        <section id="Experience">
+        <section id="experience">
           <div className="container">
             <h1 className="text-center experience-title">Experience</h1>
 
@@ -337,7 +337,7 @@ const Index = () => {
 
 
 
-        <section id="Academics">
+        <section id="academics">
           <div class="container">
             <h1 class="academicsText">Academics</h1>
             <div class="row">
@@ -419,7 +419,7 @@ const Index = () => {
 
       <div className="row">
 
-        <section id="Skills">
+        <section id="skills">
           <div class="container">
             <h1 class="text-center skills-title">My Skills</h1>
 
@@ -533,10 +533,10 @@ const Index = () => {
       </div>
 
       <div className="row">
-        <section id="Projects">
+        <section id="projects">
 
           <div class="container">
-            <h1 class="projectText">Personal project</h1>
+            <h1 class="projectText">Personal Projects</h1>
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="card todoTask" data-aos="flip-left">
@@ -603,7 +603,7 @@ const Index = () => {
 
       <div className="row">
 
-        <section id="contactInfo" >
+        <section id="contact" >
           <div class="container">
             <h1 class="text-center" style={{ marginTop: "55px" }}>Contact Details</h1>
             <div class="row" id="ContactRow">
