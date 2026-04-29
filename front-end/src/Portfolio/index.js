@@ -60,6 +60,26 @@ const Index = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const skillsSection = document.getElementById("Skills");
+
+    const handleScroll = () => {
+      if (!skillsSection) return;
+
+      const rect = skillsSection.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+        skillsSection.classList.add("animate");
+      } else {
+        skillsSection.classList.remove("animate");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleSendUserContactData = async (formData) => {
     setIsSendLoading(true)
     try {
@@ -94,10 +114,10 @@ const Index = () => {
   };
 
   useEffect(() => {
+    if (isChatOpen) return;
+
     const timer = setTimeout(() => {
-      if (!isChatOpen) {
-        setIsChatOpen(true); // auto open after 5 sec
-      }
+      setIsChatOpen(true);
     }, 5000);
 
     return () => clearTimeout(timer);
@@ -117,7 +137,12 @@ const Index = () => {
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setIsChatOpen(false)} >
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+            >
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -127,6 +152,9 @@ const Index = () => {
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#About" onClick={closeNavbar}>About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Experience" onClick={closeNavbar}>Experience</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#Academics" onClick={closeNavbar}>Academics</a>
@@ -159,34 +187,149 @@ const Index = () => {
 
         <section id="home">
           <div className="home-content">
-            <h3>Hello ,Welcome to My Portfolio</h3>
-            <h1>My Name is <b>"Ramana Reddy"</b></h1>
-            <h2>I Trained As A  <b style={{ marginLeft: "6px" }}><span className="text"></span></b></h2>
+
+            <h3>Hello, Welcome to My Portfolio</h3>
+
+            <h1>
+              I'm <span style={{ color: "#0d6efd" }}>Ramana Reddy</span>
+            </h1>
+
+            <h2>
+              I am a <span className="text"></span>
+            </h2>
+
+            {/* 🔥 NEW BUTTONS */}
+            <div className="home-buttons">
+              <a href="#Projects" className="btn-primary-custom">
+                View Projects
+              </a>
+
+              <a href="#contactInfo" className="btn-outline-custom">
+                Hire Me
+              </a>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <div className="row">
+
+        <section id="About">
+          <div className="about-container">
+            <h1 className="about-title">About Me</h1>
+
+            <div className="about-card">
+              <p>
+                Hi, I'm <b>Ramana Reddy</b>, a passionate <b>Full Stack Developer</b>
+                with experience in building scalable web applications using
+                <b> React, Node.js, Express</b>.
+              </p>
+
+              <p>
+                I completed my <b>MCA</b> in 2023 and gained practical experience
+                working on real-time applications, focusing on clean architecture
+                and efficient problem solving.
+              </p>
+
+              <p>
+                Currently working as a <b>Frontend Developer</b>, I build reusable
+                components, integrate APIs, and optimize performance to deliver
+                seamless user experiences.
+              </p>
+
+              <p>
+                I am open to <b>freelance opportunities</b> and confident in delivering
+                high-quality, scalable solutions.
+              </p>
+
+              <div className="about-buttons">
+                <a href="#contactInfo" className="btn-about-primary">
+                  Hire Me
+                </a>
+
+                <a href="/resume.pdf" className="btn-about-outline" download>
+                  Download CV
+                </a>
+              </div>
+
+              <div className="about-links">
+                <a href="mailto:ramanareddy.m0342@gmail.com" target="_blank" rel="noopener noreferrer">
+                  Email
+                </a>
+                <a href="https://github.com/ramana0342" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/ramanareddymaddi/" target="_blank" rel="noopener noreferrer">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
       </div>
 
       <div className="row">
+        <section id="Experience">
+          <div className="container">
+            <h1 className="text-center experience-title">Experience</h1>
 
-        <section id="About" tabindex="0">
-          <div class="circle" >
-            <img src={ramImg} />
-            <div class="content">
-              <h1>ABOUT ME</h1>
-              <p><b>My self Ramana Reddy. I am Seeking a position to utilize my skills and abilities in the Information Technology industry, that offer
-                Professional growth while being resourceful, innovative and flexible.
-                My hometown is Khammam, Telangana (State). I completed my post graduation with distinction in Master of Computer Applications with first division in November, 2023. I have full stack development knowledge. I trained in full stack development at Innomatics Research Lab.</b></p>
-              <div className="skills-logos" style={{ margin: "0px", padding: "0px" }}>
-                <span style={{ position: "relative", top: "11px" }}> <a className="skill-Link" href="mailto:ramanareddy.m0342@gmail.com"><i style={{ fontSize: "38px" }} class="fa-solid fa-envelope"></i></a> </span>
-                <span style={{ position: "relative", top: "8px" }}><a className="skill-Link" href="https://github.com/ramana0342"><i class="fa-brands fa-square-github  fa-2x"></i></a></span>
-                <span style={{ position: "relative", top: "8px" }}> <a className="skill-Link" href="https://www.linkedin.com/in/ramanareddymaddi/"><i class="fa-brands fa-linkedin fa-2x"></i></a></span>
-                <span style={{ position: 'relative', top: "4px" }}> <a className="skill-Link fa-2x" href="https://vercel.com/ramana-reddys-projects"><SiVercel /></a> </span></div>
+            <div className="timeline">
+
+              <div className="timeline-item" data-aos="fade-up">
+                <div className="timeline-content">
+                  <h3>Frontend Developer</h3>
+                  <h5>Promilo</h5>
+                  <span>Feb 2025 - Present</span>
+                  <p>
+                    Working as a Frontend Developer building responsive and scalable web applications.
+                    Developed reusable React components, improved UI performance, and integrated APIs.
+                    Collaborated with backend teams and enhanced user experience across platforms.
+                  </p>
+
+                  <div className="exp-tags">
+                    <span>React</span>
+                    <span>JavaScript</span>
+                    <span>Bootstrap</span>
+                    <span>API Integration</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="timeline-item" data-aos="fade-up">
+                <div className="timeline-content">
+                  <h3>Full Stack Developer Trainee & Intern</h3>
+                  <h5>Innomatics Research Labs</h5>
+                  <span>Dec 2023 - Feb 2025</span>
+
+                  <p>
+                    Completed full stack development training and internship programs, gaining strong hands-on experience in both frontend and backend development.
+                  </p>
+
+                  <p>
+                    Worked on building responsive user interfaces using React and Bootstrap, and developed REST APIs using Node.js and Express.
+                    Gained practical knowledge in authentication (JWT), API integration, and database management.
+                  </p>
+
+                  <p>
+                    Built real-world projects including task management systems and e-commerce applications, improving problem-solving and development skills.
+                  </p>
+
+                  <div className="exp-tags">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>Express</span>
+                    <span>MongoDB</span>
+                    <span>JWT</span>
+                    <span>REST APIs</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
           </div>
         </section>
-
       </div>
 
 
@@ -228,8 +371,8 @@ const Index = () => {
                       <li>College Name:University Post Graduate College(OU)</li>
                       <li>Pass out year:november,2021</li>
                       <li>Percentage:87 %</li>
-                      <br />
-                      <br />
+
+
                     </ul>
                   </div>
                 </div>
@@ -264,7 +407,6 @@ const Index = () => {
                       <li>School Name:Z P S School,kamanchikal</li>
                       <li>Pass out year:March,2016</li>
                       <li>Percentage:82%</li>
-                      <br />
 
                     </ul>
                   </div>
@@ -276,68 +418,114 @@ const Index = () => {
       </div>
 
       <div className="row">
+
         <section id="Skills">
           <div class="container">
-            <h1 class="text-center">My Skillls</h1>
-            <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>HTML <img style={{ width: "80px", borderRadius: "80px" }} src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" /> </label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar htmlProgress" style={{ width: "80%" }}>80%</div>
+            <h1 class="text-center skills-title">My Skills</h1>
+
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>HTML</span>
+                    <img src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" alt = "HTML Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar htmlProgress"></div>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>CSS <img style={{ width: "80px", borderRadius: "80px" }} src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" /> </label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar cssProgress" style={{ width: "80%" }}>80%</div>
+
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>CSS</span>
+                    <img src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" alt = "CSS Logog" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar cssProgress"></div>
+                  </div>
                 </div>
               </div>
-            </div>
 
 
-            <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>JAVASCRIPT <img style={{ width: "80px", borderRadius: "80px" }} src="https://i.pinimg.com/564x/b4/de/20/b4de205cb6d4e7cad43c2971f780cfd9.jpg" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar javascriptProgress" style={{ width: "85%" }}>85%</div>
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>JAVASCRIPT</span>
+                    <img src="https://i.pinimg.com/564x/b4/de/20/b4de205cb6d4e7cad43c2971f780cfd9.jpg" alt = "JavaScript Logo"/>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar javascriptProgress"></div>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>REACT <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar reactProgress" style={{ width: "90%" }}>90%</div>
-                </div>
-              </div>
-            </div>
 
-            <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>NODE.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar nodejsProgress" style={{ width: "60%" }}>60%</div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>EXPRESS.JS <img style={{ width: "80px", borderRadius: "80px" }} src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar expressProgress" style={{ width: "50%" }}>50%</div>
-                </div>
-              </div>
-            </div>
 
-            <div class="row p-lg-3 p-0 mb-lg-3 mb-0">
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>PostgreSQL <img style={{ width: "80px", borderRadius: "80px" }} src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar dbProgress" style={{ width: "60%" }}>60%</div>
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>REACT</span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" alt = "React Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar reactProgress"></div>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-12 pt-lg-0  pt-3">
-                <label>CORE JAVA (Self Learning) <img style={{ width: "80px", borderRadius: "80px" }} src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" /></label>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar javaProgress" style={{ width: "40%" }}>40%</div>
+
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>NODE.JS</span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" alt = "Node.js Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar nodejsProgress"></div>
+                  </div>
                 </div>
               </div>
+
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>EXPRESS.JS</span>
+                    <img src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" alt = "Express.js Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar expressProgress"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>PostgreSQL</span>
+                    <img src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" alt = "PostgreSQL Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar dbProgress"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <div class="skill-card">
+                  <div class="skill-header">
+                    <span>CORE JAVA (Self Learning)</span>
+                    <img src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" alt = "Java Logo" />
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar javaProgress"></div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              {/* <!-- Repeat SAME for others --> */}
             </div>
           </div>
         </section>
