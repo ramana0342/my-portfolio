@@ -1,32 +1,94 @@
-.Logincontainer {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
-    background-image: url("https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+
+
+
+
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #141e30, #243b55);
 }
 
-.Loginform {
-    border: 2px solid black;
-    padding: 25px;
-    background-color: cyan;
-    box-shadow: 50px 50px 100px rgb(0, 0, 0);
-    max-width: 275px;
+.login-card {
+  width: 360px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
-input {
-    padding: 5px;
-    margin: 5px 0px;
-    border: 2px solid black;
+.login-switch {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  gap: 10px;
 }
 
-.Login-btn {
-    display: flex;
-    justify-content: center;
-
+.login-switch button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  background: #eee;
+  color: #007bff;
+  border: 1px solid #007bff;
 }
+
+.login-switch .active {
+  background: #007bff;
+  color: white;
+}
+
+
+.login-flow-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.login-flow-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-flow-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+small {
+  color: red;
+}
+
+.info-text {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+
+
+.resend-btn {
+  background: #28a745;
+  color: white;
+}
+
+.login-footer {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
 
 
 
@@ -39,8 +101,6 @@ input {
     padding: 15px;
     z-index: 1000;
     background-color: rgb(49, 48, 72);
-
-
 }
 
 
@@ -53,6 +113,10 @@ input {
 .active {
     color: rgb(47, 211, 10);
     cursor: not-allowed;
+}
+
+.log-out-item{
+    cursor: pointer;
 }
 
 

@@ -5,6 +5,7 @@ import { store } from "./mainHeader";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import { usersContactMessagesSearch, deleteUserContactMessage } from "../network/portfolioApiService/portfolioApiService";
+import { useNavigate } from "react-router-dom";
 
 
 const UserMessages = () => {
@@ -12,6 +13,7 @@ const UserMessages = () => {
   const [messages, setmessages] = useState([])
   const [error, setError] = useState()
   const [deletingId, setDeletingId] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     getAllUsersContactMessagesData()
@@ -46,14 +48,19 @@ const UserMessages = () => {
 
   const getAllUsersContactMessagesData = async () => {
     try {
-      const search = {}
-      const data = await usersContactMessagesSearch(search)
+      const search = {};
+      const data = await usersContactMessagesSearch(search);
+
       if (data.status.code === 200) {
         setmessages(data.response);
       }
-    } catch (err) {
 
-      console.log(err);
+    } catch (err) {
+      if (err.response?.status === 401) {
+        navigate("/");
+      } else {
+        console.log(err);
+      }
     }
   };
 

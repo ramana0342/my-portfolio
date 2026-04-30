@@ -11,6 +11,7 @@ import { setupChatSocket } from "./sockets/chatSocket.js";
 import userRoutes from "./routes/userContactMessagesRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -26,8 +27,24 @@ const io = new Server(server, {
 
 setupChatSocket(io);
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://ramana-portfolio-eight.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/my-portfolio/api/user", userRoutes);
 app.use("/my-portfolio/api/admin", adminRoutes);

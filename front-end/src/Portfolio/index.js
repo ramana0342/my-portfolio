@@ -17,7 +17,6 @@ import { getAdminTokenData } from "../utils/adminToken";
 import UserChat from "./chats/userChat";
 import ReactLogo from "./icons/react-icon.jpeg";
 import NodeLogo from "./icons/node-icon.png";
-import resume from "./documents/resume.pdf";
 
 const Index = () => {
 
@@ -221,7 +220,7 @@ const Index = () => {
 
             <div className="about-card">
               <p>
-                Hi, I'm <b>Ramana Reddy</b>, a passionate <b>Full Stack Developer</b>{" "}
+                Hi, I'm <b>Ramana Reddy</b>, a passionate <b>Full Stack Developer</b>&nbsp;
                 with experience in building scalable web applications using
                 <b> React, Node.js, Express</b>.
               </p>
@@ -248,7 +247,7 @@ const Index = () => {
                   Hire Me
                 </a>
 
-                <a href={resume} className="btn-about-outline" download="Ramana_Reddy_Resume.pdf">
+                <a href="/documents/resume.pdf" className="btn-about-outline" download="Ramana_Reddy_Resume.pdf">
                   Download CV
                 </a>
               </div>

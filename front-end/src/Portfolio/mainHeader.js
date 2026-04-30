@@ -8,7 +8,6 @@ import UserMessages from "./userMessages";
 import Project1 from "./project1";
 import Project2 from "./project2";
 import Project3 from "./project3";
-import ForgotPassword from "./forgotPassword";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserChat from "./chats/userChat";
@@ -37,8 +36,6 @@ const MainHeader = () => {
                         <Route path="chat" element={<AdminChat />} />
 
                     </Route>
-                    {/* <Route path="/forgotPassword" element={<ForgotPassword />} /> */}
-                    {/* <Route path="/user-chat" element={<UserChat />} /> */}
 
                 </Routes>
             </BrowserRouter>

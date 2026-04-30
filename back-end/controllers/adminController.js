@@ -1,8 +1,10 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { findAdminByEmailMobile } from "../models/adminModel.js";
+import { refreshCookieOptions } from "../config/cookie.js";
 
 export const handleAdminLogin = async (req, res) => {
+  const isProduction = process.env.NODE_ENV === "production";
   try {
     const { email, mobile, password } = req.body;
 
@@ -31,20 +33,30 @@ export const handleAdminLogin = async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
+    const accessToken = jwt.sign(
       {
         admin_id: admin.id,
         admin_email: admin.email,
-        admin_mobile: admin.mobile
+        role: "admin"
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "20m" }
     );
+
+    const refreshToken = jwt.sign(
+      {
+        admin_id: admin.id
+      },
+      process.env.REFRESH_SECRET,
+      { expiresIn: "12h" }
+    );
+
+    res.cookie("refreshToken", refreshToken,  refreshCookieOptions);
 
     return res.status(200).json({
       status: { code: 200, message: "Login successful" },
       response: {
-        token,
+        accessToken,
         admin: {
           id: admin.id,
           email: admin.email,

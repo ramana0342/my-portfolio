@@ -34,3 +34,20 @@ export const usersChatMessages = async(userId)=>{
      let res = await getRequest(`/chat/messages/${userId}`);
     return res.data;
 }
+
+export const adminLogout = async(userId)=>{
+     let res = await postRequest(`/admin/logout`);
+    return res.data;
+}
+
+
+export const sendOtp = async (data) => {
+  let res = await postRequest("/admin/send-login-otp", { data });
+ return res.data;
+}
+
+
+export const verifyOtp = async(data) => {
+  let res = await postRequest("/admin/verify-login-otp", { data });
+  return res.data;
+}

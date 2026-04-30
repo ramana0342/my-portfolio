@@ -16,7 +16,7 @@ export const insertUserContactMessageData = async (data) => {
     [id, name, email, mobile, message]
   );
 
-  // Run emails in background (non-blocking)
+  
   setImmediate(() => {
     Promise.allSettled([
       sendMailToAdmin({ name, email, mobile, message }),
@@ -33,7 +33,7 @@ export const insertUserContactMessageData = async (data) => {
     });
   });
 
-  return result.rows[0]; // API responds immediately
+  return result.rows[0];
 };
 
 export const userContactMessageData = async (search) => {

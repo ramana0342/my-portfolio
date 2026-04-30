@@ -18,12 +18,12 @@ const UserChat = ({ setIsChatOpen }) => {
 
   useEffect(() => {
     const newSocket = io(getSocketURL(), {
-      transports: ["websocket"], // 🔥 important for production
+      transports: ["websocket"],
     });
     setSocket(newSocket);
 
     return () => {
-      newSocket.disconnect(); // 🔥 IMPORTANT
+      newSocket.disconnect();
     };
   }, []);
 
@@ -35,12 +35,27 @@ const UserChat = ({ setIsChatOpen }) => {
   }, []);
 
 
-
   useEffect(() => {
-    if (!user || !socket) return;
+    if (!socket || !user) return;
 
-    socket.emit("join_room", user.user_id);
-  }, [user, socket]);
+    const joinRoom = () => {
+      socket.emit("join_room", {
+        user_id: user.user_id,
+        name: user.name,
+      });
+
+    };
+
+    if (socket.connected) {
+      joinRoom();
+    }
+
+    socket.on("connect", joinRoom);
+
+    return () => {
+      socket.off("connect", joinRoom);
+    };
+  }, [socket, user]);
 
   useEffect(() => {
     if (!socket) return;
@@ -79,17 +94,22 @@ const UserChat = ({ setIsChatOpen }) => {
     };
   }, [socket]);
 
+
   useEffect(() => {
     if (!user) return;
-    getUserChatMessages()
+    if (messages.length === 0) {
+      getUserChatMessages();
+    }
 
   }, [user]);
 
   const getUserChatMessages = async () => {
+
     setIsLoading(true);
     try {
       const data = await usersChatMessages(user.user_id)
-      setMessages(data?.response)
+      if (!data?.response?.length) return;
+      setMessages(data?.response);
     } catch (err) {
       console.log(err)
     } finally {
@@ -166,6 +186,24 @@ const UserChat = ({ setIsChatOpen }) => {
 
                 localStorage.setItem("chat_user", JSON.stringify(newUser));
                 setUser(newUser);
+
+                const startChat = () => {
+                  socket.emit("join_room", {
+                    user_id: newUser.user_id,
+                    name: newUser.name,
+                  });
+
+                  socket.emit("user_started_chat", {
+                    user_id: newUser.user_id,
+                    name: newUser.name,
+                  });
+                };
+
+                if (socket.connected) {
+                  startChat();
+                } else {
+                  socket.once("connect", startChat);
+                }
               }}
             >
               Start Chat
@@ -215,7 +253,7 @@ const UserChat = ({ setIsChatOpen }) => {
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  e.preventDefault(); // prevents newline (important)
+                  e.preventDefault();
                   sendMessage();
                 }
               }}

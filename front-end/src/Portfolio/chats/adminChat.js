@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { getSocketURL } from "../../network/ApiConfig";
 import { usersChatList, usersChatMessages } from "../../network/portfolioApiService/portfolioApiService";
+import { useNavigate } from "react-router-dom";
 
 
 const AdminChat = () => {
@@ -17,10 +18,14 @@ const AdminChat = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [socket, setSocket] = useState(null);
     const activeUserRef = useRef(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const newSocket = io(getSocketURL(), {
-            transports: ["websocket"], // important for production
+            transports: ["websocket"],
+            auth: {
+                token: localStorage.getItem("accesstoken"),
+            },
         });
         setSocket(newSocket);
         return () => {
@@ -99,9 +104,9 @@ const AdminChat = () => {
 
     // ---------------- LOAD USERS ----------------
     const fetchUsers = async () => {
+
         try {
             let res = await usersChatList()
-
             const data = res.response.map(user => ({
                 ...user,
                 lastMessageTime: new Date(user.last_message_time).getTime() || 0
@@ -113,14 +118,16 @@ const AdminChat = () => {
 
             setUsers(sortedUsers);
 
-
-            // ✅ ONLY DESKTOP AUTO SELECT
             if (!isMobile && !activeChatUser && data.length > 0) {
                 setActiveChatUser(data[0]);
             }
 
         } catch (err) {
-            console.log(err)
+            if (err.response?.status === 401) {
+                navigate("/");
+            } else {
+                console.log(err);
+            }
         }
     };
 
@@ -156,10 +163,20 @@ const AdminChat = () => {
             }));
         });
 
+        socket.on("new_user_started", (data) => {
+            moveUserToTop(data.user_id, data.name);
+
+            setUnread((prev) => ({
+                ...prev,
+                [data.user_id]: 0,
+            }));
+        });
+
         return () => {
             socket.off("update_user_list");
             socket.off("online_users");
             socket.off("new_message_alert");
+            socket.off("new_user_started");
         };
     }, [socket]);
 
@@ -186,7 +203,7 @@ const AdminChat = () => {
         }
     }
 
-    // ---------------- SOCKET MESSAGE LISTENER (FIXED - NO DUPLICATES) ----------------
+    // ---------------- SOCKET MESSAGE LISTENER  ----------------
     useEffect(() => {
         if (!socket) return;
         const handler = (data) => {
@@ -251,9 +268,9 @@ const AdminChat = () => {
         if (!messages.length) return;
 
         if (isMobile) {
-            scrollToBottom(); // smooth mobile scroll
+            scrollToBottom(); 
         } else if (isAtBottomRef.current) {
-            scrollToBottom(); // desktop only if at bottom
+            scrollToBottom(); 
         }
     }, [messages, activeChatUser]);
 
@@ -277,7 +294,7 @@ const AdminChat = () => {
                 <div className="users-header">Users</div>
                 <div className="user-list">
                     {users.map((user) => {
-                        const isOnline = onlineUsers.includes(user.user_id);
+                        const isOnline = onlineUsers.some(u => u.user_id === user.user_id);
                         return (
                             <div
                                 key={user.user_id}
@@ -360,7 +377,7 @@ const AdminChat = () => {
                                 }}
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") {
-                                        e.preventDefault(); // prevents newline (important)
+                                        e.preventDefault();
                                         sendMessage();
                                     }
                                 }}
