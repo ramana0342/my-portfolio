@@ -27,7 +27,7 @@ export const sendOtp = async (req, res) => {
             expires: Date.now() + 5 * 60 * 1000
         });
 
-        sendLoginOtpMailToAdmin({otp : otp , name : admin.name}).catch(err => {console.error("Chat email failed:", err)});
+        sendLoginOtpMailToAdmin({otp : otp , name : admin.name}).catch(err => {console.error("Login OTP email failed:", err)});
 
 
 
