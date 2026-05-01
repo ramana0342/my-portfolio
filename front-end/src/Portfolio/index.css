@@ -1046,6 +1046,7 @@ sup {
     z-index: 999;
 }
 
+
 /* POPUP */
 .chat-popup {
     position: fixed;
@@ -1060,6 +1061,7 @@ sup {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     z-index: 999;
+    overscroll-behavior: contain;
 }
 
 /* HEADER */
@@ -1101,6 +1103,7 @@ sup {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: #0d6efd #f1f1f1;
+    overscroll-behavior: contain;
 }
 
 
@@ -1145,7 +1148,7 @@ sup {
 /* INPUT */
 .user-chat-input {
     display: flex;
-    padding: 10px;
+    padding: 15px;
     border-top: 1px solid #ddd;
     gap: 8px;
 
@@ -1158,7 +1161,7 @@ sup {
     outline: none;
     border-radius: 6px;
     margin: 0px !important;
-    height: 40px;
+    height: 42px;
     font-size: 12px;
 }
 
@@ -1171,7 +1174,7 @@ sup {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    height: 40px;
+    height: 42px;
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -1198,9 +1201,9 @@ sup {
     .chat-popup {
         left: 50%;
         transform: translateX(-50%);
-        bottom: 20px;
+        bottom: 30px;
         width: 95%;
-        height: 75vh;
+        height: 75dvh;
     }
 }
 

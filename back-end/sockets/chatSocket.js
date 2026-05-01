@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 let onlineUsers = new Map();
 let adminOnline = false;
 let socketUserMap = new Map();
+const lastEmailSent = new Map();
 
 const emitOnlineUsers = (io) => {
   io.emit("online_users", {
@@ -103,7 +104,13 @@ export const setupChatSocket = (io) => {
       insertChatMessage(messageData).catch(console.error);
 
       if (!adminOnline && data.sender_type === "user") {
-        setImmediate(() => {
+
+        const now = Date.now();
+        const last = lastEmailSent.get(data.user_id) || 0;
+
+        if (now - last > 60000) {
+
+          lastEmailSent.set(data.user_id, now);
           sendMailToAdminForChat({
             name: data.name,
             message: data.message,
@@ -111,7 +118,9 @@ export const setupChatSocket = (io) => {
           }).catch(err => {
             console.error("Chat email failed:", err);
           });
-        });
+
+        }
+
       }
     });
 

@@ -142,6 +142,7 @@ const Index = () => {
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
+              onClick={()=>{if(isChatOpen){setIsChatOpen(false)};}}
             >
               <span class="navbar-toggler-icon"></span>
             </button>

@@ -16,20 +16,17 @@ export const insertUserContactMessageData = async (data) => {
     [id, name, email, mobile, message]
   );
 
-  
-  setImmediate(() => {
-    Promise.allSettled([
-      sendMailToAdmin({ name, email, mobile, message }),
-      sendMailToUserForSuccesSentContact({ name, email, mobile, message }),
-    ]).then((results) => {
-      results.forEach((res, index) => {
-        if (res.status === "rejected") {
-          console.error(
-            index === 0 ? "Admin email failed:" : "User email failed:",
-            res.reason
-          );
-        }
-      });
+  Promise.allSettled([
+    sendMailToAdmin({ name, email, mobile, message }),
+    sendMailToUserForSuccesSentContact({ name, email, mobile, message }),
+  ]).then((results) => {
+    results.forEach((res, index) => {
+      if (res.status === "rejected") {
+        console.error(
+          index === 0 ? "Admin email failed:" : "User email failed:",
+          res.reason
+        );
+      }
     });
   });
 
