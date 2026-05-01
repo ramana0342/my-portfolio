@@ -68,7 +68,7 @@
   pointer-events: none;
 }
 
-small {
+.login-error-message {
   color: red;
 }
 

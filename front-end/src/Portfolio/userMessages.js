@@ -68,7 +68,7 @@ const UserMessages = () => {
     return (<>
       <div className="container-fluid userMessagesContainer " style={{ border: "6px solid black" }}>
         <div className="container" style={{ marginTop: "80px" }}>
-          <div className="row">
+          <div className="row user-messages-cards g-4">
 
             {messages.length !== 0 ? messages.map((item, index) => {
               return (<>

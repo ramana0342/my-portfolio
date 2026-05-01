@@ -15,7 +15,7 @@ function Project3() {
 
 <div class="card">
   <div class="card-header text-center">
-    <h1><img className='img1' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/>FreeHungeR<img className='img2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/></h1>
+    <h1>FreeHungeR</h1>
   </div>
   <div class="card-body">
   <p><h4>Overview:</h4><p><span style={{padding:"60px"}}></span>This project is a React-based web application that simulates a restaurant search and food ordering system. It includes functionalities for searching restaurants, viewing restaurant details, searching for specific dishes, and managing a shopping cart.</p></p>

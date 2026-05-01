@@ -15,7 +15,7 @@ function Project2() {
 
 <div class="card">
   <div class="card-header text-center">
-    <h1><img className='img1' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/>shopReaseR<img className='img2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/></h1>
+    <h1>shopReaseR</h1>
   </div>
   <div class="card-body">
   <p><h4>Overview:</h4><p><span style={{padding:"60px"}}></span>This project is a React-based e-commerce application with Redux for state management. It includes features such as viewing products, filtering them, adding items to the cart, and viewing the cart's contents. The application supports various product filters based on rating and price, and provides a responsive and user-friendly interface.</p></p>

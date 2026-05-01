@@ -195,7 +195,7 @@ const Login = () => {
               placeholder="Email"
               {...register("email", { required: true })}
             />
-            {errors.email && <small>Email required</small>}
+            {errors.email && <small className="login-error-message">Email required</small>}
 
             <input
               className="login-flow-input"
@@ -203,7 +203,7 @@ const Login = () => {
               placeholder="Password"
               {...register("password", { required: true })}
             />
-            {errors.password && <small>Password required</small>}
+            {errors.password && <small className="login-error-message">Password required</small>}
 
             <button className="login-flow-btn" disabled={loading}>
               {loading ? "Logging in..." : "Login"}

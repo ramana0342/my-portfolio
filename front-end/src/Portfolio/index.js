@@ -428,7 +428,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>HTML</span>
-                    <img src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" alt="HTML Logo" />
+                    <img src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" alt="HTML Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar htmlProgress"></div>
@@ -440,7 +440,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>CSS</span>
-                    <img src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" alt="CSS Logog" />
+                    <img src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" alt="CSS Logog" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar cssProgress"></div>
@@ -453,7 +453,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>JAVASCRIPT</span>
-                    <img src="https://i.pinimg.com/564x/b4/de/20/b4de205cb6d4e7cad43c2971f780cfd9.jpg" alt="JavaScript Logo" />
+                    <img src="https://i.pinimg.com/564x/b4/de/20/b4de205cb6d4e7cad43c2971f780cfd9.jpg" alt="JavaScript Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar javascriptProgress"></div>
@@ -466,7 +466,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>REACT</span>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" alt="React Logo" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" alt="React Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar reactProgress"></div>
@@ -478,7 +478,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>NODE.JS</span>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" alt="Node.js Logo" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" alt="Node.js Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar nodejsProgress"></div>
@@ -490,7 +490,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>EXPRESS.JS</span>
-                    <img src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" alt="Express.js Logo" />
+                    <img src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" alt="Express.js Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar expressProgress"></div>
@@ -502,7 +502,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>PostgreSQL</span>
-                    <img src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" alt="PostgreSQL Logo" />
+                    <img src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" alt="PostgreSQL Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar dbProgress"></div>
@@ -514,7 +514,7 @@ const Index = () => {
                 <div class="skill-card">
                   <div class="skill-header">
                     <span>CORE JAVA (Self Learning)</span>
-                    <img src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" alt="Java Logo" />
+                    <img src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" alt="Java Logo" loading="lazy" />
                   </div>
                   <div class="progress">
                     <div class="progress-bar javaProgress"></div>

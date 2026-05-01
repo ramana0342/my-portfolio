@@ -15,7 +15,7 @@ function Project1() {
 <div class="card project1Card">
   <div className='imgDiv'></div>
   <div class="card-header text-center">
-  <h1><img className='img1' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/>TODO Task <img className='img2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFr19Wy1Hs0ZYosCVMAed2o354riG91pi294w1SJvy13ZcghLDAHKU-7mkBPSO_VnjNo&usqp=CAU"/></h1>
+  <h1>TODO Task</h1>
   </div>
   <div class="card-body">
     <p><h4>Overview:</h4><p><span style={{padding:"60px"}}></span>This application is a Task Management System that allows users to register, log in, and manage their tasks. Each task is associated with the specific user who created it, ensuring that tasks are private and only accessible by the user who created them. Users can add, update, and delete tasks, as well as view all their tasks in a user-specific manner. The application uses React for the frontend, Express for the backend, and MongoDB for data storage. JWT tokens are employed for session management.</p></p>
