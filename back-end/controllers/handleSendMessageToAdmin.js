@@ -4,13 +4,9 @@ import { chatEmailTemplate } from "../htmlTemplate/chatEmailTemplate.js";
 import { loginOtpEmailTemplate } from "../htmlTemplate/loginOtpEmailTemplate.js";
 
 export const sendMailToAdmin = async (data) => {
-
   console.log("Mail function triggered");
-  
   try {
-
     console.log("Sending mail...");
-
     await transporter.sendMail({
       from: `Ramana Portfolio <${process.env.APP_EMAIL}>`,
       to: process.env.ADMIN_OFFICIAL_MAIL, 
@@ -19,7 +15,7 @@ export const sendMailToAdmin = async (data) => {
       html: htmlTemplateForSendEmailUserMessageToAdmin(data),
     });
 
-    console.log("Mail sent successfully");
+    console.log("✅ Mail sent successfully");
 
     return { success: true };
   } catch (error) {
