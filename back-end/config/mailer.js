@@ -1,24 +1,22 @@
+
 import nodemailer from "nodemailer";
 
-// export const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: process.env.APP_EMAIL,
-//     pass: process.env.APP_EMAIL_PASS,
-//   },
-// });
-
-
 export const transporter = nodemailer.createTransport({
-  service: "gmail", // Using the 'service' shorthand is more robust for Gmail
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // MUST be true for 465
+  service: "gmail",
   auth: {
+    type: "OAuth2",
     user: process.env.APP_EMAIL,
-    pass: process.env.APP_EMAIL_PASS
+    clientId: process.env.GOOGLE_CLOUD_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLOUD_CLIENT_SECRET,
+    refreshToken: process.env.GOOGLE_CLOUD_REFRESH_TOKEN,
   },
-  // This helps prevent the connection from hanging
-  connectionTimeout: 10000, 
-  greetingTimeout: 10000,
+});
+
+// Verification to ensure the connection is working
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("Transporter connection error:", error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
 });
