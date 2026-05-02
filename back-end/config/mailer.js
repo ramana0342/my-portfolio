@@ -9,17 +9,16 @@ import nodemailer from "nodemailer";
 // });
 
 
-
 export const transporter = nodemailer.createTransport({
-host: "smtp.gmail.com",
-port: 587,
-secure: false, 
-requireTLS: true,
-logger: true,
-debug: true,
-auth: {
+  service: "gmail", // Using the 'service' shorthand is more robust for Gmail
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // MUST be true for 465
+  auth: {
     user: process.env.APP_EMAIL,
     pass: process.env.APP_EMAIL_PASS
-},
-
+  },
+  // This helps prevent the connection from hanging
+  connectionTimeout: 10000, 
+  greetingTimeout: 10000,
 });
