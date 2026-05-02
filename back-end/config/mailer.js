@@ -1,22 +1,43 @@
+import { google } from 'googleapis';
 
-import nodemailer from "nodemailer";
+const oAuth2Client = new google.auth.OAuth2(
+  process.env.GOOGLE_CLOUD_CLIENT_ID,
+  process.env.GOOGLE_CLOUD_CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground"
+);
 
-export const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.APP_EMAIL,
-    clientId: process.env.GOOGLE_CLOUD_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLOUD_CLIENT_SECRET,
-    refreshToken: process.env.GOOGLE_CLOUD_REFRESH_TOKEN,
-  },
+oAuth2Client.setCredentials({
+  refresh_token: process.env.GOOGLE_CLOUD_REFRESH_TOKEN
 });
 
-// Verification to ensure the connection is working
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("Transporter connection error:", error);
-  } else {
-    console.log("Server is ready to take our messages");
-  }
-});
+const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
+
+/**
+ * COMMON SEND FUNCTION
+ * This replaces transporter.sendMail and works on Render!
+ */
+export const commonEmailSender = async ({ to, subject, html, replyTo }) => {
+  const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+  const messageParts = [
+    `From: Ramana Portfolio <${process.env.APP_EMAIL}>`,
+    `To: ${to}`,
+    replyTo ? `Reply-To: ${replyTo}` : '',
+    `Content-Type: text/html; charset=utf-8`,
+    `Mime-Version: 1.0`,
+    `Subject: ${utf8Subject}`,
+    '',
+    html,
+  ];
+
+  const message = messageParts.filter(line => line !== '').join('\n');
+  const encodedMessage = Buffer.from(message)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+
+  return await gmail.users.messages.send({
+    userId: 'me',
+    requestBody: { raw: encodedMessage },
+  });
+};

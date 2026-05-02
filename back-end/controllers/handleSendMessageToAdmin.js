@@ -1,4 +1,4 @@
-import { transporter } from "../config/mailer.js";
+import { commonEmailSender } from "../config/mailer.js";
 import { htmlTemplateForSendEmailUserMessageToAdmin } from "../htmlTemplate/sendEmailUserMessageToAdmin.js";
 import { chatEmailTemplate } from "../htmlTemplate/chatEmailTemplate.js";
 import { loginOtpEmailTemplate } from "../htmlTemplate/loginOtpEmailTemplate.js";
@@ -7,7 +7,7 @@ export const sendMailToAdmin = async (data) => {
   console.log("Mail function triggered");
   try {
     console.log("Sending mail...");
-    await transporter.sendMail({
+    await commonEmailSender({
       from: `Ramana Portfolio <${process.env.APP_EMAIL}>`,
       to: process.env.ADMIN_OFFICIAL_MAIL, 
       replyTo: data.email, 
@@ -27,7 +27,7 @@ export const sendMailToAdmin = async (data) => {
 
 export const sendMailToAdminForChat = async (data) => {
   try {
-    await transporter.sendMail({
+    await commonEmailSender({
       from: `Ramana Portfolio <${process.env.APP_EMAIL}>`,
       to: process.env.ADMIN_OFFICIAL_MAIL, 
       replyTo: data.email, 
@@ -45,7 +45,7 @@ export const sendMailToAdminForChat = async (data) => {
 
 export const sendLoginOtpMailToAdmin = async ({otp , name}) => {
   try {
-    await transporter.sendMail({
+    await commonEmailSender({
       from: `Ramana Portfolio <${process.env.APP_EMAIL}>`,
       to: process.env.ADMIN_OFFICIAL_MAIL, 
       subject: "🔐 Your Login OTP",
