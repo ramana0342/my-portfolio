@@ -148,7 +148,7 @@ const UserChat = ({ setIsChatOpen }) => {
         Chat
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <div className={`user-status ${adminOnline ? "online" : "offline"}`}>
-            {adminOnline ? "Online" : "Offline"}
+            Ramana is {adminOnline ? "Online" : "Offline"}
           </div>
 
           <span className="close-btn" onClick={() => {

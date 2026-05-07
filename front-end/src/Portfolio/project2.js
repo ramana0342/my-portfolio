@@ -271,10 +271,10 @@ function Project2() {
  
     
   </div>
-  <div class="card-footer text-body-secondary">
+  {/* <div class="card-footer text-body-secondary">
   <a href='https://e-commerce-iota-roan.vercel.app/'>Deployment App Link</a>
-  </div>
-  <div  className='text-center'><button style={{margin:"5px"}} onClick={()=>{navigate("/")}} class="btn btn-primary">Go Back</button></div>
+  </div> */}
+  <div  className='text-center'><button style={{margin:"5px"}} onClick={()=>{navigate(-1)}} class="btn btn-primary">Go Back</button></div>
 
 </div>
 

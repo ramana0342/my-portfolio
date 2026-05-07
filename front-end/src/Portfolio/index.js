@@ -349,10 +349,10 @@ const Index = () => {
                   <div class="card-body">
                     <h1>Master of Computer Applications(MCA)</h1>
                     <ul>
-                      <li>Branch:MCA</li>
-                      <li>College Name:Aurora's Post Graduate college</li>
-                      <li>Pass out year:november,2023</li>
-                      <li>Percentage:76 %</li>
+                      <li>Branch : MCA</li>
+                      <li>College Name : Aurora's Post Graduate college</li>
+                      <li>Pass out year : November, 2023</li>
+                      <li>Percentage : 76 %</li>
                     </ul>
                   </div>
                 </div>
@@ -367,10 +367,10 @@ const Index = () => {
                   <div class="card-body">
                     <h1>Bachelor of Science</h1>
                     <ul>
-                      <li>Branch:MPCs(Mathematics,Physics,computer scienc)</li>
-                      <li>College Name:University Post Graduate College(OU)</li>
-                      <li>Pass out year:november,2021</li>
-                      <li>Percentage:87 %</li>
+                      <li>Branch : MPCs(Mathematics,Physics,computer scienc)</li>
+                      <li>College Name : University Post Graduate College(OU)</li>
+                      <li>Pass out year : November, 2021</li>
+                      <li>Percentage : 87 %</li>
 
 
                     </ul>
@@ -386,10 +386,10 @@ const Index = () => {
                   <div class="card-body">
                     <h1>Intermediate</h1>
                     <ul>
-                      <li>Branch:MPC(Mathematics,Physics,Chemistry)</li>
-                      <li>College Name:Krishnaveni Cooparative Junior College</li>
-                      <li>Pass out year:March,2018</li>
-                      <li>Percentage:95.90</li>
+                      <li>Branch : MPC(Mathematics,Physics,Chemistry)</li>
+                      <li>College Name : Krishnaveni Cooparative Junior College</li>
+                      <li>Pass out year : March, 2018</li>
+                      <li>Percentage : 95.90 %</li>
                     </ul>
                   </div>
                 </div>
@@ -404,9 +404,9 @@ const Index = () => {
                   <div class="card-body">
                     <h1>SSC</h1>
                     <ul>
-                      <li>School Name:Z P S School,kamanchikal</li>
-                      <li>Pass out year:March,2016</li>
-                      <li>Percentage:82%</li>
+                      <li>School Name : Z P S School,kamanchikal</li>
+                      <li>Pass out year : March, 2016</li>
+                      <li>Percentage : 82 %</li>
 
                     </ul>
                   </div>
@@ -547,7 +547,7 @@ const Index = () => {
                       <li>User authentication is implemented using JWT tokens ,And stored user data and tasks in MongoDB</li>
                       <li>Utilized React for the frontend interface and Axios for making HTTP requests to the backend server</li>
                     </ul>
-                    <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://todo-task-full-stack-project.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a>
+                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://todo-task-full-stack-project.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
                     <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/task-management") }}>View More</button></div>
                   </div>
                 </div>
@@ -565,7 +565,7 @@ const Index = () => {
                       <li>Developed e-commerce website using HTML, CSS,React and Bootstrap with a focuson responsive design</li>
                       <li>Implemented a user-friendly interface allowing customers to browse products and add them to a shopping cart</li>
                     </ul>
-                    <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://e-commerce-iota-roan.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a>
+                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://e-commerce-iota-roan.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
                     <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/ecommerce-app") }}>View More</button></div>
                   </div>
                 </div>
@@ -582,7 +582,7 @@ const Index = () => {
                       <li>Developed a food Website using React, providing users with a platform to browse restaurant and search a food item from restaurants, And them to a Food Cart</li>
                       <li>Implemented features such as restaurant listings,menu display and cart management.</li>
                     </ul>
-                    <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://food-website-ten-henna.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a>
+                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://food-website-ten-henna.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
                     <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/food-app") }}>View More</button></div>
                   </div>
                 </div>

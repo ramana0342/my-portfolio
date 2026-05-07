@@ -236,10 +236,10 @@ This design ensures that each user's tasks remain private and only accessible to
 
   </div>
 
-  <div class="card-footer text-body-secondary">
+  {/* <div class="card-footer text-body-secondary">
     <a href='https://todo-task-full-stack-project.vercel.app/'>Deployment App Link</a>
-  </div>
-  <div  className='text-center'><button style={{margin:"5px"}} onClick={()=>{navigate("/")}} class="btn btn-primary">Go Back</button></div>
+  </div> */}
+  <div  className='text-center'><button style={{margin:"5px"}} onClick={()=>{navigate(-1)}} class="btn btn-primary">Go Back</button></div>
 </div>
 
     </>)
