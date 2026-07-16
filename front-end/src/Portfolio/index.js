@@ -17,6 +17,9 @@ import { getAdminTokenData } from "../utils/adminToken";
 import UserChat from "./chats/userChat";
 import ReactLogo from "./icons/react-icon.jpeg";
 import NodeLogo from "./icons/node-icon.png";
+import AIAssistant from "./AIAssistant/AIAssistant";
+import { BiSupport } from "react-icons/bi";
+import { MdSupportAgent } from "react-icons/md";
 
 const Index = () => {
 
@@ -24,7 +27,7 @@ const Index = () => {
   const navigate = useNavigate()
   const [count, setCount] = useContext(store)
   const [isSendLoading, setIsSendLoading] = useState(false)
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [supportMode, setSupportMode] = useState(null);
   const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
@@ -113,15 +116,7 @@ const Index = () => {
     }
   };
 
-  useEffect(() => {
-    if (isChatOpen) return;
 
-    const timer = setTimeout(() => {
-      setIsChatOpen(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const closeNavbar = () => {
     const navbar = document.getElementById("navbarSupportedContent");
@@ -142,7 +137,7 @@ const Index = () => {
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
-              onClick={()=>{if(isChatOpen){setIsChatOpen(false)};}}
+            // onClick={() => { if (isChatOpen) { setIsChatOpen(false) }; }}
             >
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -722,14 +717,77 @@ const Index = () => {
 
     </div>
 
-    {!isChatOpen && (
+
+
+    {supportMode === "menu" && (
+      <div className="support-wrapper">
+        <div className="support-menu">
+
+          <div className="support-header">
+            <div>
+              <h5>How can I help?</h5>
+              <small>Select an option</small>
+            </div>
+
+            <button
+              className="support-close"
+              onClick={() => setSupportMode(null)}
+            >
+              ✕
+            </button>
+          </div>
+
+          <div
+            className="support-item"
+            onClick={() => setSupportMode("ai")}
+          >
+            <div className="support-icon ai">
+              🤖
+            </div>
+
+            <div className="support-content">
+              <h6>AI Assistant</h6>
+              <p>Ask about my skills, projects & experience</p>
+            </div>
+
+            <span>›</span>
+          </div>
+
+          <div
+            className="support-item"
+            onClick={() => setSupportMode("chat")}
+          >
+            <div className="support-icon chat">
+              💬
+            </div>
+
+            <div className="support-content">
+              <h6>Live Chat</h6>
+              <p>Chat directly with Ramana</p>
+            </div>
+
+            <span>›</span>
+          </div>
+
+        </div>
+      </div>
+    )}
+
+
+
+    {!supportMode && (
       <div className="chat-wrapper">
-        <div className="chat-tooltip">Need help? Chat with me 👋</div>
+        <div className="chat-tooltip">👋 Need help?</div>
 
         <div
           className="chat-float-btn pulse"
           onClick={() => {
-            setIsChatOpen(true);
+
+            setSupportMode(prev =>
+              prev === "menu" ? null : "menu"
+            );
+
+
 
             const navbar = document.getElementById("navbarSupportedContent");
             if (navbar.classList.contains("show")) {
@@ -737,14 +795,24 @@ const Index = () => {
             }
           }}
         >
-          💬
+          <MdSupportAgent size={30} />
         </div>
       </div>
     )}
 
     {showHint && <div className="chat-tooltip show">Hi 👋 Need help?</div>}
 
-    {isChatOpen && <UserChat setIsChatOpen={setIsChatOpen} />}
+    {supportMode === "chat" && (
+      <UserChat
+        setIsChatOpen={() => setSupportMode(null)}
+      />
+    )}
+
+    {supportMode === "ai" && (
+      <AIAssistant
+        onClose={() => setSupportMode(null)}
+      />
+    )}
 
   </>)
 }

@@ -51,3 +51,8 @@ export const verifyOtp = async(data) => {
   let res = await postRequest("/admin/verify-login-otp", { data });
   return res.data;
 }
+
+export const askAI = async(data) => {
+    let res = await postRequest("/ai/chat", { data });
+    return res.data
+}

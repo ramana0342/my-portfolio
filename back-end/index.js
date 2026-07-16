@@ -11,6 +11,7 @@ import { setupChatSocket } from "./sockets/chatSocket.js";
 import userRoutes from "./routes/userContactMessagesRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 import cookieParser from "cookie-parser";
 
 
@@ -49,6 +50,7 @@ app.use(cookieParser());
 app.use("/my-portfolio/api/user", userRoutes);
 app.use("/my-portfolio/api/admin", adminRoutes);
 app.use("/my-portfolio/api/chat", chatRoutes);
+app.use("/my-portfolio/api/ai", aiRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Running");
