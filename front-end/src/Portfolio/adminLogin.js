@@ -1,4 +1,4 @@
-import "./admin.css";
+import "./admin.scss";
 import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";

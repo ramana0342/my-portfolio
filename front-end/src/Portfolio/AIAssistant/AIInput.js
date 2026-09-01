@@ -1,49 +1,75 @@
+
 import React, { useState } from "react";
+
 import { IoSend } from "react-icons/io5";
 import { FaMicrophone } from "react-icons/fa";
+
 import useSpeechRecognition from "./hooks/useSpeechRecognition";
+
 import "./AIInput.scss";
+
 import useSpeechSynthesis from "./hooks/useSpeechSynthesis";
 
+
 const AIInput = ({ onSend, loading }) => {
+
     const [message, setMessage] = useState("");
+
     const { stop } = useSpeechSynthesis();
+
 
     const {
         listening,
-        startListening,
-        stopListening,
+        startListening
     } = useSpeechRecognition((transcript) => {
+
         setMessage(transcript);
 
-        onSend(transcript);
+        // Voice input → tell AIAssistant this is voice input
+        onSend(transcript, true);
 
         setMessage("");
     });
 
+
     const handleSend = () => {
+
         const text = message.trim();
 
         if (!text || loading) return;
 
+        // Normal text input → isVoiceInput remains false
         onSend(text);
+
         setMessage("");
     };
 
+
     const handleKeyDown = (e) => {
+
         if (e.key === "Enter" && !e.shiftKey) {
+
             e.preventDefault();
+
             handleSend();
         }
     };
 
+
     const handleMic = () => {
-        stop();          // Stop AI voice immediately
-        startListening(); // Start microphone
+
+        // Stop currently playing AI voice
+        stop();
+
+        // Start microphone
+        startListening();
     };
 
+
     return (
+
         <div className="ai-input">
+
             <textarea
                 placeholder="Ask me anything..."
                 value={message}
@@ -52,6 +78,7 @@ const AIInput = ({ onSend, loading }) => {
                 onKeyDown={handleKeyDown}
                 disabled={loading}
             />
+
 
             <button
                 type="button"
@@ -62,14 +89,17 @@ const AIInput = ({ onSend, loading }) => {
                 <FaMicrophone />
             </button>
 
+
             <button
                 onClick={handleSend}
                 disabled={!message.trim() || loading}
             >
                 <IoSend />
             </button>
+
         </div>
     );
 };
+
 
 export default AIInput;

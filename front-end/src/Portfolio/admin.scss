@@ -27,19 +27,23 @@
   gap: 10px;
 }
 
-.login-switch button {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-  background: #eee;
-  color: #007bff;
-  border: 1px solid #007bff;
+.login-switch {
+  button {
+    flex: 1;
+      padding: 8px;
+      border: none;
+      cursor: pointer;
+      background: #eee;
+      color: #007bff;
+      border: 1px solid #007bff;
+  }
 }
 
-.login-switch .active {
-  background: #007bff;
-  color: white;
+.login-switch {
+  .active {
+    background: #007bff;
+      color: white;
+  }
 }
 
 
@@ -62,10 +66,12 @@
   cursor: pointer;
 }
 
-.login-flow-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  pointer-events: none;
+.login-flow-btn {
+  &:disabled {
+    opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+  }
 }
 
 .login-error-message {
@@ -115,7 +121,7 @@
     cursor: not-allowed;
 }
 
-.log-out-item{
+.log-out-item {
     cursor: pointer;
 }
 
@@ -160,12 +166,13 @@
 
 
 
-.chat-sidebar .users-header {
+.chat-sidebar {
+  .users-header {
     padding: 15px;
-    margin: 0;
-    border-bottom: 1px solid #eee;
-    flex-shrink: 0;
-
+        margin: 0;
+        border-bottom: 1px solid #eee;
+        flex-shrink: 0;
+  }
 }
 
 .user-list {
@@ -176,22 +183,29 @@
     /* thumb | track */
 }
 
-/* Chrome, Edge, Safari */
-.user-list::-webkit-scrollbar {
+.user-list {
+  &::-webkit-scrollbar {
     width: 6px;
+  }
 }
 
-.user-list::-webkit-scrollbar-track {
+.user-list {
+  &::-webkit-scrollbar-track {
     background: #f1f1f1;
+  }
 }
 
-.user-list::-webkit-scrollbar-thumb {
+.user-list {
+  &::-webkit-scrollbar-thumb {
     background: #0d6efd;
-    border-radius: 10px;
+        border-radius: 10px;
+  }
 }
 
-.user-list::-webkit-scrollbar-thumb:hover {
+.user-list {
+  &::-webkit-scrollbar-thumb:hover {
     background: #0b5ed7;
+  }
 }
 
 /* USER ITEM */
@@ -204,8 +218,10 @@
     transition: 0.2s;
 }
 
-.user-item:hover {
+.user-item {
+  &:hover {
     background: #eef4ff;
+  }
 }
 
 .user-item.active {
@@ -270,21 +286,29 @@
     scrollbar-color: #0d6efd #f1f1f1;
 }
 
-.chat-messages::-webkit-scrollbar {
+.chat-messages {
+  &::-webkit-scrollbar {
     width: 6px;
+  }
 }
 
-.chat-messages::-webkit-scrollbar-track {
+.chat-messages {
+  &::-webkit-scrollbar-track {
     background: #f1f1f1;
+  }
 }
 
-.chat-messages::-webkit-scrollbar-thumb {
+.chat-messages {
+  &::-webkit-scrollbar-thumb {
     background: #0d6efd;
-    border-radius: 10px;
+        border-radius: 10px;
+  }
 }
 
-.chat-messages::-webkit-scrollbar-thumb:hover {
+.chat-messages {
+  &::-webkit-scrollbar-thumb:hover {
     background: #0b5ed7;
+  }
 }
 
 /* MESSAGE BUBBLE */
@@ -311,12 +335,13 @@
     color: white;
 }
 
-/* TIME */
-.message small {
+.message {
+  small {
     display: block;
-    font-size: 10px;
-    margin-top: 5px;
-    opacity: 0.7;
+        font-size: 10px;
+        margin-top: 5px;
+        opacity: 0.7;
+  }
 }
 
 /* ===== INPUT ===== */
@@ -328,26 +353,29 @@
     gap: 10px;
 }
 
-.chat-input input {
+.chat-input {
+  input {
     flex: 1;
-    height: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    outline: none;
-    margin: 0px;
-    height: 40px;
+        height: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+        margin: 0px;
+        height: 40px;
+  }
 }
 
-.chat-input button {
+.chat-input {
+  button {
     padding: 10px 18px;
-    border: none;
-    border-radius: 20px;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-    height: 40px;
-
+        border: none;
+        border-radius: 20px;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        height: 40px;
+  }
 }
 
 /* TYPING */
@@ -371,6 +399,7 @@
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
 
     .chat-sidebar {
         width: 100%;
@@ -423,4 +452,7 @@
         margin-right: 10px;
         cursor: pointer;
     }
+
+
+
 }

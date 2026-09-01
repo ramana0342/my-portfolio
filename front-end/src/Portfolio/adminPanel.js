@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink, Outlet } from "react-router-dom";
 import UserMessages from "./userMessages";
-import "./admin.css"
+import "./admin.scss"
 import { adminLogout } from "../network/portfolioApiService/portfolioApiService";
 import { useNavigate } from "react-router-dom";
 

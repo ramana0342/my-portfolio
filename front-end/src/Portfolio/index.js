@@ -1,10 +1,8 @@
-import "./index.css";
-import ramImg from "./icons/ramana.jpeg";
+import "./index.scss";
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Typed from 'typed.js';
 import { useEffect } from 'react';
-import { SiVercel } from "react-icons/si";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useContext } from "react";
@@ -15,10 +13,7 @@ import { getUserContactMessagesCount, postUserContact } from "../network/portfol
 import { useForm } from "react-hook-form";
 import { getAdminTokenData } from "../utils/adminToken";
 import UserChat from "./chats/userChat";
-import ReactLogo from "./icons/react-icon.jpeg";
-import NodeLogo from "./icons/node-icon.png";
 import AIAssistant from "./AIAssistant/AIAssistant";
-import { BiSupport } from "react-icons/bi";
 import { MdSupportAgent } from "react-icons/md";
 
 const Index = () => {
@@ -50,10 +45,17 @@ const Index = () => {
   useEffect(() => {
 
     const options = {
-      strings: ["Front-end Developer", "Back-end Developer", "React Developer", "Full Stack Developer"],
+      strings: [
+        "React Developer",
+        "Frontend Developer"
+      ],
+
       typeSpeed: 50,
+
       backSpeed: 25,
-      backDelay: 700,
+
+      backDelay: 1200,
+
       loop: true
     };
 
@@ -63,25 +65,7 @@ const Index = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const skillsSection = document.getElementById("skills");
 
-    const handleScroll = () => {
-      if (!skillsSection) return;
-
-      const rect = skillsSection.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
-        skillsSection.classList.add("animate");
-      } else {
-        skillsSection.classList.remove("animate");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleSendUserContactData = async (formData) => {
     setIsSendLoading(true)
@@ -164,9 +148,6 @@ const Index = () => {
                 <li class="nav-item">
                   <a class="nav-link" href="#contact" onClick={closeNavbar}>Contact</a>
                 </li>
-                {/* <li class="nav-item">
-                  <NavLink to="/user-chat" className="nav-link">Chat</NavLink>
-                </li> */}
                 <li class="nav-item">
                   <NavLink to={getAdminTokenData() ? "/admin-panel/user-messages" : "/admin-login"} className="nav-link" >AdminActivities{count ? <sup>{count}</sup> : <sup>0</sup>}</NavLink>
                 </li>
@@ -180,28 +161,244 @@ const Index = () => {
 
 
       <div className="row">
-
         <section id="home">
-          <div className="home-content">
+          <div className="hero-shell">
 
-            <h3>Hello, Welcome to My Portfolio</h3>
+            {/* =========================
+        HERO CONTENT
+    ========================== */}
+            <div className="hero-content">
 
-            <h1>
-              I'm <span style={{ color: "#0d6efd" }}>Ramana Reddy</span>
-            </h1>
+              <div className="hero-eyebrow">
+                <span className="hero-status-dot"></span>
+                Available for new opportunities
+              </div>
 
-            <h2>
-              I am a <span className="text"></span>
-            </h2>
+              <p className="hero-kicker">
+                HELLO, I'M
+              </p>
 
-            <div className="home-buttons">
-              <a href="#projects" className="btn-primary-custom">
-                View Projects
-              </a>
+              <h1>
+                Ramana<span>.</span>
+              </h1>
 
-              <a href="#contact" className="btn-outline-custom">
-                Hire Me
-              </a>
+              <h2>
+                I'm a <span className="text"></span>
+                <br />
+                who builds modern web applications.
+              </h2>
+
+              <p className="hero-description">
+                I have professional experience as a Frontend Developer and
+                hands-on experience building full-stack web applications
+                using React.js, Node.js, Express.js, PostgreSQL, Docker,
+                CI/CD and AWS.
+              </p>
+
+              <div className="home-buttons">
+                <a
+                  href="#projects"
+                  className="btn-primary-custom"
+                >
+                  Explore My Work
+                  <span>↗</span>
+                </a>
+
+                <a
+                  href="#contact"
+                  className="btn-outline-custom"
+                >
+                  Let's Talk
+                </a>
+              </div>
+
+              <div className="hero-meta">
+
+                <div>
+                  <strong>React.js</strong>
+                  <span>Frontend</span>
+                </div>
+
+                <div>
+                  <strong>Node.js</strong>
+                  <span>Backend</span>
+                </div>
+
+                <div>
+                  <strong>PostgreSQL</strong>
+                  <span>Database</span>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* =========================
+        HERO TECHNICAL PROFILE
+    ========================== */}
+            <div className="hero-visual">
+
+              <div className="hero-grid"></div>
+
+              <div className="hero-code-card">
+
+                <div className="hero-code-header">
+
+                  <div className="hero-code-title">
+                    <span className="hero-window-dot"></span>
+                    <span className="hero-window-dot"></span>
+                    <span className="hero-window-dot"></span>
+
+                    <span className="hero-code-file">
+                      developer_profile
+                    </span>
+                  </div>
+
+                  <span className="hero-code-status">
+                    <span className="hero-code-dot"></span>
+                    available
+                  </span>
+
+                </div>
+
+
+                <div className="hero-code-content">
+
+                  {/* NAME */}
+                  <div className="hero-code-section hero-code-name">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>name</span>
+                    </div>
+
+                    <div className="hero-code-value">
+                      "Ramana"
+                    </div>
+
+                  </div>
+
+
+                  {/* FRONTEND */}
+                  <div className="hero-code-section">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>frontend</span>
+                    </div>
+
+                    <div className="hero-code-items">
+                      <span>React.js</span>
+                      <span>JavaScript</span>
+                      <span>HTML</span>
+                      <span>CSS</span>
+                      <span>Bootstrap</span>
+                    </div>
+
+                  </div>
+
+
+                  {/* BACKEND */}
+                  <div className="hero-code-section">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>backend</span>
+                    </div>
+
+                    <div className="hero-code-items">
+                      <span>Node.js</span>
+                      <span>Express.js</span>
+                      <span>REST APIs</span>
+                    </div>
+
+                  </div>
+
+
+                  {/* DATABASE */}
+                  <div className="hero-code-section">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>database</span>
+                    </div>
+
+                    <div className="hero-code-items">
+                      <span>PostgreSQL</span>
+                      <span>MongoDB</span>
+                      <span>Supabase</span>
+                    </div>
+
+                  </div>
+
+
+                  {/* DEVOPS */}
+                  <div className="hero-code-section">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>devops &amp; tools</span>
+                    </div>
+
+                    <div className="hero-code-items">
+                      <span>Docker</span>
+                      <span>Jenkins</span>
+                      <span>Git</span>
+                      <span>AWS</span>
+                      <span>Linux</span>
+                    </div>
+
+                  </div>
+
+
+                  {/* ADDITIONAL */}
+                  <div className="hero-code-section hero-code-additional">
+
+                    <div className="hero-code-label">
+                      <span className="hero-code-icon">&gt;</span>
+                      <span>additional</span>
+                    </div>
+
+                    <div className="hero-code-learning">
+                      <span className="hero-learning-dot"></span>
+
+                      <span>
+                        Always Learning
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* FOOTER */}
+                <div className="hero-code-footer">
+
+                  <span>01</span>
+
+                  <span>
+                    software_developer
+                  </span>
+
+                  <span>
+                    2026
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div className="hero-orbit hero-orbit-one"></div>
+
+              <div className="hero-orbit hero-orbit-two"></div>
+
+              <span className="hero-code-mark">
+                &lt;/&gt;
+              </span>
+
             </div>
 
           </div>
@@ -209,60 +406,98 @@ const Index = () => {
       </div>
 
       <div className="row">
-
-        <section id="about">
+        <section id="about" className="about-section">
           <div className="about-container">
-            <h1 className="about-title">About Me</h1>
 
-            <div className="about-card">
-              <p>
-                Hi, I'm <b>Ramana Reddy</b>, a passionate <b>Full Stack Developer</b>&nbsp;
-                with experience in building scalable web applications using
-                <b> React, Node.js, Express</b>.
-              </p>
+            <div className="about-main">
 
-              <p>
-                I completed my <b>MCA</b> in 2023 and gained practical experience
-                working on real-time applications, focusing on clean architecture
-                and efficient problem solving.
-              </p>
+              {/* LEFT */}
+              <div className="about-label">
 
-              <p>
-                Currently working as a <b>Frontend Developer</b>, I build reusable
-                components, integrate APIs, and optimize performance to deliver
-                seamless user experiences.
-              </p>
+                <span className="about-number">
+                  ABOUT
+                </span>
 
-              <p>
-                I am open to <b>freelance opportunities</b> and confident in delivering
-                high-quality, scalable solutions.
-              </p>
+                <span className="about-line"></span>
 
-              <div className="about-buttons">
-                <a href="#contact" className="btn-about-primary">
-                  Hire Me
-                </a>
+                <h2>
+                  About
+                  <br />
+                  Me.
+                </h2>
 
-                <a href="/documents/resume.pdf" className="btn-about-outline" download="Ramana_Reddy_Resume.pdf">
-                  Download CV
-                </a>
               </div>
 
-              <div className="about-links">
-                <a href="mailto:ramanareddy.m0342@gmail.com" target="_blank" rel="noopener noreferrer">
-                  Email
-                </a>
-                <a href="https://github.com/ramana0342" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/ramanareddymaddi/" target="_blank" rel="noopener noreferrer">
-                  LinkedIn
-                </a>
+
+              {/* RIGHT */}
+              <div className="about-content">
+
+                <span className="about-kicker">
+                  WHO I AM
+                </span>
+
+                <h3>
+                  Frontend Developer
+                  <span> & Web Application Development</span>
+                </h3>
+
+                <div className="about-description">
+
+                  <p>
+                    I'm <strong>Ramana</strong>, a Frontend Developer with
+                    professional experience at <strong>Promilo, Bengaluru</strong>,
+                    where I worked on production web applications using
+                    <strong> React.js, JavaScript, HTML and CSS</strong>. My work
+                    focused on building responsive, reusable interfaces and
+                    integrating frontend applications with backend APIs.
+                  </p>
+
+                  <p>
+                    Alongside my professional experience, I have built full-stack
+                    applications using <strong>React.js, Node.js, Express.js and
+                      PostgreSQL</strong>, working with authentication, REST APIs,
+                    database operations and real-time communication.
+                  </p>
+
+                  <p>
+                    I also have hands-on experience with <strong>Docker, Jenkins,
+                      Git, Linux and AWS</strong>, giving me practical exposure to
+                    application deployment and development workflows beyond
+                    frontend implementation.
+                  </p>
+
+                </div>
+
+                <div className="about-actions">
+
+                  <a
+                    href="#contact"
+                    className="about-btn-primary"
+                  >
+                    Let's Work Together
+                    <span>↗</span>
+                  </a>
+
+                  <a
+                    href="/documents/resume.pdf"
+                    className="about-btn-secondary"
+                    download="Ramana_Reddy_Resume.pdf"
+                  >
+                    Download CV
+                  </a>
+
+                </div>
+
               </div>
+
             </div>
+
+
+            {/* INFORMATION STRIP */}
+
+
           </div>
         </section>
-
       </div>
 
       <div className="row">
@@ -274,21 +509,43 @@ const Index = () => {
 
               <div className="timeline-item" data-aos="fade-up">
                 <div className="timeline-content">
+
                   <h3>Frontend Developer</h3>
+
                   <h5>Promilo</h5>
-                  <span>Feb 2025 - Present</span>
+
+                  <span>Feb 2025 - May 2026</span>
+
                   <p>
-                    Working as a Frontend Developer building responsive and scalable web applications.
-                    Developed reusable React components, improved UI performance, and integrated APIs.
-                    Collaborated with backend teams and enhanced user experience across platforms.
+                    Developed and maintained product modules including Application Form,
+                    Campus Visit, Prospect Grouping, and Intent Engine across User,
+                    Advertiser, and Admin platforms using React.js.
+                  </p>
+
+                  <p>
+                    Built reusable and scalable UI components, integrated REST APIs,
+                    and improved frontend data flow across applications. Implemented
+                    non-blocking analytics event tracking to monitor user interactions
+                    without affecting application performance.
+                  </p>
+
+                  <p>
+                    Optimized React component rendering by minimizing unnecessary
+                    re-renders, resolved frontend issues to improve application
+                    stability, and collaborated with cross-functional teams using
+                    Azure DevOps (VSTS).
                   </p>
 
                   <div className="exp-tags">
-                    <span>React</span>
+                    <span>React.js</span>
                     <span>JavaScript</span>
+                    <span>TypeScript</span>
+                    <span>SCSS</span>
                     <span>Bootstrap</span>
-                    <span>API Integration</span>
+                    <span>REST APIs</span>
+                    <span>Performance Optimization</span>
                   </div>
+
                 </div>
               </div>
 
@@ -329,82 +586,115 @@ const Index = () => {
 
 
       <div className="row">
+        <section id="academics" className="portfolio-section academics-section">
+          <div className="section-shell">
+            <div className="section-heading" data-aos="fade-up">
+              <span className="section-kicker">EDUCATION</span>
+              <h2>Academic Journey</h2>
+              <p>My academic foundation in computer science and mathematics.</p>
+            </div>
 
+            <div className="academic-list">
+              <article className="academic-item" data-aos="fade-up">
+                <div className="academic-year">2023</div>
+                <div className="academic-marker" aria-hidden="true"></div>
+                <div className="academic-content">
+                  <span className="academic-level">POST GRADUATION</span>
+                  <h3>Master of Computer Applications</h3>
+                  <p className="academic-institute">Aurora's Post Graduate College</p>
+                  <div className="academic-meta"><span>MCA</span><span>76%</span><span>November 2023</span></div>
+                </div>
+              </article>
 
+              <article className="academic-item" data-aos="fade-up">
+                <div className="academic-year">2021</div>
+                <div className="academic-marker" aria-hidden="true"></div>
+                <div className="academic-content">
+                  <span className="academic-level">UNDER GRADUATION</span>
+                  <h3>Bachelor of Science</h3>
+                  <p className="academic-institute">University Post Graduate College (OU)</p>
+                  <div className="academic-meta"><span>MPCs</span><span>87%</span><span>November 2021</span></div>
+                </div>
+              </article>
 
-        <section id="academics">
-          <div class="container">
-            <h1 class="academicsText">Academics</h1>
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-6">
-                <div class="card" data-aos="flip-left">
-                  <div class="card-header">
-                    <h4>Post Graduation</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1>Master of Computer Applications(MCA)</h1>
-                    <ul>
-                      <li>Branch : MCA</li>
-                      <li>College Name : Aurora's Post Graduate college</li>
-                      <li>Pass out year : November, 2023</li>
-                      <li>Percentage : 76 %</li>
-                    </ul>
-                  </div>
+              <article className="academic-item" data-aos="fade-up">
+                <div className="academic-year">2018</div>
+                <div className="academic-marker" aria-hidden="true"></div>
+                <div className="academic-content">
+                  <span className="academic-level">INTERMEDIATE</span>
+                  <h3>Intermediate</h3>
+                  <p className="academic-institute">Krishnaveni Cooperative Junior College</p>
+                  <div className="academic-meta"><span>MPC</span><span>95.90%</span><span>March 2018</span></div>
+                </div>
+              </article>
+
+              <article className="academic-item" data-aos="fade-up">
+                <div className="academic-year">2016</div>
+                <div className="academic-marker" aria-hidden="true"></div>
+                <div className="academic-content">
+                  <span className="academic-level">SECONDARY SCHOOL</span>
+                  <h3>Secondary School Certificate</h3>
+                  <p className="academic-institute">Z P S School, Kamanchikal</p>
+                  <div className="academic-meta"><span>SSC</span><span>82%</span><span>March 2016</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="row">
+        <section id="skills" className="portfolio-section skills-section">
+          <div className="section-shell">
+            <div className="section-heading" data-aos="fade-up">
+              <span className="section-kicker">TECH STACK</span>
+              <h2>Skills &amp; Technologies</h2>
+              <p>Technologies I use to design, build, connect and deploy web applications.</p>
+            </div>
+
+            <div className="skills-layout">
+              <div className="skills-intro" data-aos="fade-right">
+                <span className="skills-number">01</span>
+                <h3>Building beyond the interface.</h3>
+                <p>I work across frontend development and backend integration, with hands-on experience building full-stack applications and deployment workflows.</p>
+                <div className="skills-highlight">
+                  <strong>Core focus</strong>
+                  <span>React.js · JavaScript · Node.js · Express.js · PostgreSQL</span>
                 </div>
               </div>
 
-
-              <div class="col-sm-12 col-md-12 col-lg-6">
-                <div class="card" data-aos="flip-right">
-                  <div class="card-header">
-                    <h4>Under Graduation</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1>Bachelor of Science</h1>
-                    <ul>
-                      <li>Branch : MPCs(Mathematics,Physics,computer scienc)</li>
-                      <li>College Name : University Post Graduate College(OU)</li>
-                      <li>Pass out year : November, 2021</li>
-                      <li>Percentage : 87 %</li>
-
-
-                    </ul>
+              <div className="skills-groups">
+                <div className="skill-group" data-aos="fade-up">
+                  <div className="skill-group-heading"><span>01</span><h3>Frontend</h3></div>
+                  <div className="skill-tags">
+                    <span>React.js</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-sm-12 col-md-12 col-lg-6">
-                <div class="card" data-aos="flip-left">
-                  <div class="card-header">
-                    <h4>Intermediate</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1>Intermediate</h1>
-                    <ul>
-                      <li>Branch : MPC(Mathematics,Physics,Chemistry)</li>
-                      <li>College Name : Krishnaveni Cooparative Junior College</li>
-                      <li>Pass out year : March, 2018</li>
-                      <li>Percentage : 95.90 %</li>
-                    </ul>
+                <div className="skill-group" data-aos="fade-up">
+                  <div className="skill-group-heading"><span>02</span><h3>Backend</h3></div>
+                  <div className="skill-tags">
+                    <span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>JWT</span><span>Socket.IO</span>
                   </div>
                 </div>
-              </div>
 
-
-              <div class="col-sm-12 col-md-12 col-lg-6">
-                <div class="card" data-aos="flip-right">
-                  <div class="card-header">
-                    <h4>Secondary School Education</h4>
+                <div className="skill-group" data-aos="fade-up">
+                  <div className="skill-group-heading"><span>03</span><h3>Database</h3></div>
+                  <div className="skill-tags">
+                    <span>PostgreSQL</span><span>MongoDB</span><span>Supabase</span>
                   </div>
-                  <div class="card-body">
-                    <h1>SSC</h1>
-                    <ul>
-                      <li>School Name : Z P S School,kamanchikal</li>
-                      <li>Pass out year : March, 2016</li>
-                      <li>Percentage : 82 %</li>
+                </div>
 
-                    </ul>
+                <div className="skill-group" data-aos="fade-up">
+                  <div className="skill-group-heading"><span>04</span><h3>Tools &amp; DevOps</h3></div>
+                  <div className="skill-tags">
+                    <span>Git</span><span>Docker</span><span>Jenkins</span><span>AWS</span><span>Linux</span>
                   </div>
+                </div>
+
+                <div className="skill-group skill-group-muted" data-aos="fade-up">
+                  <div className="skill-group-heading"><span>05</span><h3>Additional</h3></div>
+                  <div className="skill-tags"><span>Core Java · Self Learning</span></div>
                 </div>
               </div>
             </div>
@@ -413,197 +703,83 @@ const Index = () => {
       </div>
 
       <div className="row">
+        <section id="projects" className="portfolio-section projects-section">
+          <div className="section-shell">
+            <div className="section-heading section-heading-wide" data-aos="fade-up">
+              <span className="section-kicker">SELECTED WORK</span>
+              <h2>Projects</h2>
+              <p>Real applications where I combined interface development, APIs, authentication and data management.</p>
+            </div>
 
-        <section id="skills">
-          <div class="container">
-            <h1 class="text-center skills-title">My Skills</h1>
-
-            <div class="row">
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>HTML</span>
-                    <img src="https://w7.pngwing.com/pngs/186/608/png-transparent-html5-icon-%E2%80%A2-html-social-network-icon.png" alt="HTML Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar htmlProgress"></div>
-                  </div>
+            <div className="project-showcase">
+              <article className="project-feature project-feature-primary" data-aos="fade-up">
+                <div className="project-visual">
+                  {/* <span className="project-index">01</span> */}
+                  <div className="project-visual-grid"></div>
+                  <div className="project-visual-window"><span></span><span></span><span></span></div>
+                  <strong>TODO</strong>
                 </div>
-              </div>
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>CSS</span>
-                    <img src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" alt="CSS Logog" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar cssProgress"></div>
-                  </div>
+                <div className="project-details">
+                  <span className="project-type">FULL STACK APPLICATION</span>
+                  <h3>TODO Task Management</h3>
+                  <p>A task management application with authentication, task CRUD operations and a React interface connected to a Node.js backend.</p>
+                  <div className="project-tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>JWT</span></div>
+                  <button className="project-link" onClick={() => navigate("/projects/task-management")}>View Project <span>↗</span></button>
                 </div>
-              </div>
+              </article>
 
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>JAVASCRIPT</span>
-                    <img src="https://i.pinimg.com/564x/b4/de/20/b4de205cb6d4e7cad43c2971f780cfd9.jpg" alt="JavaScript Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar javascriptProgress"></div>
-                  </div>
+              <article className="project-feature project-feature-secondary" data-aos="fade-up">
+                <div className="project-details">
+                  <span className="project-type">E-COMMERCE APPLICATION</span>
+                  <h3>shopReaseR</h3>
+                  <p>A responsive shopping experience focused on product discovery, cart interactions and a clean customer-facing interface.</p>
+                  <div className="project-tags"><span>React</span><span>JavaScript</span><span>Bootstrap</span><span>CSS</span></div>
+                  <button className="project-link" onClick={() => navigate("/projects/ecommerce-app")}>View Project <span>↗</span></button>
                 </div>
-              </div>
-
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>REACT</span>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aZNscHTmVGAAEz85uBcJ18hsKTexROCvNzMqly_KAw&s" alt="React Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar reactProgress"></div>
-                  </div>
+                <div className="project-visual project-visual-commerce">
+                  {/* <span className="project-index">02</span> */}
+                  <div className="commerce-lines"><i></i><i></i><i></i></div>
+                  <strong>SHOP</strong>
                 </div>
-              </div>
+              </article>
 
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>NODE.JS</span>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr2zv_xURifbiscWq5eG_WtIu8QSbOuES2Eqo1RPJGqA&s" alt="Node.js Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar nodejsProgress"></div>
-                  </div>
+              <article className="project-feature project-feature-tertiary" data-aos="fade-up">
+                <div className="project-visual project-visual-food">
+                  {/* <span className="project-index">03</span> */}
+                  <div className="food-orbit"></div>
+                  <strong>FOOD</strong>
                 </div>
-              </div>
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>EXPRESS.JS</span>
-                    <img src="https://banner2.cleanpng.com/20180711/yfe/aawnyv4jx.webp" alt="Express.js Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar expressProgress"></div>
-                  </div>
+                <div className="project-details">
+                  <span className="project-type">FOOD DISCOVERY PLATFORM</span>
+                  <h3>FreeHungeR</h3>
+                  <p>A React-based food platform for browsing restaurants, discovering menu items and managing a food cart.</p>
+                  <div className="project-tags"><span>React</span><span>Restaurant Listing</span><span>Cart</span></div>
+                  <button className="project-link" onClick={() => navigate("/projects/food-app")}>View Project <span>↗</span></button>
                 </div>
-              </div>
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>PostgreSQL</span>
-                    <img src="https://raw.github.com/CircleCI-Public/cimg-postgres/main/img/circle-postgres.svg?sanitize=true" alt="PostgreSQL Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar dbProgress"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-6 col-12">
-                <div class="skill-card">
-                  <div class="skill-header">
-                    <span>CORE JAVA (Self Learning)</span>
-                    <img src="https://i.pinimg.com/736x/5c/f3/41/5cf3414bbe67723a8c03bd6340d7417b.jpg" alt="Java Logo" loading="lazy" />
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar javaProgress"></div>
-                  </div>
-                </div>
-              </div>
-
+              </article>
             </div>
           </div>
         </section>
-
       </div>
 
       <div className="row">
-        <section id="projects">
 
-          <div class="container">
-            <h1 class="projectText">Personal Projects</h1>
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="card todoTask" data-aos="flip-left">
-                  <div class="card-header">
-                    <h3>Project Name : TODO Task</h3>
-                  </div>
-                  <div style={{ fontWeight: "20px" }} class="card-body">
-                    <h5>Description : </h5>
-                    <ul>
-                      <li>I developed a "TODO Tasks Website" using React and Node.js.</li>
-                      <li>This website "TODO Tasks" allows users to register, login, add, update and delete functions.</li>
-                      <li>User authentication is implemented using JWT tokens ,And stored user data and tasks in MongoDB</li>
-                      <li>Utilized React for the frontend interface and Axios for making HTTP requests to the backend server</li>
-                    </ul>
-                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://todo-task-full-stack-project.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
-                    <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/task-management") }}>View More</button></div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="card ecommerceCard" data-aos="flip-right">
-                  <div class="card-header">
-                    <h3>Project Name : shopReaseR</h3>
-                  </div>
-                  <div style={{ fontWeight: "20px" }} class="card-body">
-                    <h5>Description : </h5>
-                    <ul>
-                      <li>Developed e-commerce website using HTML, CSS,React and Bootstrap with a focuson responsive design</li>
-                      <li>Implemented a user-friendly interface allowing customers to browse products and add them to a shopping cart</li>
-                    </ul>
-                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://e-commerce-iota-roan.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
-                    <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/ecommerce-app") }}>View More</button></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="card foodCard" data-aos="flip-left">
-                  <div class="card-header">
-                    <h3>Project Name : FreeHungeR </h3>
-                  </div>
-                  <div style={{ fontWeight: "20px" }} class="card-body">
-                    <h5>Description : </h5>
-                    <ul>
-                      <li>Developed a food Website using React, providing users with a platform to browse restaurant and search a food item from restaurants, And them to a Food Cart</li>
-                      <li>Implemented features such as restaurant listings,menu display and cart management.</li>
-                    </ul>
-                    {/* <a style={{ textDecoration: "none", color: "#08ffff" }} href="https://food-website-ten-henna.vercel.app/"><h5>Vercel Deploy App<i class="bi bi-link-45deg"></i></h5></a> */}
-                    <div style={{ textAlign: "center" }}><button style={{ padding: "8px 10px" }} onClick={() => { navigate("/projects/food-app") }}>View More</button></div>
-                  </div>
-                </div>
-              </div>
-
+        <section id="contact" className="portfolio-section contact-section">
+          <div className="section-shell">
+            <div className="section-heading section-heading-wide" data-aos="fade-up">
+              <span className="section-kicker">GET IN TOUCH</span>
+              <h2>Let's Build Something.</h2>
+              <p>Have a project in mind or want to discuss an opportunity? Send me a message and I'll get back to you.</p>
             </div>
-          </div>
-
-
-
-        </section>
-      </div>
-
-
-      <div className="row">
-
-        <section id="contact" >
-          <div class="container">
-            <h1 class="text-center" style={{ marginTop: "55px" }}>Contact Details</h1>
-            <div class="row" id="ContactRow">
-              <div class="col-md-7">
-                <h4>For Contact Me</h4>
+            <div className="row" id="ContactRow">
+              <div className="col-md-7 contact-form-panel" data-aos="fade-right">
+                <span className="contact-panel-label">SEND A MESSAGE</span>
+                <h3>Start a conversation.</h3>
                 <form onSubmit={handleSubmit(handleSendUserContactData)}>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                  <div className="mb-3">
+                    <label htmlFor="contact-name" className="form-label">Name</label>
                     <input
+                      id="contact-name"
                       type="text"
                       className="form-control"
                       placeholder="Enter your Name"
@@ -611,9 +787,10 @@ const Index = () => {
                     />
                     {errors.name && <p className="text-danger">{errors.name.message}</p>}
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                  <div className="mb-3">
+                    <label htmlFor="contact-email" className="form-label">Email</label>
                     <input
+                      id="contact-email"
                       type="email"
                       className="form-control"
                       placeholder="Enter Your Email"
@@ -628,9 +805,10 @@ const Index = () => {
                     {errors.email && <p className="text-danger">{errors.email.message}</p>}
 
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+                  <div className="mb-3">
+                    <label htmlFor="contact-mobile" className="form-label">Contact Number <span>Optional</span></label>
                     <input
+                      id="contact-mobile"
                       type="text"
                       className="form-control"
                       placeholder="Enter your number"
@@ -649,9 +827,10 @@ const Index = () => {
                       <p className="text-danger">{errors.mobile.message}</p>
                     )}
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                  <div className="mb-3">
+                    <label htmlFor="contact-message" className="form-label">Message</label>
                     <textarea
+                      id="contact-message"
                       className="form-control"
                       rows="3"
                       {...register("message", {
@@ -664,44 +843,21 @@ const Index = () => {
                     />
                     {errors.message && <p className="text-danger">{errors.message.message}</p>}
                   </div>
-                  <button disabled={isSendLoading} class="btn btn-primary" style={{ width: "120px" }}>
-                    {isSendLoading ? (<><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">sending...</span></>) :
-                      "Send"}
-                  </button><br />
+                  <button type="submit" disabled={isSendLoading} className="contact-submit">
+                    {isSendLoading ? (<><span className="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">Sending...</span></>) : <>Send Message <span>&rarr;</span></>}
+                  </button>
                 </form>
               </div>
-              <div class="col-md-5">
-                <h4>My Contact Detils</h4>
-                <hr />
-                <div class="mt-5">
-                  <div class="d-flex">
-                    <i class="bi bi-geo-alt-fill"></i>
-                    <p>Address:</p>
-
-                  </div>
-                  <hr />
-                  <div class="d-flex">
-                    <i class="bi bi-telephone-fill"></i>
-                    <p>Contact:(+91)-7993810342</p>
-
-                  </div>
-                  <hr />
-                  <div class="d-flex">
-                    <i class="bi bi-envelope-fill"></i>
-                    <p>Email ID:- ramanareddy.m0342@gmail.com</p>
-                  </div>
-                  <hr />
-                  <div class="d-flex">
-                    <i class="bi bi-browser-chrome"></i>
-                    <p>My Portfolio:- https://my-portfolio-xi-two-63.vercel.app/</p>
-                  </div>
-                  <hr />
-                  <div class="d-flex">
-                    <i class="bi bi-linkedin"></i>
-                    <p className="bi-linkedin-content">www.linkedin.com/in/ramanareddymaddi</p>
-                  </div>
+              <div className="col-md-5 contact-details-panel" data-aos="fade-left">
+                <span className="contact-panel-label">CONTACT DETAILS</span>
+                <h3>Let's connect.</h3>
+                <p className="contact-intro">I'm always open to talking about frontend development, collaborative work and new opportunities.</p>
+                <div className="contact-details-list">
+                  <div className="contact-detail"><i className="bi bi-telephone-fill"></i><div><span>PHONE</span><p>(+91) 7993810342</p></div></div>
+                  <div className="contact-detail"><i className="bi bi-envelope-fill"></i><div><span>EMAIL</span><p>ramanareddy.m0342@gmail.com</p></div></div>
+                  <div className="contact-detail"><i className="bi bi-browser-chrome"></i><div><span>PORTFOLIO</span><p>https://ramana-portfolio-eight.vercel.app</p></div></div>
+                  <div className="contact-detail"><i className="bi bi-linkedin"></i><div><span>LINKEDIN</span><p className="bi-linkedin-content">linkedin.com/in/ramanareddymaddi</p></div></div>
                 </div>
-
               </div>
             </div>
           </div>

@@ -56,3 +56,8 @@ export const askAI = async(data) => {
     let res = await postRequest("/ai/chat", { data });
     return res.data
 }
+
+export const getAIConversation = async (conversationId) => {
+    const response = await getRequest(`/ai/chat/${conversationId}`);
+    return response.data;
+};
