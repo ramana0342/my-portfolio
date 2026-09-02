@@ -4728,20 +4728,7 @@ sup {
     }
 }
 
-/* FLOAT BUTTON */
-.chat-float-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #007bff;
-    color: white;
-    font-size: 22px;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-}
+
 
 
 /* POPUP */
@@ -5029,97 +5016,480 @@ sup {
 
 }
 
-/* WRAPPER */
 .chat-wrapper {
     position: fixed;
+    right: 30px;
     bottom: 30px;
-    right: 112px;
     z-index: 999;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
 
-/* TOOLTIP */
-.chat-tooltip {
-    background: rgb(255, 0, 123);
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    margin-bottom: 12px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
+    animation: supportFloat 2.8s ease-in-out infinite;
 
-.chat-wrapper {
-    &:hover .chat-tooltip {
-        opacity: 1;
-        transform: translateY(0);
+    // =====================================================
+    // ATTENTION MESSAGE
+    // =====================================================
+
+    .chat-attention {
+        position: relative;
+        margin-bottom: 14px;
+        padding: 9px 15px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(6, 10, 16, 0.96);
+        border: 1px solid rgba(255, 0, 128, 0.45);
+        border-radius: 8px;
+        color: #f8fafc;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.25px;
+        white-space: nowrap;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.45),
+            0 0 25px rgba(255, 0, 128, 0.16),
+            0 0 35px rgba(56, 189, 248, 0.05);
+        opacity: 0;
+        transform:
+            translateX(22px) scale(0.92);
+        pointer-events: none;
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+
+        // =================================================
+        // ARROW
+        // =================================================
+
+        &::after {
+            content: "";
+
+            position: absolute;
+
+            right: 30px;
+            bottom: -6px;
+
+            width: 10px;
+            height: 10px;
+
+            background: #060a10;
+
+            border-right:
+                1px solid rgba(255, 0, 128, 0.45);
+
+            border-bottom:
+                1px solid rgba(255, 0, 128, 0.45);
+
+            transform: rotate(45deg);
+        }
+
+        span {
+            display: inline-flex;
+
+            font-size: 15px;
+
+            animation: waveHand 1.5s ease-in-out infinite;
+        }
     }
-}
 
-/* BUTTON */
-.chat-float-btn {
-    background: linear-gradient(135deg, #ff4d6d, #ff0080);
-    color: white;
-    font-size: 22px;
-    padding: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow:
-        0 6px 18px rgba(255, 0, 128, 0.4),
-        0 0 12px rgba(255, 0, 128, 0.6);
-}
+    // =====================================================
+    // FLOATING BUTTON
+    // =====================================================
 
-.chat-float-btn {
+    .chat-float-btn {
+        position: relative;
+
+        width: 68px;
+        height: 68px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 2px solid rgba(255, 255, 255, 0.35);
+
+        border-radius: 50%;
+
+        background:
+            linear-gradient(135deg,
+                #ff416c 0%,
+                #ff0080 52%,
+                #c026d3 100%);
+
+        color: #ffffff;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 12px 30px rgba(255, 0, 128, 0.45),
+            0 0 25px rgba(255, 0, 128, 0.28),
+            0 0 55px rgba(56, 189, 248, 0.08),
+            inset 0 2px 4px rgba(255, 255, 255, 0.5);
+
+        transition:
+            box-shadow 0.3s ease,
+            filter 0.3s ease,
+            transform 0.3s ease;
+
+        // =================================================
+        // INNER GLOW
+        // =================================================
+
+        .chat-glow {
+            position: absolute;
+
+            inset: 5px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 35% 25%,
+                    rgba(255, 255, 255, 0.4),
+                    transparent 38%);
+
+            opacity: 0.9;
+
+            pointer-events: none;
+        }
+
+        // =================================================
+        // FIRST RING
+        // =================================================
+
+        &::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -8px;
+
+            border-radius: 50%;
+
+            border: 2px solid rgba(255, 0, 128, 0.7);
+
+            animation:
+                attentionRing 2.8s ease-out infinite;
+
+            pointer-events: none;
+        }
+
+        // =================================================
+        // SECOND RING
+        // =================================================
+
+        &::after {
+            content: "";
+
+            position: absolute;
+
+            inset: -16px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(56, 189, 248, 0.28);
+
+            animation:
+                attentionRingOuter 2.8s ease-out infinite;
+
+            pointer-events: none;
+        }
+
+        // =================================================
+        // ICON
+        // =================================================
+
+        svg {
+            position: relative;
+
+            z-index: 3;
+
+            filter:
+                drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+
+            animation:
+                iconAttention 6s ease-in-out infinite;
+        }
+
+        // =================================================
+        // NOTIFICATION
+        // =================================================
+
+        .chat-notification {
+            position: absolute;
+
+            top: -4px;
+            right: -3px;
+
+            width: 23px;
+            height: 23px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid #ff0080;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            color: #ff0080;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.35),
+                0 0 10px rgba(255, 255, 255, 0.25);
+
+            z-index: 5;
+
+            animation:
+                notificationPop 3s ease-in-out infinite;
+        }
+
+        // =================================================
+        // BUTTON HOVER
+        // =================================================
+
+        &:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 18px 40px rgba(255, 0, 128, 0.55),
+                0 0 35px rgba(255, 0, 128, 0.4),
+                0 0 65px rgba(56, 189, 248, 0.1),
+                inset 0 2px 5px rgba(255, 255, 255, 0.55);
+
+            filter: brightness(1.08);
+
+            .chat-notification {
+                transform: scale(1.12);
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    // =====================================================
+    // WRAPPER HOVER
+    // =====================================================
+
     &:hover {
-        transform: scale(1.1);
-    }
-}
-
-/* PULSE ANIMATION */
-.pulse {
-    animation: strongPulse 1.6s ease-out infinite;
-}
-
-@keyframes strongPulse {
-
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.8);
-    }
-
-    30% {
-        transform: scale(1.15);
-        box-shadow: 0 0 0 12px rgba(255, 0, 128, 0.4);
-    }
-
-    60% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 24px rgba(255, 0, 128, 0);
-    }
-
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 0, 128, 0);
-    }
-
-
-
-}
-
-
-.chat-float-btn {
-    &:hover.pulse {
         animation-play-state: paused;
-        box-shadow: 0 6px 18px rgba(255, 0, 128, 0.4);
+
+        .chat-attention {
+            opacity: 1;
+
+            transform:
+                translateX(0) scale(1);
+        }
+    }
+
+    // =====================================================
+    // FLOATING ANIMATION
+    // =====================================================
+
+    @keyframes supportFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-25px);
+        }
+    }
+
+    // =====================================================
+    // PINK RING
+    // =====================================================
+
+    @keyframes attentionRing {
+
+        0% {
+            transform: scale(0.9);
+            opacity: 0.85;
+        }
+
+        65% {
+            transform: scale(1.45);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1.45);
+            opacity: 0;
+        }
+    }
+
+    // =====================================================
+    // BLUE OUTER RING
+    // =====================================================
+
+    @keyframes attentionRingOuter {
+
+        0% {
+            transform: scale(0.9);
+            opacity: 0.55;
+        }
+
+        65% {
+            transform: scale(1.65);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1.65);
+            opacity: 0;
+        }
+    }
+
+    // =====================================================
+    // ICON
+    // =====================================================
+
+    @keyframes iconAttention {
+
+        0%,
+        72%,
+        100% {
+            transform: rotate(0deg);
+        }
+
+        76% {
+            transform: rotate(-9deg);
+        }
+
+        80% {
+            transform: rotate(9deg);
+        }
+
+        84% {
+            transform: rotate(-6deg);
+        }
+
+        88% {
+            transform: rotate(6deg);
+        }
+
+        92% {
+            transform: rotate(0deg);
+        }
+    }
+
+    // =====================================================
+    // NOTIFICATION
+    // =====================================================
+
+    @keyframes notificationPop {
+
+        0%,
+        72%,
+        100% {
+            transform: scale(1);
+        }
+
+        77% {
+            transform: scale(1.3);
+        }
+
+        82% {
+            transform: scale(0.92);
+        }
+
+        87% {
+            transform: scale(1.12);
+        }
+
+        92% {
+            transform: scale(1);
+        }
+    }
+
+    // =====================================================
+    // HAND
+    // =====================================================
+
+    @keyframes waveHand {
+
+        0%,
+        100% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(12deg);
+        }
+
+        50% {
+            transform: rotate(-8deg);
+        }
+
+        75% {
+            transform: rotate(8deg);
+        }
+    }
+
+    // =====================================================
+    // TABLET
+    // =====================================================
+
+    @media (max-width: 768px) {
+
+        right: 22px;
+        bottom: 22px;
+
+        .chat-float-btn {
+            width: 62px;
+            height: 62px;
+        }
+
+        .chat-attention {
+            margin-bottom: 20px;
+
+            font-size: 11px;
+            padding: 8px 12px;
+        }
+    }
+
+    // =====================================================
+    // MOBILE
+    // =====================================================
+
+    @media (max-width: 480px) {
+
+        right: 16px;
+        bottom: 18px;
+
+        .chat-float-btn {
+            width: 56px;
+            height: 56px;
+
+            svg {
+                width: 27px;
+                height: 27px;
+            }
+
+            .chat-notification {
+                width: 19px;
+                height: 19px;
+
+                font-size: 11px;
+            }
+        }
+
+        .chat-attention {
+            margin-bottom: 18px;
+            font-size: 11px;
+        }
     }
 }
-
-
 
 .support-wrapper {
     position: fixed;

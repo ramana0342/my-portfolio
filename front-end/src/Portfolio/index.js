@@ -1,13 +1,10 @@
 import "./index.scss";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect, useContext, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Typed from 'typed.js';
-import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
-import { useContext } from "react";
 import { store } from "./mainHeader";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserContactMessagesCount, postUserContact } from "../network/portfolioApiService/portfolioApiService";
 import { useForm } from "react-hook-form";
@@ -23,11 +20,30 @@ const Index = () => {
   const [count, setCount] = useContext(store)
   const [isSendLoading, setIsSendLoading] = useState(false)
   const [supportMode, setSupportMode] = useState(null);
-  const [showHint, setShowHint] = useState(true);
+  const firstOpenRef = useRef(true);
 
-  useEffect(() => {
-    setTimeout(() => setShowHint(false), 4000);
-  }, []);
+
+
+  // useEffect(() => {
+
+  //   if (supportMode !== null) {
+  //     return;
+  //   }
+
+  //   const delay = firstOpenRef.current
+  //     ? 10000
+  //     : 120000;
+
+  //   const timer = setTimeout(() => {
+  //     setSupportMode("menu");
+  //     firstOpenRef.current = false;
+  //   }, delay);
+
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+
+  // }, [supportMode]);
 
   useEffect(() => {
     AOS.init({
@@ -932,31 +948,42 @@ const Index = () => {
 
 
     {!supportMode && (
+
       <div className="chat-wrapper">
-        <div className="chat-tooltip">👋 Need help?</div>
+
+        <div className="chat-attention">
+          <span>👋</span>
+          Need help?
+        </div>
 
         <div
-          className="chat-float-btn pulse"
+          className="chat-float-btn"
           onClick={() => {
 
             setSupportMode(prev =>
               prev === "menu" ? null : "menu"
             );
 
+            const navbar =
+              document.getElementById("navbarSupportedContent");
 
-
-            const navbar = document.getElementById("navbarSupportedContent");
-            if (navbar.classList.contains("show")) {
+            if (navbar?.classList.contains("show")) {
               navbar.classList.remove("show");
             }
           }}
         >
-          <MdSupportAgent size={30} />
-        </div>
-      </div>
-    )}
 
-    {showHint && <div className="chat-tooltip show">Hi 👋 Need help?</div>}
+          <span className="chat-glow"></span>
+
+          <MdSupportAgent size={32} />
+
+          <span className="chat-notification">!</span>
+
+        </div>
+
+      </div>
+
+    )}
 
     {supportMode === "chat" && (
       <UserChat
