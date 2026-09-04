@@ -21,29 +21,8 @@ const Index = () => {
   const [isSendLoading, setIsSendLoading] = useState(false)
   const [supportMode, setSupportMode] = useState(null);
   const firstOpenRef = useRef(true);
-
-
-
-  // useEffect(() => {
-
-  //   if (supportMode !== null) {
-  //     return;
-  //   }
-
-  //   const delay = firstOpenRef.current
-  //     ? 10000
-  //     : 120000;
-
-  //   const timer = setTimeout(() => {
-  //     setSupportMode("menu");
-  //     firstOpenRef.current = false;
-  //   }, delay);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-
-  // }, [supportMode]);
+  const [activeSection, setActiveSection] =
+    useState("home");
 
   useEffect(() => {
     AOS.init({
@@ -63,7 +42,9 @@ const Index = () => {
     const options = {
       strings: [
         "React Developer",
-        "Frontend Developer"
+        "Front-end Developer",
+        "Back-end Developer",
+        "Full Stack Developer"
       ],
 
       typeSpeed: 50,
@@ -79,6 +60,70 @@ const Index = () => {
     return () => {
       typed.destroy();
     };
+  }, []);
+
+  useEffect(() => {
+
+    const sections =
+      document.querySelectorAll("section[id]");
+
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          const visibleSections =
+            entries
+              .filter(
+                (entry) =>
+                  entry.isIntersecting
+              )
+              .sort(
+                (a, b) =>
+                  b.intersectionRatio -
+                  a.intersectionRatio
+              );
+
+
+          if (
+            visibleSections.length > 0
+          ) {
+
+            setActiveSection(
+              visibleSections[0]
+                .target
+                .id
+            );
+          }
+        },
+        {
+          root: null,
+
+          rootMargin:
+            "-100px 0px -55% 0px",
+
+          threshold: [
+            0.1,
+            0.25,
+            0.5
+          ]
+        }
+      );
+
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+
+    return () => {
+
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+
+    };
+
   }, []);
 
 
@@ -128,7 +173,7 @@ const Index = () => {
   return (<>
 
     <div className="container-fluid">
-      <div className="row">
+      <div className="row user-navbar-container">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Portfolio</a>
@@ -137,36 +182,129 @@ const Index = () => {
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
-            // onClick={() => { if (isChatOpen) { setIsChatOpen(false) }; }}
             >
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link home" href="#home" onClick={closeNavbar}>Home</a>
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "home"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#home"
+                    onClick={closeNavbar}
+                  >
+                    Home
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#about" onClick={closeNavbar}>About</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "about"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#about"
+                    onClick={closeNavbar}
+                  >
+                    About
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#experience" onClick={closeNavbar}>Experience</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "experience"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#experience"
+                    onClick={closeNavbar}
+                  >
+                    Experience
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#academics" onClick={closeNavbar}>Academics</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "academics"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#academics"
+                    onClick={closeNavbar}
+                  >
+                    Academics
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#skills" onClick={closeNavbar}>Skills</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "skills"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#skills"
+                    onClick={closeNavbar}
+                  >
+                    Skills
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#projects" onClick={closeNavbar}>Projects</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "projects"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#projects"
+                    onClick={closeNavbar}
+                  >
+                    Projects
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contact" onClick={closeNavbar}>Contact</a>
+
+
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${activeSection === "contact"
+                      ? "active"
+                      : ""
+                      }`}
+                    href="#contact"
+                    onClick={closeNavbar}
+                  >
+                    Contact
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <NavLink to={getAdminTokenData() ? "/admin-panel/user-messages" : "/admin-login"} className="nav-link" >AdminActivities{count ? <sup>{count}</sup> : <sup>0</sup>}</NavLink>
+
+
+                <li className="nav-item">
+                  <NavLink
+                    to={
+                      getAdminTokenData()
+                        ? "/admin-panel/user-messages"
+                        : "/admin-login"
+                    }
+                    className="nav-link"
+                  >
+                    Admin
+
+                    {getAdminTokenData() && (
+                      <sup>
+                        {count || 0}
+                      </sup>
+                    )}
+                  </NavLink>
                 </li>
+
               </ul>
             </div>
           </div>

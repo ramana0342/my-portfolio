@@ -3,7 +3,8 @@ import {
   insertUserContactMessageData,
   userContactMessageData,
   userContactMessageCount,
-  deleteUserContactMessageById
+  deleteUserContactMessageById,
+  markUserContactMessageAsRead
 } from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
@@ -148,6 +149,52 @@ export const handleDeleteUserContactMessage = async (req, res) => {
         message: "Message deleted successfully"
       },
       response: deletedMessage
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      status: {
+        code: 500,
+        message: error.message
+      },
+      response: null
+    });
+  }
+};
+
+
+export const handleReadUserContactMessage = async (req, res) => {
+  try {
+    const { messageId } = req.params;
+
+    if (!messageId) {
+      return res.status(400).json({
+        status: {
+          code: 400,
+          message: "Message ID is required"
+        },
+        response: null
+      });
+    }
+
+    const message = await markUserContactMessageAsRead(messageId);
+
+    if (!message) {
+      return res.status(404).json({
+        status: {
+          code: 404,
+          message: "Message not found"
+        },
+        response: null
+      });
+    }
+
+    return res.status(200).json({
+      status: {
+        code: 200,
+        message: "Message marked as read successfully"
+      },
+      response: message
     });
 
   } catch (error) {
