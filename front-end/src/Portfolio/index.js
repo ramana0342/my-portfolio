@@ -1009,7 +1009,7 @@ const Index = () => {
                 <div className="contact-details-list">
                   <div className="contact-detail"><i className="bi bi-telephone-fill"></i><div><span>PHONE</span><p>(+91) 7993810342</p></div></div>
                   <div className="contact-detail"><i className="bi bi-envelope-fill"></i><div><span>EMAIL</span><p>ramanareddy.m0342@gmail.com</p></div></div>
-                  <div className="contact-detail"><i className="bi bi-browser-chrome"></i><div><span>PORTFOLIO</span><p>https://ramana-portfolio-eight.vercel.app</p></div></div>
+                  <div className="contact-detail"><i className="bi bi-browser-chrome"></i><div><span>PORTFOLIO</span><p>https://ramanareddy-portfolio.vercel.app</p></div></div>
                   <div className="contact-detail"><i className="bi bi-linkedin"></i><div><span>LINKEDIN</span><p className="bi-linkedin-content">linkedin.com/in/ramanareddymaddi</p></div></div>
                 </div>
               </div>

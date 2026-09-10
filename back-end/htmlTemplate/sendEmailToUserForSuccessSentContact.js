@@ -1,3 +1,5 @@
+const FRONTEND_URL = process.env.PORTFOLIO_REACT_APP_FRONTEND_URL;
+
 export const htmlTemplateForUserSuccessSentContact = (data) => {
     return `
     <div style="font-family: Arial, sans-serif; padding: 20px; line-height:1.6; color:#333;">
@@ -30,7 +32,7 @@ export const htmlTemplateForUserSuccessSentContact = (data) => {
       </p>
 
       <p>
-        <a href="https://ramana-portfolio-eight.vercel.app/" 
+        <a href="${FRONTEND_URL}" 
            style="color:#007bff; text-decoration:none;">
            Visit My Portfolio
         </a>

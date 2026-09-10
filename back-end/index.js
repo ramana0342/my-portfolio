@@ -28,9 +28,11 @@ const io = new Server(server, {
 
 setupChatSocket(io);
 
+
+const FRONTEND_URL = process.env.PORTFOLIO_REACT_APP_FRONTEND_URL;
+
 const allowedOrigins = [
-  "http://localhost:3000",
-  "https://ramana-portfolio-eight.vercel.app"
+  FRONTEND_URL
 ];
 
 app.use(cors({

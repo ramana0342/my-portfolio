@@ -8,7 +8,7 @@ const contact = {
     "https://www.linkedin.com/in/ramanareddymaddi/",
 
   portfolio:
-    "https://ramana-portfolio-eight.vercel.app",
+    "https://ramanareddy-portfolio.vercel.app",
 
   contactInstruction:
     "Visitors can contact Ramana through the Contact section of his portfolio.",

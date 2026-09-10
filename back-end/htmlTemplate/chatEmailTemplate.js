@@ -1,3 +1,5 @@
+const FRONTEND_URL = process.env.PORTFOLIO_REACT_APP_FRONTEND_URL;
+
 export const chatEmailTemplate = (data) => {
   return `
   <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
@@ -28,7 +30,7 @@ export const chatEmailTemplate = (data) => {
 
         <!-- Button -->
         <div style="margin-top:20px; text-align:center;">
-          <a href="https://ramana-portfolio-eight.vercel.app/admin-panel/chat?user_id=${data.user_id}" 
+          <a href="${FRONTEND_URL}/admin-panel/chat?user_id=${data.user_id}" 
              style="
                display:inline-block;
                padding:10px 20px;
