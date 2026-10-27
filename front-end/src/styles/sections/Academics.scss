@@ -1,0 +1,708 @@
+/* ======================================================
+   ACADEMICS
+   ====================================================== */
+
+#academics {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 70px 24px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 82% 18%,
+            rgba(56, 189, 248, 0.07),
+            transparent 30%),
+        radial-gradient(circle at 12% 85%,
+            rgba(37, 99, 235, 0.05),
+            transparent 32%),
+        #070b12;
+
+    color: #f8fafc;
+
+
+    // ================================================
+    // BACKGROUND GRID
+    // ================================================
+
+    &::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background-image:
+            linear-gradient(rgba(148, 163, 184, 0.025) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                rgba(148, 163, 184, 0.025) 1px,
+                transparent 1px);
+
+        background-size: 55px 55px;
+
+        mask-image:
+            linear-gradient(to bottom,
+                black,
+                transparent 95%);
+
+        pointer-events: none;
+    }
+
+
+    // ================================================
+    // SECTION SHELL
+    // ================================================
+
+    .section-shell {
+        position: relative;
+
+        z-index: 2;
+
+        width: 100%;
+
+        max-width: 1100px;
+
+        margin: 0 auto;
+    }
+
+
+    // ================================================
+    // SECTION HEADING
+    // ================================================
+
+    .section-heading {
+        max-width: 760px;
+
+        margin: 0 auto 70px;
+
+        text-align: center;
+
+
+        .section-kicker {
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            color: #38bdf8;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+        }
+
+
+        h2 {
+            margin: 0;
+
+            color: #f8fafc;
+
+            font-size:
+                clamp(36px, 5vw, 58px);
+
+            font-weight: 700;
+
+            letter-spacing: -2px;
+
+            line-height: 1;
+        }
+
+
+        p {
+            max-width: 620px;
+
+            margin: 20px auto 0;
+
+            color: #94a3b8;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        &.section-heading-wide {
+            max-width: 850px;
+        }
+    }
+
+
+    // ================================================
+    // ACADEMIC TIMELINE
+    // ================================================
+
+    .academic-list {
+        position: relative;
+
+        max-width: 950px;
+
+        margin: 0 auto;
+
+        padding: 10px 0;
+
+
+        // Timeline line
+
+        &::before {
+            content: "";
+
+            position: absolute;
+
+            top: 20px;
+            bottom: 20px;
+
+            left: 170px;
+
+            width: 1px;
+
+            background:
+                linear-gradient(to bottom,
+                    transparent,
+                    rgba(56, 189, 248, 0.45),
+                    transparent);
+        }
+    }
+
+
+    // ================================================
+    // ACADEMIC ITEM
+    // ================================================
+
+    .academic-item {
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns:
+            130px 80px minmax(0, 1fr);
+
+        align-items: center;
+
+        min-height: 150px;
+
+        padding: 25px 0;
+
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+
+
+        // --------------------------------------------
+        // YEAR
+        // --------------------------------------------
+
+        .academic-year {
+            color: #64748b;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-align: right;
+        }
+
+
+        // --------------------------------------------
+        // MARKER
+        // --------------------------------------------
+
+        .academic-marker {
+            position: relative;
+
+            z-index: 2;
+
+            width: 12px;
+            height: 12px;
+
+            margin: 0 auto;
+
+            border:
+                3px solid #070b12;
+
+            border-radius: 50%;
+
+            background: #38bdf8;
+
+            box-shadow:
+                0 0 0 5px rgba(56, 189, 248, 0.08),
+                0 0 20px rgba(56, 189, 248, 0.35);
+        }
+
+
+        // --------------------------------------------
+        // CONTENT
+        // --------------------------------------------
+
+        .academic-content {
+            padding: 25px 30px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.12);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255, 255, 255, 0.025);
+
+            transition:
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                background 0.3s ease;
+
+
+            &:hover {
+                border-color:
+                    rgba(56, 189, 248, 0.35);
+
+                background:
+                    rgba(56, 189, 248, 0.035);
+
+                transform:
+                    translateX(5px);
+            }
+        }
+
+
+        // --------------------------------------------
+        // EDUCATION LEVEL
+        // --------------------------------------------
+
+        .academic-level {
+            color: #38bdf8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+
+        // --------------------------------------------
+        // DEGREE
+        // --------------------------------------------
+
+        h3 {
+            margin:
+                8px 0 5px;
+
+            color: #f8fafc;
+
+            font-size: 23px;
+
+            font-weight: 600;
+        }
+
+
+        // --------------------------------------------
+        // INSTITUTE
+        // --------------------------------------------
+
+        .academic-institute {
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+        }
+
+
+        // --------------------------------------------
+        // META
+        // --------------------------------------------
+
+        .academic-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 15px;
+
+
+            span {
+                padding:
+                    5px 9px;
+
+                border:
+                    1px solid rgba(148, 163, 184, 0.12);
+
+                border-radius: 6px;
+
+                color: #cbd5e1;
+
+                font-size: 11px;
+            }
+        }
+    }
+
+
+    // ================================================
+    // TABLET
+    // ================================================
+
+    @media (max-width: 900px) {
+
+        padding:
+            95px 6vw 90px;
+
+
+        .section-heading {
+            margin-bottom: 55px;
+
+
+            h2 {
+                font-size:
+                    clamp(34px, 6vw, 48px);
+            }
+
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+
+        .academic-list {
+            max-width: 760px;
+
+
+            &::before {
+                top: 10px;
+                bottom: 10px;
+
+                left: 16px;
+
+                width: 1px;
+            }
+        }
+
+
+        .academic-item {
+            grid-template-columns:
+                32px minmax(0, 1fr);
+
+            align-items: start;
+
+            min-height: auto;
+
+            padding:
+                0 0 40px;
+
+
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+
+
+            .academic-year {
+                grid-column: 2;
+
+                grid-row: 1;
+
+                margin-bottom: 12px;
+
+                text-align: left;
+
+                font-size: 13px;
+            }
+
+
+            .academic-marker {
+                grid-column: 1;
+
+                grid-row: 1;
+
+                align-self: start;
+
+                width: 12px;
+                height: 12px;
+
+                margin:
+                    3px auto 0;
+            }
+
+
+            .academic-content {
+                grid-column: 2;
+
+                grid-row: 2;
+
+                width: 100%;
+
+                padding:
+                    23px 25px;
+
+
+                &:hover {
+                    transform:
+                        translateX(3px);
+                }
+            }
+        }
+    }
+
+
+    // ================================================
+    // MOBILE
+    // ================================================
+
+    @media (max-width: 600px) {
+
+        min-height: auto;
+
+        padding:
+            80px 20px 75px;
+
+
+        .section-heading {
+            margin-bottom: 45px;
+
+
+            .section-kicker {
+                margin-bottom: 12px;
+
+                font-size: 9px;
+
+                letter-spacing: 2px;
+            }
+
+
+            h2 {
+                font-size: 36px;
+
+                letter-spacing: -1.2px;
+            }
+
+
+            p {
+                margin-top: 16px;
+
+                font-size: 13px;
+
+                line-height: 1.75;
+            }
+        }
+
+
+        .academic-list {
+            padding:
+                0 0 0 32px;
+
+
+            &::before {
+                top: 3px;
+                bottom: 3px;
+
+                left: 5px;
+
+                width: 1px;
+
+                background:
+                    linear-gradient(to bottom,
+                        transparent,
+                        rgba(56, 189, 248, 0.5) 5%,
+                        rgba(56, 189, 248, 0.3) 95%,
+                        transparent);
+            }
+        }
+
+
+        .academic-item {
+            grid-template-columns: 1fr;
+
+            padding:
+                0 0 35px;
+
+
+            .academic-year {
+                grid-column: 1;
+
+                grid-row: auto;
+
+                margin-bottom: 11px;
+
+                color: #64748b;
+
+                font-size: 12px;
+
+                letter-spacing: 1px;
+            }
+
+
+            .academic-marker {
+                position: absolute;
+
+                top: 2px;
+
+                left: -32px;
+
+                width: 11px;
+                height: 11px;
+
+                margin: 0;
+
+                border-width: 3px;
+
+                box-shadow:
+                    0 0 0 4px rgba(56, 189, 248, 0.08),
+                    0 0 15px rgba(56, 189, 248, 0.35);
+            }
+
+
+            .academic-content {
+                grid-column: 1;
+
+                grid-row: auto;
+
+                padding:
+                    20px 18px;
+
+                border-radius: 11px;
+
+
+                &:hover {
+                    transform:
+                        translateX(2px);
+                }
+            }
+
+
+            .academic-level {
+                font-size: 9px;
+
+                letter-spacing: 1.6px;
+            }
+
+
+            h3 {
+                margin-top: 7px;
+
+                font-size: 19px;
+
+                letter-spacing: -0.3px;
+
+                line-height: 1.3;
+            }
+
+
+            .academic-institute {
+                font-size: 12px;
+
+                line-height: 1.65;
+            }
+
+
+            .academic-meta {
+                gap: 6px;
+
+                margin-top: 13px;
+
+
+                span {
+                    min-height: 25px;
+
+                    padding:
+                        5px 7px;
+
+                    font-size: 9px;
+                }
+            }
+        }
+    }
+
+
+    // ================================================
+    // SMALL MOBILE
+    // ================================================
+
+    @media (max-width: 400px) {
+
+        padding:
+            75px 16px 65px;
+
+
+        .section-heading {
+
+            h2 {
+                font-size: 32px;
+            }
+
+
+            p {
+                font-size: 12px;
+            }
+        }
+
+
+        .academic-list {
+            padding-left: 29px;
+
+
+            &::before {
+                left: 4px;
+            }
+        }
+
+
+        .academic-item {
+
+            .academic-marker {
+                left: -29px;
+
+                width: 10px;
+                height: 10px;
+            }
+
+
+            .academic-content {
+                padding:
+                    18px 15px;
+            }
+
+
+            h3 {
+                font-size: 17px;
+            }
+
+
+            .academic-institute {
+                font-size: 11px;
+            }
+
+
+            .academic-meta {
+
+                span {
+                    font-size: 8px;
+
+                    padding:
+                        4px 6px;
+                }
+            }
+        }
+    }
+
+
+    // ================================================
+    // REDUCED MOTION
+    // ================================================
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .academic-content,
+        .academic-meta span {
+            transition: none;
+        }
+    }
+}
+
+

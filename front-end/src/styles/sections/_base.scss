@@ -1,0 +1,771 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+
+
+}
+
+html {
+    scroll-padding-top: 82px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+// .user-navbar-container {
+
+//     nav {
+
+//         width: 100%;
+//         position: fixed !important;
+//         top: 0;
+//         left: 0;
+//         z-index: 10;
+//         box-shadow:
+//             0 5px 8px rgba(0, 0, 0, 0.5);
+//         .navbar-brand {
+//             font-weight: 600;
+//         }
+//         .nav-link {
+//             color: #ffffff;
+//             border-bottom: 1px solid transparent;
+//             border-radius: 4px;
+//             padding: 8px 12px;
+
+//             transition:
+//                 color 0.2s ease,
+//                 background-color 0.2s ease;
+
+
+//             &:hover {
+
+//                 color: #ffffff;
+
+//                 background-color:
+//                     rgba(255, 255, 255, 0.06);
+//             }
+
+
+//             &.active {
+
+//                 color: #38bdf8;
+
+//                 background-color:
+//                     rgba(255, 255, 255, 0.10);
+
+//                 border-bottom: 1px solid transparent;
+//             }
+//         }
+
+
+//         sup {
+
+//             display: inline-block;
+
+//             width: 25px;
+
+//             background-color: red;
+
+//             color: white;
+
+//             text-align: center;
+
+//             line-height: 25px;
+
+//             border-radius: 25px;
+
+//             position: relative;
+
+//             top: -12px;
+//         }
+//     }
+// }
+
+
+.user-navbar-container {
+
+    nav {
+
+        width: 100%;
+
+        min-height: 68px;
+
+        padding: 6px 0;
+
+        position: fixed !important;
+
+        top: 0;
+        left: 0;
+
+        z-index: 1000;
+
+        // =====================================================
+        // GLASS HEADER
+        // =====================================================
+
+        background:
+            rgba(8, 12, 18, 0.72) !important;
+
+        backdrop-filter:
+            blur(20px);
+
+        -webkit-backdrop-filter:
+            blur(20px);
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.07);
+
+        box-shadow:
+            0 6px 25px rgba(0, 0, 0, 0.28);
+
+        .container-fluid {
+
+            width: 100%;
+
+            padding-left:
+                clamp(24px, 5vw, 80px);
+
+            padding-right:
+                clamp(24px, 5vw, 80px);
+        }
+
+
+        // =====================================================
+        // BRAND
+        // =====================================================
+
+        .navbar-brand {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-size: 28px;
+
+            font-weight: 750;
+
+            letter-spacing: -0.6px;
+
+            line-height: 1;
+
+            color: #fff !important;
+
+            padding:
+                8px 0;
+
+            text-shadow:
+                0 0 14px rgba(255, 255, 255, 0.10);
+
+            transition:
+                color 0.25s ease,
+                text-shadow 0.25s ease,
+                transform 0.25s ease;
+
+            .brand-monogram {
+
+                display: inline-grid;
+
+                place-items: center;
+
+                flex: 0 0 46px;
+
+                width: 46px;
+
+                height: 46px;
+
+                position: relative;
+
+                overflow: hidden;
+
+                isolation: isolate;
+
+                border: 1px solid rgba(125, 211, 252, 0.58);
+
+                border-radius: 11px;
+
+                background: linear-gradient(145deg, #172b57 0%, #111b38 52%, #251943 100%);
+
+                color: #fff;
+
+                font-size: 24px;
+
+                font-weight: 900;
+
+                letter-spacing: -2px;
+
+                line-height: 1;
+
+                background-image: linear-gradient(145deg, #38bdf8 8%, #a78bfa 92%), linear-gradient(145deg, #172b57 0%, #111b38 52%, #251943 100%);
+
+                background-origin: border-box;
+
+                background-clip: padding-box;
+
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 12px rgba(96, 165, 250, 0.42);
+
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -5px 12px rgba(7, 10, 27, 0.36), 0 4px 12px rgba(37, 99, 235, 0.2);
+
+                transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+
+                &::before {
+
+                    content: "";
+
+                    position: absolute;
+
+                    inset: -35% -70%;
+
+                    z-index: -1;
+
+                    background: linear-gradient(110deg, transparent 38%, rgba(125, 211, 252, 0.18) 48%, rgba(196, 181, 253, 0.28) 52%, transparent 62%);
+
+                    background-size: 220% 100%;
+
+                    animation: brandMonogramSheen 6s ease-in-out infinite;
+                }
+
+                &::after {
+
+                    content: "";
+
+                    position: absolute;
+
+                    inset: 3px;
+
+                    z-index: -1;
+
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+
+                    border-radius: 7px;
+                }
+            }
+
+            .brand-name {
+
+                white-space: nowrap;
+            }
+
+
+            &:hover {
+
+                transform:
+                    translateY(-1px);
+
+                color:
+                    #ffffff !important;
+
+                text-shadow:
+                    0 0 16px rgba(56, 189, 248, 0.35);
+
+                .brand-monogram {
+
+                    transform: translateY(-1px) scale(1.1);
+
+                    border-color: rgba(167, 139, 250, 0.9);
+
+                    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), inset 0 -5px 12px rgba(7, 10, 27, 0.28), 0 0 10px rgba(56, 189, 248, 0.38), 0 0 22px rgba(139, 92, 246, 0.3);
+
+                    &::before {
+
+                        animation-duration: 1.2s;
+                    }
+                }
+            }
+
+
+            // =================================================
+            // BRAND DOT
+            // =================================================
+
+            .brand-name .brand-dot {
+
+                display:
+                    inline-block;
+
+                color:
+                    #38bdf8;
+
+                font-size:
+                    36px;
+
+                font-weight:
+                    800;
+
+                line-height:
+                    0;
+
+                margin-left:
+                    1px;
+
+                text-shadow:
+                    0 0 6px rgba(56, 189, 248, 1),
+
+                    0 0 16px rgba(56, 189, 248, 0.75),
+
+                    0 0 28px rgba(56, 189, 248, 0.35);
+
+                animation:
+                    brandDotGlow 2.5s ease-in-out infinite;
+            }
+        }
+
+
+        // =====================================================
+        // NAVIGATION
+        // =====================================================
+
+        .navbar-nav {
+
+            align-items:
+                center;
+
+            gap:
+                4px !important;
+        }
+
+
+        .nav-link {
+
+            position:
+                relative;
+
+            color:
+                rgba(255, 255, 255, 0.68);
+
+            font-size:
+                15px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                0.1px;
+
+            padding:
+                9px 12px;
+
+            border-radius:
+                6px;
+
+            background:
+                transparent;
+
+            transition:
+                color 0.25s ease,
+                text-shadow 0.25s ease,
+                background-color 0.25s ease;
+
+
+            // =================================================
+            // HOVER
+            // =================================================
+
+            &:hover {
+
+                color:
+                    #ffffff;
+
+                background:
+                    rgba(255, 255, 255, 0.035);
+
+                text-shadow:
+                    0 0 10px rgba(255, 255, 255, 0.25);
+            }
+
+
+            // =================================================
+            // ACTIVE
+            // =================================================
+
+            &.active {
+
+                color:
+                    #38bdf8;
+
+                background:
+                    transparent;
+
+                font-weight:
+                    600;
+
+                text-shadow:
+                    0 0 8px rgba(56, 189, 248, 0.65),
+
+                    0 0 18px rgba(56, 189, 248, 0.25);
+            }
+
+
+            // =================================================
+            // ACTIVE GLOW LINE
+            // =================================================
+
+            &.active::after {
+
+                content:
+                    "";
+
+                position:
+                    absolute;
+
+                left:
+                    12px;
+
+                right:
+                    12px;
+
+                bottom:
+                    2px;
+
+                height:
+                    2px;
+
+                border-radius:
+                    10px;
+
+                background:
+                    #38bdf8;
+
+                box-shadow:
+                    0 0 6px rgba(56, 189, 248, 0.95),
+
+                    0 0 14px rgba(56, 189, 248, 0.55);
+            }
+        }
+
+
+        // =====================================================
+        // ADMIN COUNT
+        // =====================================================
+
+        sup {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-width:
+                19px;
+
+            height:
+                19px;
+
+            padding:
+                0 5px;
+
+            margin-left:
+                4px;
+
+            background:
+                #ef4444;
+
+            color:
+                #ffffff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1;
+
+            border-radius:
+                50%;
+
+            position:
+                relative;
+
+            top:
+                -7px;
+
+            box-shadow:
+                0 0 8px rgba(239, 68, 68, 0.45);
+        }
+
+
+        // =====================================================
+        // TOGGLER
+        // =====================================================
+
+        .navbar-toggler {
+
+            border:
+                1px solid rgba(255, 255, 255, 0.13);
+
+            border-radius:
+                7px;
+
+            padding:
+                6px 9px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease;
+
+
+            &:hover {
+
+                border-color:
+                    rgba(56, 189, 248, 0.45);
+
+                background:
+                    rgba(56, 189, 248, 0.06);
+            }
+
+
+            &:focus {
+
+                box-shadow:
+                    0 0 0 2px rgba(56, 189, 248, 0.12);
+            }
+        }
+    }
+
+
+    // =========================================================
+    // BRAND DOT ANIMATION
+    // =========================================================
+
+    @keyframes brandDotGlow {
+
+        0%,
+        100% {
+
+            text-shadow:
+                0 0 6px rgba(56, 189, 248, 1),
+
+                0 0 16px rgba(56, 189, 248, 0.7),
+
+                0 0 26px rgba(56, 189, 248, 0.3);
+        }
+
+        50% {
+
+            text-shadow:
+                0 0 8px rgba(56, 189, 248, 1),
+
+                0 0 20px rgba(56, 189, 248, 0.9),
+
+                0 0 35px rgba(56, 189, 248, 0.45);
+        }
+    }
+
+    @keyframes brandMonogramSheen {
+
+        0%,
+        72%,
+        100% {
+
+            background-position: 100% 0;
+        }
+
+        38% {
+
+            background-position: 0 0;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .brand-monogram::before {
+
+            animation: none !important;
+        }
+
+        .navbar-brand,
+        .brand-monogram {
+
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+
+    // =========================================================
+    // TABLET / MOBILE
+    // =========================================================
+
+    @media (max-width: 991px) {
+
+        nav {
+
+            min-height:
+                66px;
+
+            padding:
+                5px 0;
+
+
+            .navbar-brand {
+
+                font-size:
+                    26px;
+
+                gap: 9px;
+
+                .brand-monogram {
+
+                    flex-basis: 44px;
+
+                    width: 44px;
+
+                    height: 44px;
+
+                    font-size: 23px;
+                }
+
+                .brand-name .brand-dot {
+
+                    font-size:
+                        33px;
+                }
+            }
+
+
+            .navbar-collapse {
+
+                padding:
+                    12px 0 6px;
+            }
+
+
+            .navbar-nav {
+
+                align-items:
+                    stretch;
+
+                gap:
+                    2px !important;
+            }
+
+
+            .nav-link {
+
+                font-size:
+                    15px;
+
+                padding:
+                    10px 12px;
+            }
+
+
+            .nav-link.active::after {
+
+                left:
+                    12px;
+
+                right:
+                    auto;
+
+                width:
+                    28px;
+            }
+        }
+    }
+
+
+    // =========================================================
+    // SMALL MOBILE
+    // =========================================================
+
+    @media (max-width: 480px) {
+
+        nav {
+
+            min-height:
+                62px;
+
+
+            .navbar-brand {
+
+                font-size:
+                    24px;
+
+                gap: 8px;
+
+                .brand-monogram {
+
+                    flex-basis: 44px;
+
+                    width: 44px;
+
+                    height: 44px;
+
+                    border-radius: 10px;
+
+                    font-size: 22px;
+                }
+
+                .brand-name .brand-dot {
+
+                    font-size:
+                        30px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .ai-assistant {
+        width: calc(100vw - 24px);
+        max-width: 420px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        transform: none;
+    }
+
+    .support-menu {
+        width: min(375px, calc(100vw - 24px));
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .support-content p,
+    .support-item p {
+        font-size: 14px;
+    }
+
+    .support-content small {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-shell,
+    .hero-content,
+    .section-heading,
+    .footer-container {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .chat-attention {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+
+
+

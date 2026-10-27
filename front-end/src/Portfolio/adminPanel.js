@@ -3,6 +3,7 @@ import {
    Outlet,
    useNavigate
 } from "react-router-dom";
+import { useState } from "react";
 
 import "./admin.scss";
 
@@ -14,6 +15,7 @@ import {
 const AdminHeaders = () => {
 
    const navigate = useNavigate();
+   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
 
    const handleAdminLogout = async () => {
@@ -55,15 +57,17 @@ const AdminHeaders = () => {
                   <button
                      className="navbar-toggler"
                      type="button"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#adminNavbarContent"
+                     aria-controls="adminNavbarContent"
+                     aria-expanded={isNavbarOpen}
+                     aria-label={isNavbarOpen ? "Close admin menu" : "Open admin menu"}
+                     onClick={() => setIsNavbarOpen((open) => !open)}
                   >
-                     <span className="navbar-toggler-icon"></span>
+                     <span className="navbar-toggler-icon" aria-hidden="true"></span>
                   </button>
 
 
                   <div
-                     className="collapse navbar-collapse"
+                     className={`collapse navbar-collapse${isNavbarOpen ? " show" : ""}`}
                      id="adminNavbarContent"
                   >
 
@@ -74,6 +78,7 @@ const AdminHeaders = () => {
                            <NavLink
                               className="nav-link"
                               to="/admin-panel/user-messages"
+                              onClick={() => setIsNavbarOpen(false)}
                            >
                               Your Messages
                            </NavLink>
@@ -86,6 +91,7 @@ const AdminHeaders = () => {
                            <NavLink
                               className="nav-link"
                               to="/admin-panel/chat"
+                              onClick={() => setIsNavbarOpen(false)}
                            >
                               Chat
                            </NavLink>

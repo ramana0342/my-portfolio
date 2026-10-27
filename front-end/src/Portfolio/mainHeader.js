@@ -1,16 +1,16 @@
 import React, { createContext } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./index";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Login from "./adminLogin";
 import AdminHeaders from "./adminPanel";
 import UserMessages from "./userMessages";
 import Project1 from "./project1";
 import Project2 from "./project2";
 import Project3 from "./project3";
+import ProjectBuyRsell from "./projectBuyRsell";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import UserChat from "./chats/userChat";
 import AdminChat from "./chats/adminChat";
 
 export const store = createContext()
@@ -31,6 +31,7 @@ const MainHeader = () => {
                     <Route path="/projects/task-management" element={<Project1 />} />
                     <Route path="/projects/ecommerce-app" element={<Project2 />} />
                     <Route path="/projects/food-app" element={<Project3 />} />
+                    <Route path="/projects/buyrsell" element={<ProjectBuyRsell />} />
                     <Route path="/admin-panel" element={<AdminHeaders />}>
                         <Route path="user-messages" element={<UserMessages />} />
                         <Route path="chat" element={<AdminChat />} />

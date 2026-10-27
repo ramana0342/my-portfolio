@@ -1,0 +1,1250 @@
+/* ================================
+   HERO / HOME
+   ================================ */
+
+#home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: 100px 7vw 80px;
+
+    background:
+        radial-gradient(circle at 78% 45%,
+            rgba(56, 189, 248, 0.12),
+            transparent 28%),
+        radial-gradient(circle at 20% 20%,
+            rgba(37, 99, 235, 0.1),
+            transparent 32%),
+        #060a10;
+
+    color: #f8fafc;
+
+    // ==================================================
+    // BACKGROUND GRID
+    // ==================================================
+
+    &::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background-image:
+            linear-gradient(rgba(148, 163, 184, 0.035) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                rgba(148, 163, 184, 0.035) 1px,
+                transparent 1px);
+
+        background-size: 55px 55px;
+
+        mask-image:
+            linear-gradient(to right,
+                black,
+                transparent 90%);
+
+        pointer-events: none;
+    }
+
+    // ==================================================
+    // HERO SHELL
+    // ==================================================
+
+    .hero-shell {
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+        max-width: 1320px;
+
+        margin: 0 auto;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 0.95fr) minmax(460px, 1.05fr);
+
+        gap: clamp(45px, 6vw, 90px);
+
+        align-items: center;
+    }
+
+    // ==================================================
+    // LEFT CONTENT
+    // ==================================================
+
+    .hero-content {
+        max-width: 720px;
+    }
+
+    // --------------------------------------------------
+    // Availability Badge
+    // --------------------------------------------------
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+
+        gap: 9px;
+
+        padding: 9px 13px;
+
+        border:
+            1px solid rgba(148, 163, 184, 0.14);
+
+        border-radius: 999px;
+
+        background:
+            rgba(255, 255, 255, 0.025);
+
+        color: #94a3b8;
+
+        font-size: 11px;
+
+        letter-spacing: 0.8px;
+    }
+
+    .hero-status-dot {
+        width: 7px;
+        height: 7px;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        background: #38bdf8;
+
+        box-shadow:
+            0 0 12px rgba(56, 189, 248, 0.8);
+    }
+
+    // --------------------------------------------------
+    // Kicker
+    // --------------------------------------------------
+
+    .hero-kicker {
+        margin: 35px 0 8px;
+
+        color: #38bdf8;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        letter-spacing: 4px;
+    }
+
+    // --------------------------------------------------
+    // Main Heading
+    // --------------------------------------------------
+
+    h1 {
+        margin: 0;
+
+        color: #f8fafc;
+
+        font-size:
+            clamp(58px, 8vw, 108px);
+
+        font-weight: 750;
+
+        letter-spacing: -5px;
+
+        line-height: 0.95;
+
+        span {
+            color: transparent;
+
+            background:
+                linear-gradient(100deg,
+                    #38bdf8,
+                    #60a5fa);
+
+            background-clip: text;
+
+            -webkit-background-clip: text;
+        }
+    }
+
+    // --------------------------------------------------
+    // Hero Subtitle
+    // --------------------------------------------------
+
+    h2 {
+        max-width: 680px;
+
+        margin: 26px 0 0;
+
+        color: #e2e8f0;
+
+        font-size:
+            clamp(22px, 2.5vw, 32px);
+
+        font-weight: 500;
+
+        letter-spacing: -0.7px;
+
+        line-height: 1.35;
+
+        .text {
+            color: #38bdf8;
+
+            font-weight: 650;
+
+            text-shadow:
+                0 0 18px rgba(56, 189, 248, 0.22);
+        }
+    }
+
+    // --------------------------------------------------
+    // Description
+    // --------------------------------------------------
+
+    .hero-description {
+        max-width: 650px;
+
+        margin: 22px 0 0;
+
+        color: #94a3b8;
+
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+    // ==================================================
+    // BUTTONS
+    // ==================================================
+
+    .home-buttons {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+        margin-top: 32px;
+
+        a {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            font-weight: 650;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+        }
+    }
+
+    // --------------------------------------------------
+    // Primary Button
+    // --------------------------------------------------
+
+    .btn-primary-custom {
+        border:
+            1px solid #38bdf8;
+
+        background: #38bdf8;
+
+        color: #04111c;
+
+        box-shadow:
+            0 10px 35px rgba(56, 189, 248, 0.14);
+
+        span {
+            font-size: 16px;
+        }
+
+        &:hover {
+            background: #7dd3fc;
+
+            transform:
+                translateY(-3px);
+        }
+    }
+
+    // --------------------------------------------------
+    // Outline Button
+    // --------------------------------------------------
+
+    .btn-outline-custom {
+        border:
+            1px solid rgba(148, 163, 184, 0.28);
+
+        background:
+            rgba(255, 255, 255, 0.02);
+
+        color: #e2e8f0;
+
+        &:hover {
+            border-color:
+                rgba(56, 189, 248, 0.5);
+
+            background:
+                rgba(56, 189, 248, 0.06);
+
+            color: #fff;
+
+            transform:
+                translateY(-3px);
+        }
+    }
+
+    // ==================================================
+    // HERO META
+    // ==================================================
+
+    .hero-meta {
+        display: flex;
+
+        margin-top: 42px;
+
+        >div {
+            min-width: 135px;
+
+            padding:
+                0 24px;
+
+            border-left:
+                1px solid rgba(148, 163, 184, 0.14);
+
+            &:first-child {
+                padding-left: 0;
+
+                border-left: 0;
+            }
+
+            strong,
+            span {
+                display: block;
+            }
+
+            strong {
+                color: #e2e8f0;
+
+                font-size: 13px;
+            }
+
+            span {
+                margin-top: 5px;
+
+                color: #64748b;
+
+                font-size: 10px;
+
+                letter-spacing: 1.2px;
+
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    // ==================================================
+    // RIGHT TECHNICAL VISUAL
+    // ==================================================
+
+    .hero-visual {
+        position: relative;
+
+        min-height: 560px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+    // --------------------------------------------------
+    // Technical Grid
+    // --------------------------------------------------
+
+    .hero-grid {
+        position: absolute;
+
+        inset: 5% -5%;
+
+        background-image:
+            linear-gradient(rgba(56, 189, 248, 0.05) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                rgba(56, 189, 248, 0.05) 1px,
+                transparent 1px);
+
+        background-size: 30px 30px;
+
+        mask-image:
+            radial-gradient(circle,
+                black 20%,
+                transparent 72%);
+    }
+
+    // ==================================================
+    // DEVELOPER PROFILE CARD
+    // ==================================================
+
+    .hero-code-card {
+        position: relative;
+
+        z-index: 3;
+
+        /*
+        Smaller than previous 540px card.
+        This gives the right side more breathing room.
+        */
+
+        width: min(465px, 88%);
+
+        padding: 20px;
+
+        border:
+            1px solid rgba(148, 163, 184, 0.2);
+
+        border-radius: 18px;
+
+        background:
+            linear-gradient(145deg,
+                rgba(15, 23, 42, 0.98),
+                rgba(6, 12, 20, 0.96));
+
+        box-shadow:
+            0 35px 90px rgba(0, 0, 0, 0.5),
+            0 0 60px rgba(56, 189, 248, 0.06);
+
+        backdrop-filter: blur(20px);
+
+        transform: rotate(1deg);
+
+        transition:
+            transform 0.4s ease,
+            border-color 0.4s ease,
+            box-shadow 0.4s ease;
+
+        &:hover {
+            transform:
+                rotate(0deg) translateY(-7px);
+
+            border-color:
+                rgba(56, 189, 248, 0.32);
+
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.55),
+                0 0 70px rgba(56, 189, 248, 0.1);
+        }
+    }
+
+    // ==================================================
+    // CARD HEADER
+    // ==================================================
+
+    .hero-code-header {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 16px;
+
+        padding-bottom: 16px;
+
+        border-bottom:
+            1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .hero-code-title {
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        min-width: 0;
+    }
+
+    // --------------------------------------------------
+    // Window Dots
+    // --------------------------------------------------
+
+    .hero-window-dot {
+        width: 7px;
+        height: 7px;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        background: #334155;
+
+        &:nth-child(1) {
+            background: #ef4444;
+        }
+
+        &:nth-child(2) {
+            background: #eab308;
+        }
+
+        &:nth-child(3) {
+            background: #22c55e;
+        }
+    }
+
+    .hero-code-file {
+        margin-left: 7px;
+
+        color: #94a3b8;
+
+        font-family: inherit;
+
+        font-size: 12px;
+
+        letter-spacing: 0.7px;
+
+        white-space: nowrap;
+    }
+
+    // --------------------------------------------------
+    // Available Status
+    // --------------------------------------------------
+
+    .hero-code-status {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        flex-shrink: 0;
+
+        color: #64748b;
+
+        font-family: inherit;
+
+        font-size: 10px;
+
+        letter-spacing: 0.7px;
+
+        text-transform: uppercase;
+    }
+
+    .hero-code-dot {
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        background: #22c55e;
+
+        box-shadow:
+            0 0 10px rgba(34, 197, 94, 0.75);
+    }
+
+    // ==================================================
+    // CARD CONTENT
+    // ==================================================
+
+    .hero-code-content {
+        display: grid;
+
+        gap: 18px;
+
+        padding:
+            24px 3px 22px;
+    }
+
+    // ==================================================
+    // PROFILE ROW
+    // ==================================================
+
+    .hero-code-section {
+        display: grid;
+
+        /*
+        Smaller label column because
+        card itself is now narrower.
+        */
+
+        grid-template-columns:
+            105px minmax(0, 1fr);
+
+        gap: 14px;
+
+        align-items: start;
+    }
+
+    .hero-code-name {
+        padding-bottom: 2px;
+    }
+
+    // ==================================================
+    // CODE LABEL
+    // ==================================================
+
+    .hero-code-label {
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        color: #38bdf8;
+
+        font-family: inherit;
+
+        /*
+        Increased from 12px
+        */
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        line-height: 1.6;
+
+        text-transform: lowercase;
+    }
+
+    .hero-code-icon {
+        color: #475569;
+
+        font-weight: 400;
+    }
+
+    // ==================================================
+    // CODE VALUE
+    // ==================================================
+
+    .hero-code-value {
+        color: #e2e8f0;
+
+        font-family: inherit;
+
+        /*
+        Increased from 12px
+        */
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    // ==================================================
+    // TECHNOLOGY TAGS
+    // ==================================================
+
+    .hero-code-items {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+
+        span {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 30px;
+
+            padding:
+                7px 10px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.13);
+
+            border-radius: 7px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            color: #cbd5e1;
+
+            font-family: inherit;
+
+            /*
+            Increased from 10px
+            */
+
+            font-size: 11px;
+
+            line-height: 1;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+
+            &:hover {
+                border-color:
+                    rgba(56, 189, 248, 0.3);
+
+                background:
+                    rgba(56, 189, 248, 0.07);
+
+                color: #f8fafc;
+            }
+        }
+    }
+
+    // ==================================================
+    // ADDITIONAL / LEARNING
+    // ==================================================
+
+    .hero-code-additional {
+        padding-top: 4px;
+    }
+
+    .hero-code-learning {
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        min-height: 30px;
+
+        padding:
+            7px 10px;
+
+        border:
+            1px solid rgba(56, 189, 248, 0.18);
+
+        border-radius: 7px;
+
+        background:
+            rgba(56, 189, 248, 0.05);
+
+        color: #94a3b8;
+
+        font-family: inherit;
+
+        font-size: 11px;
+
+        line-height: 1.4;
+    }
+
+    .hero-learning-dot {
+        width: 6px;
+        height: 6px;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        background: #38bdf8;
+
+        box-shadow:
+            0 0 10px rgba(56, 189, 248, 0.65);
+    }
+
+    // ==================================================
+    // CARD FOOTER
+    // ==================================================
+
+    .hero-code-footer {
+        display: grid;
+
+        grid-template-columns:
+            30px 1fr auto;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding-top: 13px;
+
+        border-top:
+            1px solid rgba(148, 163, 184, 0.1);
+
+        color: #475569;
+
+        font-family: inherit;
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+
+        span:nth-child(2) {
+            color: #64748b;
+        }
+
+        span:last-child {
+            color: #334155;
+        }
+    }
+
+    // ==================================================
+    // ORBITS
+    // ==================================================
+
+    .hero-orbit {
+        position: absolute;
+
+        border:
+            1px solid rgba(56, 189, 248, 0.1);
+
+        border-radius: 50%;
+
+        pointer-events: none;
+    }
+
+    .hero-orbit-one {
+        width: 500px;
+        height: 500px;
+
+        transform:
+            rotate(22deg) scaleY(0.65);
+    }
+
+    .hero-orbit-two {
+        width: 610px;
+        height: 610px;
+
+        transform:
+            rotate(-25deg) scaleY(0.55);
+    }
+
+    // ==================================================
+    // CODE DECORATION
+    // ==================================================
+
+    .hero-code-mark {
+        position: absolute;
+
+        right: 2%;
+        bottom: 6%;
+
+        color:
+            rgba(56, 189, 248, 0.18);
+
+        font-family: inherit;
+
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+}
+
+// ======================================================
+// TABLET / LARGE LAPTOP
+// ======================================================
+
+@media (max-width: 1100px) {
+
+    #home {
+
+        .hero-shell {
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 40px;
+        }
+
+        .hero-code-card {
+            width: min(465px, 94%);
+        }
+    }
+}
+
+// ======================================================
+// TABLET / SMALL LAPTOP
+// ======================================================
+
+@media (max-width: 900px) {
+
+    #home {
+
+        padding-top: 110px;
+
+        .hero-shell {
+            grid-template-columns: 1fr;
+
+            gap: 45px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero-visual {
+            min-height: 550px;
+        }
+
+        .hero-code-card {
+            width: min(465px, 92%);
+        }
+    }
+}
+
+
+// ======================================================
+// MOBILE
+// ======================================================
+
+@media (max-width: 600px) {
+
+    #home {
+
+        min-height: auto;
+
+        padding:
+            105px 20px 70px;
+
+        // ------------------------------------------
+        // SHELL
+        // ------------------------------------------
+
+        .hero-shell {
+            gap: 30px;
+        }
+
+        // ------------------------------------------
+        // KICKER
+        // ------------------------------------------
+
+        .hero-kicker {
+            margin-top: 28px;
+        }
+
+        // ------------------------------------------
+        // HEADING
+        // ------------------------------------------
+
+        h1 {
+            font-size:
+                clamp(52px,
+                    16vw,
+                    76px);
+
+            letter-spacing: -3px;
+        }
+
+        // ------------------------------------------
+        // SUBTITLE
+        // ------------------------------------------
+
+        h2 {
+            font-size: 21px;
+        }
+
+        // ------------------------------------------
+        // DESCRIPTION
+        // ------------------------------------------
+
+        .hero-description {
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        // ------------------------------------------
+        // BUTTONS
+        // ------------------------------------------
+
+        .home-buttons {
+            flex-direction: column;
+
+            align-items: stretch;
+
+            a {
+                width: 100%;
+            }
+        }
+
+        // ------------------------------------------
+        // META
+        // ------------------------------------------
+
+        .hero-meta {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            margin-top: 32px;
+
+            >div {
+                min-width: 0;
+
+                padding:
+                    0 10px;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                strong {
+                    font-size: 11px;
+                }
+
+                span {
+                    font-size: 8px;
+
+                    letter-spacing: 0.8px;
+                }
+            }
+        }
+
+        // ------------------------------------------
+        // RIGHT VISUAL
+        // ------------------------------------------
+
+        .hero-visual {
+            min-height: 500px;
+        }
+
+        // ------------------------------------------
+        // CARD
+        // ------------------------------------------
+
+        .hero-code-card {
+            width: 100%;
+
+            padding: 15px;
+
+            border-radius: 16px;
+
+            transform: none;
+
+            &:hover {
+                transform:
+                    translateY(-3px);
+            }
+        }
+
+        // ------------------------------------------
+        // HEADER
+        // ------------------------------------------
+
+        .hero-code-header {
+            padding-bottom: 14px;
+        }
+
+        .hero-code-file {
+            font-size: 9px;
+        }
+
+        .hero-code-status {
+            font-size: 7px;
+        }
+
+        // ------------------------------------------
+        // CONTENT
+        // ------------------------------------------
+
+        .hero-code-content {
+            gap: 17px;
+
+            padding:
+                22px 2px 20px;
+        }
+
+        // ------------------------------------------
+        // SECTIONS
+        // ------------------------------------------
+
+        .hero-code-section {
+            grid-template-columns:
+                90px minmax(0, 1fr);
+
+            gap: 10px;
+        }
+
+        // ------------------------------------------
+        // LABELS
+        // ------------------------------------------
+
+        .hero-code-label {
+            font-size: 10px;
+        }
+
+        .hero-code-value {
+            font-size: 10px;
+        }
+
+        // ------------------------------------------
+        // TAGS
+        // ------------------------------------------
+
+        .hero-code-items {
+            gap: 5px;
+
+            span {
+                min-height: 25px;
+
+                padding:
+                    6px 8px;
+
+                font-size: 9px;
+            }
+        }
+
+        // ------------------------------------------
+        // LEARNING
+        // ------------------------------------------
+
+        .hero-code-learning {
+            font-size: 9px;
+
+            padding:
+                6px 8px;
+        }
+
+        // ------------------------------------------
+        // FOOTER
+        // ------------------------------------------
+
+        .hero-code-footer {
+            font-size: 7px;
+        }
+
+        // ------------------------------------------
+        // ORBITS
+        // ------------------------------------------
+
+        .hero-orbit-one {
+            width: 400px;
+            height: 400px;
+        }
+
+        .hero-orbit-two {
+            width: 470px;
+            height: 470px;
+        }
+
+        // ------------------------------------------
+        // CODE MARK
+        // ------------------------------------------
+
+        .hero-code-mark {
+            right: 2%;
+
+            bottom: 3%;
+
+            font-size: 18px;
+        }
+    }
+}
+
+
+// ======================================================
+// VERY SMALL MOBILE
+// ======================================================
+
+@media (max-width: 400px) {
+
+    #home {
+
+        padding-left: 16px;
+        padding-right: 16px;
+
+        // ------------------------------------------
+        // META
+        // ------------------------------------------
+
+        .hero-meta {
+
+            gap: 14px;
+
+            >div {
+                padding: 0;
+
+                border-left: 0;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+
+        // ------------------------------------------
+        // CARD
+        // ------------------------------------------
+
+        .hero-code-card {
+            padding: 12px;
+        }
+
+        // ------------------------------------------
+        // SECTIONS
+        // ------------------------------------------
+
+        .hero-code-section {
+            grid-template-columns:
+                78px minmax(0, 1fr);
+
+            gap: 8px;
+        }
+
+        // ------------------------------------------
+        // TAGS
+        // ------------------------------------------
+
+        .hero-code-items {
+
+            span {
+                font-size: 8px;
+
+                padding:
+                    5px 7px;
+            }
+        }
+
+        // ------------------------------------------
+        // LEARNING
+        // ------------------------------------------
+
+        .hero-code-learning {
+            font-size: 8px;
+        }
+    }
+}
+
+
+// ======================================================
+// REDUCED MOTION
+// ======================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    #home {
+
+        .hero-code-card,
+        .home-buttons a,
+        .hero-code-items span {
+
+            transition: none;
+        }
+    }
+}
+
+
+

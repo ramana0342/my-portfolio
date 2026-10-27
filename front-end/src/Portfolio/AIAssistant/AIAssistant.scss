@@ -2,8 +2,9 @@
   position: fixed;
   bottom: 25px;
   left: 25px;
-  width: 380px;
-  height: calc(100% - 25px - 80px);
+  width: min(420px, calc(100vw - 48px));
+  height: min(680px, calc(100dvh - 100px));
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -16,6 +17,7 @@
   .ai-messages {
     flex: 1;
     overflow-y: auto;
+    min-width: 0;
     padding: 20px;
     background: #fafafa;
 
@@ -76,14 +78,25 @@
 
 @media (max-width:768px) {
   .ai-assistant {
-    width: 95%;
-    height: 80dvh;
-
-    left: 50%;
+    width: calc(100vw - 24px);
+    max-width: 520px;
+    height: min(80dvh, 680px);
+    min-height: 300px;
+    left: 12px;
     right: auto;
+    bottom: 12px;
+  }
+}
 
-    transform: translateX(-50%);
-    bottom: 20px;
+@media (max-width: 360px) {
+  .ai-assistant {
+    width: calc(100vw - 16px);
+    left: 8px;
+    right: 8px;
+  }
+
+  .ai-assistant .ai-messages {
+    padding: 14px 10px;
   }
 }
 

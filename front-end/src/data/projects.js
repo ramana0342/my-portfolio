@@ -1,0 +1,45 @@
+const projects = [
+  {
+    id: "buyrsell",
+    title: "buyRsell",
+    type: "FULL-STACK MARKETPLACE",
+    description: "buyRsell is a personal full-stack marketplace project that connects customers and sellers. Sellers can list their products, while customers can browse available products. The application uses React.js for the frontend, Node.js and Express.js for backend APIs, and PostgreSQL for database management.",
+    technologies: ["React.js", "Node.js", "Express.js", "PostgreSQL"],
+    route: "/projects/buyrsell",
+    visual: "commerce",
+    visualLabel: "BUY",
+    visualGrid: true,
+  },
+  {
+    id: "task-management",
+    title: "TODO Task Management",
+    type: "FULL STACK APPLICATION",
+    description: "A task management application with authentication, task CRUD operations and a React interface connected to a Node.js backend.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    route: "/projects/task-management",
+    visual: "window",
+    visualLabel: "TODO",
+  },
+  // {
+  //   id: "shop-reaser",
+  //   title: "shopReaseR",
+  //   type: "E-COMMERCE APPLICATION",
+  //   description: "A responsive shopping experience focused on product discovery, cart interactions and a clean customer-facing interface.",
+  //   technologies: ["React", "JavaScript", "Bootstrap", "CSS"],
+  //   route: "/projects/ecommerce-app",
+  //   visual: "commerce",
+  //   visualLabel: "SHOP",
+  // },
+  // {
+  //   id: "freehunger",
+  //   title: "FreeHungeR",
+  //   type: "FOOD DISCOVERY PLATFORM",
+  //   description: "A React-based food platform for browsing restaurants, discovering menu items and managing a food cart.",
+  //   technologies: ["React", "Restaurant Listing", "Cart"],
+  //   route: "/projects/food-app",
+  //   visual: "food",
+  //   visualLabel: "FOOD",
+  // },
+];
+
+export default projects;
